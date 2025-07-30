@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/js.js"></script>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+    background-color: #F2ECDD;
+  }
+  
+</style>
+</head>
+<body>
+
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg" style="width: 100px;">
+  </a>
+  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg" style="width: 30px;">
+</div>
+<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
+<div id="overlayMenu" class="overlay-content" style="display: none; position: absolute; top: 60px; right: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+  <a href="map.html"><div class="menu-item">
+    <img src="assets/icones/mapazul.svg" />
+    <div>MAPA E ROTA DÉCO</div>
+  </div></a>
+  <a href="sobre.html"><div class="menu-item">
+    <img src="assets/icones/infoazul.svg" />
+    <div>SOBRE O PROJETO</div>
+  </div></a>
+  <a href="creditos.html"><div class="menu-item">
+    <img src="assets/icones/pen-toolazul.svg" />
+    <div>CRÉDITOS E CURADORIA</div>
+  </div></a>
+</div>
+<script>
+  const openBtn = document.getElementById("openOverlay");
+  const overlay = document.getElementById("overlayMenu");
+
+  openBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique vá para o document
+    const isVisible = overlay.style.display === "flex";
+    overlay.style.display = isVisible ? "none" : "flex";
+    overlay.style.flexDirection = "column";
+  });
+
+  // Fecha o menu se clicar fora dele
+  document.addEventListener("click", (e) => {
+    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+  // Evita que clique dentro do overlay feche ele
+  overlay.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+
+<div class="mapa-container">
+<div class="mapa">
+  <img src="assets/mapa/Mapa Rio Branco.svg" alt="map" />
+
+  <div class="pin cauduro">
+    <span data-popup="popupCauduro">Edíficio Cauduro</span>
+  </div>
+
+  <div class="pin maua">
+    <span data-popup="popupMaua">Edíficio Mauá</span>
+  </div>
+
+  <div class="pin francismari">
+    <span data-popup="popupFrancismari">Edifício Francismari</span>
+  </div>
+
+  <div class="pin carmen">
+    <span data-popup="popupCarmen">Edifício Carmem Bicca</span>
+  </div>
+
+  <div class="pin emerita">
+    <span data-popup="popupEmerita">Edifício Emérita</span>
+  </div>
+
+  <div class="pin ibirapuita">
+    <span data-popup="popupIbirapuita">Edifício Ibirapuitã</span>
+  </div>
+
+  <div class="pin sm">
+    <span data-popup="popupSM">Edifício Santa Maria</span>
+  </div>
+
+  <div class="pin moraes">
+    <span data-popup="popupMoraes">Edifício Dr. Eduardo de Moraes</span>
+  </div>
+
+  <div class="pin raimundo">
+    <span data-popup="popupRaimundo">Propriedade de Raimundo Cauduro</span>
+  </div>
+
+  <div class="pin correio">
+    <span data-popup="popupCorreio">Edifício Correio do Povo</span>
+  </div>
+
+  <div class="pin prates">
+    <span data-popup="popupPrates">Edifício Residência Darlling Prates</span>
+  </div>
+
+  <div class="pin mabi">
+    <span data-popup="popupMabi">Edifício Mabi</span>
+  </div>
+
+  <div class="pontoreferencia calcadao">
+    <span>Calçadão Salvador Isai</span>
+  </div>
+
+  <div class="pontoreferencia gare">
+    <span>Gare da Viação Férrea</span>
+  </div>
+
+  <div class="pontoreferencia riobranco">
+    <span>Avenida Rio Branco</span>
+  </div>
+
+  <div class="pontoreferencia pracamarinho">
+    <span>Praça Saldanha Marinho</span>
+  </div>
+</div>
+</div>
+
+<!-- POPUPS -->
+
+<div id="popupCauduro" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0820.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Cauduro</h2>
+    <p>O Edifício Cauduro, mais conhecido como “antigo Hotel Jantzen”,  ...</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 893 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/cauduro.html">Saiba Mais</a></button>
+    </div>
+  </div>
+</div>
+
+<div id="popupMaua" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0572.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Mauá</h2>
+    <p>Informações e foto do Edifício Mauá.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Mauá.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupFrancismari" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/francismari.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Francismari</h2>
+    <p>Informações e foto do Edifício Francismari.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Francismari.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupCarmen" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0599.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Carmem Bicca</h2>
+    <p>Informações e foto do Edifício Carmem Bicca.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Carmem Bicca.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupEmerita" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/emerita.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Emérita</h2>
+    <p>Informações e foto do Edifício Emérita.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Emérita.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupIbirapuita" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/ibirapuita.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Ibirapuitã</h2>
+    <p>Informações e foto do Edifício Ibirapuitã.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Ibirapuitã.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupSM" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/sm.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Santa Maria</h2>
+    <p>Informações e foto do Edifício Santa Maria.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Santa Maria.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupMoraes" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0658.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Dr. Eduardo de Moraes</h2>
+    <p>Informações e foto do Edifício Dr. Eduardo de Moraes.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Dr. Eduardo de Moraes.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupRaimundo" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0670.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Propriedade de Raimundo Cauduro</h2>
+    <p>Informações e foto da propriedade.</p>
+    <p style="font-size: 10pt;">Endereço da propriedade.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupCorreio" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/correio.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Correio do Povo</h2>
+    <p>Informações e foto do Edifício Correio do Povo.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Correio do Povo.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupPrates" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/prates.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Residência Darlling Prates</h2>
+    <p>Informações e foto do Edifício Residência Darlling Prates.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Residência Darlling Prates.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+</div>  
+</div>
+</div>
+
+<div id="popupMabi" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0706.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;">
+    <h2>Edifício Mabi</h2>
+    <p>Informações e foto do Edifício Mabi.</p>
+    <p style="font-size: 10pt;">Endereço do Edifício Mabi.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+</div>
+
+<script>
+  // Captura todos os spans com data-popup
+  const spans = document.querySelectorAll('.pin span[data-popup]');
+  const popups = document.querySelectorAll('.popup-overlay');
+
+  spans.forEach(span => {
+    span.addEventListener('click', () => {
+      const popupId = span.getAttribute('data-popup');
+      const popup = document.getElementById(popupId);
+      if (popup) {
+        popup.classList.add('active');
+      }
+    });
+  });
+
+  popups.forEach(popup => {
+    // Fecha ao clicar no botão "X"
+    const btnFechar = popup.querySelector('.fecharPopup');
+    btnFechar.addEventListener('click', () => {
+      popup.classList.remove('active');
+    });
+
+    // Fecha ao clicar fora do conteúdo
+    popup.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        popup.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+<script>
+const mapa = document.querySelector('.mapa');
+const container = document.querySelector('.mapa-container');
+
+let isDragging = false;
+let startX, startY;
+let initialX = 0, initialY = 0;
+
+container.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  mapa.classList.add('dragging');
+  startX = e.clientX;
+  startY = e.clientY;
+  initialX = parseInt(mapa.style.left || 0);
+  initialY = parseInt(mapa.style.top || 0);
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+
+  // Calcula a nova posição
+  let newX = initialX + dx;
+  let newY = initialY + dy;
+
+  // Calcula os limites para o eixo X
+  const maxX = 0; // mapa não pode passar para a direita além de 0
+  const minX = container.offsetWidth - mapa.offsetWidth; // máximo para a esquerda
+
+  // Calcula os limites para o eixo Y
+  const maxY = 0; // mapa não pode passar para baixo além de 0
+  const minY = container.offsetHeight - mapa.offsetHeight; // máximo para cima
+
+  // Aplica os limites
+  if (newX > maxX) newX = maxX;
+  if (newX < minX) newX = minX;
+  if (newY > maxY) newY = maxY;
+  if (newY < minY) newY = minY;
+
+  mapa.style.left = `${newX}px`;
+  mapa.style.top = `${newY}px`;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  mapa.classList.remove('dragging');
+});
+
+// Mesma coisa para touch:
+
+container.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  mapa.classList.add('dragging');
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+  initialX = parseInt(mapa.style.left || 0);
+  initialY = parseInt(mapa.style.top || 0);
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const dx = e.touches[0].clientX - startX;
+  const dy = e.touches[0].clientY - startY;
+
+  let newX = initialX + dx;
+  let newY = initialY + dy;
+
+  const maxX = 0;
+  const minX = container.offsetWidth - mapa.offsetWidth;
+
+  const maxY = 0;
+  const minY = container.offsetHeight - mapa.offsetHeight;
+
+  if (newX > maxX) newX = maxX;
+  if (newX < minX) newX = minX;
+  if (newY > maxY) newY = maxY;
+  if (newY < minY) newY = minY;
+
+  mapa.style.left = `${newX}px`;
+  mapa.style.top = `${newY}px`;
+});
+
+document.addEventListener('touchend', () => {
+  isDragging = false;
+  mapa.classList.remove('dragging');
+});
+
+</script>
+
+</body>
+</html>

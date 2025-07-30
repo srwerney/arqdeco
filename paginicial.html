@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.imagem-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 100px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none; /* impede que a imagem bloqueie cliques */
+  z-index: 0;
+}
+
+.imagem-container img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.imagem-base {
+  z-index: 1;
+  opacity: 1;
+}
+
+.imagem-sobreposta {
+  z-index: 2;
+  opacity: 0;
+  animation: surgir 3s ease-in-out forwards;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+</head>
+<body>
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg" style="width: 100px;">
+  </a>
+  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg" style="width: 30px;">
+</div>
+<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
+<div id="overlayMenu" class="overlay-content" style="display: none; position: absolute; top: 60px; right: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+  <a href="map.html"><div class="menu-item">
+    <img src="assets/icones/mapazul.svg" />
+    <div>MAPA E ROTA DÉCO</div>
+  </div></a>
+  <a href="sobre.html"><div class="menu-item">
+    <img src="assets/icones/infoazul.svg" />
+    <div>SOBRE O PROJETO</div>
+  </div></a>
+  <a href="creditos.html"><div class="menu-item">
+    <img src="assets/icones/pen-toolazul.svg" />
+    <div>CRÉDITOS E CURADORIA</div>
+  </div></a>
+</div>
+<script>
+  const openBtn = document.getElementById("openOverlay");
+  const overlay = document.getElementById("overlayMenu");
+
+  openBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique vá para o document
+    const isVisible = overlay.style.display === "flex";
+    overlay.style.display = isVisible ? "none" : "flex";
+    overlay.style.flexDirection = "column";
+  });
+
+  // Fecha o menu se clicar fora dele
+  document.addEventListener("click", (e) => {
+    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+  // Evita que clique dentro do overlay feche ele
+  overlay.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+
+<div class="imagem-container">
+  <img src="assets/fotografia/predio.png" class="imagem-base">
+  <img src="assets/fotografia/Sem Título-1.png" class="imagem-sobreposta">
+</div>
+    
+
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+</div>
+
+</body>
+</html>
