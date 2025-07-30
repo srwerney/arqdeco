@@ -59,10 +59,10 @@
     <a-asset-item id="predio1" src="../assets/3d/jantzen.glb"></a-asset-item>
   </a-assets>
 
-  <!-- NFT Marker sem extensão -->
-  <a-nft
-    type="nft"
-    url="../assets/target/alvo1"
+  <!-- Pattern Marker personalizado -->
+  <a-marker
+    type="pattern"
+    url="../assets/markers/pattern-alvos-01.patt"
     smooth="true"
     smoothCount="10"
     smoothTolerance="0.01"
@@ -74,7 +74,7 @@
       scale="1 1 1"
       rotation="0 0 0"
     ></a-gltf-model>
-  </a-nft>
+  </a-marker>
 
   <a-entity camera></a-entity>
 </a-scene>
