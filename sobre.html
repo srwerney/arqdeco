@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css"/>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+<link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<style>
+  
+body {
+  	margin: 0;
+  	line-height: normal;
+  	font-family: 'League Spartan', sans-serif;
+}
+
+
+/* ---------- BLOCOS PRINCIPAIS ---------- */
+
+.sobre-o-projeto {
+  	width: 100%;
+  	background-color: #fff9e9;
+  	min-height: 100vh;
+  	overflow: hidden;
+  	text-align: left;
+  	font-size: 1rem;
+  	color: #fff;
+}
+
+.frame-parent {
+  	position: relative;
+  	width: 100%;
+  	height: auto;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+}
+
+/* ---------- PRIMEIRA SEÇÃO ---------- */
+.frame-wrapper {
+  	width: 100%;
+  	min-height: 100vh;
+  	overflow: hidden;
+  	background-image: url('assets/fotografia/bg1.png');
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	font-size: clamp(24px, 5vw, 64px);
+}
+
+.frame-group {
+  	width: 100%;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 8px;
+  	padding: 35vh 12%;
+}
+
+.arqdco {
+  	font-weight: 800;
+  	font-size: 350%;
+}
+
+.sobre-o-projeto1 {
+  	font-size: 0.9em;
+  	font-weight: 800;
+}
+
+.texto-texto-texto {
+  	max-width: 40vw;
+  	font-size: 0.9rem;
+  	line-height: 1.4em;
+  	margin-top: 10px;
+  	color: #ffffff;
+}
+
+/* ---------- SEÇÕES INTERMEDIÁRIAS ---------- */
+.ethos-operao-parent,
+.nossa-comunidade-parent {
+  	width: 100%;
+  	min-height: 30vh;
+    max-height: 80vh;
+  	overflow: hidden;
+  	padding: 5%;
+  	color: #fff;
+}
+
+.ethos-operao-parent {
+  	background-color: #050e32;
+}
+
+.nossa-comunidade-parent {
+  	background-color: #1e1e1e;
+}
+
+.ethos-operao,
+.nossa-comunidade {
+  	font-weight: 800;
+  	font-size: 2.5em;
+  	margin-bottom: 20px;
+    margin-right: 15%;
+}
+
+.frame-container {
+  	width: 100vw;
+  	display: flex;
+  	flex-wrap: wrap;
+  	gap: 28px;
+}
+
+.parent {
+  	flex: 1;
+  	min-width: 150px;
+    margin-right: 15%;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 6px;
+}
+
+.div {
+  	font-weight: 800;
+  	font-size: 5em;
+}
+
+.frame-child {
+  	width: 60vw;
+  	max-width: 80%;
+  	height: 1px;
+  	background-color: #bfcbff;
+}
+
+.emoo {
+  	font-size: 1.3em;
+  	font-weight: 800;
+  	color: #bfcbff;
+}
+
+.texto-texto-texto1 {
+  	font-size: 0.9em;
+    width: 20vw;
+  	color: #ccc;
+}
+
+/* ---------- ODS ---------- */
+.frame-wrapper1 {
+  	width: 100%;
+  	height: 140vh;
+  	background-color: #fff;
+  	padding: 5%;
+  	color: #162257;
+}
+
+.objetivos-de-desenvolvimento-s-parent {
+  	width: 100%;
+  	display: flex;
+  	flex-direction: column;
+  	gap: 5px;
+}
+
+.semformatacao{
+flex: 1;
+  	object-fit: cover;
+
+}
+
+.ods4-parent {
+  	width: 80%;
+  	display: flex;
+  	flex-wrap: wrap;
+  	gap: 5%;
+}
+
+.ods4-icon {
+  	flex: 1;
+  	max-width: 90%;
+  	object-fit: contain;
+}
+
+.ods4-icon:hover {
+  	flex: 1;
+  	max-width: 95%;
+    transition: 120ms ease-in;
+  	object-fit: cover;
+}
+
+.texto-texto-texto7 {
+  	max-width: 70VW;
+  	font-size: 0.9rem;
+  	color: #000;
+    margin-top: 20px;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 768px) {
+  .frame-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .texto-texto-texto,
+  .texto-texto-texto1,
+  .texto-texto-texto7 {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body>
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg">
+  </a>
+  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg">
+</div>
+<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
+<div id="overlayMenu" class="overlay-content">
+  <a href="map.html"><div class="menu-item">
+    <img src="assets/icones/mapazul.svg" />
+    <div>MAPA E ROTA DÉCO</div>
+  </div></a>
+  <a href="sobre.html"><div class="menu-item">
+    <img src="assets/icones/infoazul.svg" />
+    <div>SOBRE O PROJETO</div>
+  </div></a>
+  <a href="creditos.html"><div class="menu-item">
+    <img src="assets/icones/pen-toolazul.svg" />
+    <div>CRÉDITOS E CURADORIA</div>
+  </div></a>
+</div>
+<script>
+  const openBtn = document.getElementById("openOverlay");
+  const overlay = document.getElementById("overlayMenu");
+
+  openBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isVisible = overlay.style.display === "flex";
+    overlay.style.display = isVisible ? "none" : "flex";
+    overlay.style.flexDirection = "column";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+  overlay.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+<!-- CONTEÚDO -->
+<div class="sobre-o-projeto">
+  <div class="frame-parent">
+    <div class="frame-wrapper">
+        <div class="frame-group">
+        <div class="arqdco">ARQDÉCO</div>
+        <div class="sobre-o-projeto1">SOBRE O PROJETO</div>
+        <div class="texto-texto-texto">
+          Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto
+        </div>
+        </div>
+    </div>
+
+    <div class="ethos-operao-parent">
+        <div class="ethos-operao">ETHOS & OPERAÇÃO</div>
+        <div class="frame-container">
+          <div class="parent">
+              <div class="div">1</div>
+              <div class="frame-child"></div>
+              <div class="emoo">EMOÇÃO</div>
+              <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+          </div>
+          <div class="parent">
+              <div class="div">2</div>
+              <div class="frame-child"></div>
+              <div class="emoo">INOVAÇÃO</div>
+              <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+          </div>
+          <div class="parent">
+              <div class="div">3</div>
+              <div class="frame-child"></div>
+              <div class="emoo">SUSTENTABILIDADE</div>
+              <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+          </div>
+        </div>
+    </div>
+
+    <div class="nossa-comunidade-parent">
+        <div class="nossa-comunidade">NOSSA COMUNIDADE</div>
+        <div class="frame-container">
+        <div class="parent">
+            <div class="div">1</div>
+            <div class="frame-child"></div>
+            <div class="emoo">ROTA INTERATIVA</div>
+            <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+        </div>
+        <div class="parent">
+            <div class="div">2</div>
+            <div class="frame-child"></div>
+            <div class="emoo">HISTÓRIA & MEMÓRIA</div>
+            <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+        </div>
+        <div class="parent">
+            <div class="div">3</div>
+            <div class="frame-child"></div>
+            <div class="emoo">DOCUMENTAÇÃO</div>
+            <div class="texto-texto-texto1">Texto texto texto Texto texto texto Texto texto texto Texto texto texto Texto texto texto</div>
+        </div>
+        </div>
+    </div>
+
+    <div class="frame-wrapper1">
+        <div class="objetivos-de-desenvolvimento-s-parent">
+        <div class="arqdco">
+           <p> OBJETIVOS DE
+           DESENVOLVIMENTO
+            SUSTENTÁVEL</p>
+        </div>
+        <div class="ods4-parent">
+            <a class="semformatacao" href="https://brasil.un.org/pt-br/sdgs/4" target="_blank"><img class="ods4-icon" alt="" src="assets/ods/1.jpg"></a>
+            <a class="semformatacao" href="https://brasil.un.org/pt-br/sdgs/9" target="_blank"><img class="ods4-icon" alt="" src="assets/ods/2.png"></a>
+             <a class="semformatacao" href="https://brasil.un.org/pt-br/sdgs/11" target="_blank"><img class="ods4-icon" alt="" src="assets/ods/3.png"></a>
+             <a class="semformatacao" href="https://brasil.un.org/pt-br/sdgs/12" target="_blank"><img class="ods4-icon" alt="" src="assets/ods/4.jpg"></a>
+             <a class="semformatacao" href="https://brasil.un.org/pt-br/sdgs/17" target="_blank"><img class="ods4-icon" alt="" src="assets/ods/5.jpeg"></a>
+        </div>
+        <div class="texto-texto-texto7">
+          <p style="font-weight: bold; color: #162257;">Este projeto está alinhado aos Objetivos de Desenvolvimento Sustentável da ONU</p>
+          <p> <span style="font-weight: bold; color: #162257;">4.7</span> Até 2030, garantir que todos os alunos adquiram conhecimentos e habilidades necessárias para promover o desenvolvimento sustentável, inclusive, entre outros, por meio da educação para o desenvolvimento sustentável e estilos de vida sustentáveis, direitos humanos, igualdade de gênero, promoção de uma cultura de paz e não violência, cidadania global e valorização da diversidade cultural e da contribuição da cultura para o desenvolvimento sustentável</p>
+          <p><span style="font-weight: bold; color: #162257;">4.a</span> Construir e melhorar instalações físicas para educação, apropriadas para crianças e sensíveis às deficiências e ao gênero, e que proporcionem ambientes de aprendizagem seguros e não violentos, inclusivos e eficazes para todos</p>
+          <p><span style="font-weight: bold; color: #162257;">9.5</span> Fortalecer a pesquisa científica, melhorar as capacidades tecnológicas de setores industriais em todos os países, particularmente os países em desenvolvimento, inclusive, até 2030, incentivando a inovação e aumentando substancialmente o número de trabalhadores de pesquisa e desenvolvimento por milhão de pessoas e os gastos público e privado em pesquisa e desenvolvimento</p>
+          <p><span style="font-weight: bold; color: #162257;">9.b </span>Apoiar o desenvolvimento tecnológico, a pesquisa e a inovação nacionais nos países em desenvolvimento, inclusive garantindo um ambiente político propício para, entre outras coisas, a diversificação industrial e a agregação de valor às commodities</p>
+          <p><span style="font-weight: bold; color: #162257;">9.c</span> Aumentar significativamente o acesso às tecnologias de informação e comunicação e se empenhar para oferecer acesso universal e a preços acessíveis à internet nos países menos desenvolvidos, até 2020</p>
+          <p><span style="font-weight: bold; color: #162257;">11.a</span> Apoiar relações econômicas, sociais e ambientais positivas entre áreas urbanas, periurbanas e rurais, reforçando o planejamento nacional e regional de desenvolvimento</p>
+          <p><span style="font-weight: bold; color: #162257;">11.4</span> Fortalecer esforços para proteger e salvaguardar o patrimônio cultural e natural do mundo</p>
+          <p><span style="font-weight: bold; color: #162257;">12.b</span> Desenvolver e implementar ferramentas para monitorar os impactos do desenvolvimento sustentável para o turismo sustentável, que gera empregos, promove a cultura e os produtos locais</p>
+          <p><span style="font-weight: bold; color: #162257;">17.7</span> Promover o desenvolvimento, a transferência, a disseminação e a difusão de tecnologias ambientalmente corretas para os países em desenvolvimento, em condições favoráveis, inclusive em condições concessionais e preferenciais, conforme mutuamente acordado</p>
+          <p><span style="font-weight: bold; color: #162257;">17.8</span> Operacionalizar plenamente o Banco de Tecnologia e o mecanismo de capacitação em ciência, tecnologia e inovação para os países menos desenvolvidos até 2017, e aumentar o uso de tecnologias de capacitação, em particular das tecnologias de informação e comunicação</p>
+          <p><span style="font-weight: bold; color: #162257;">17.17</span> Incentivar e promover parcerias públicas, público-privadas e com a sociedade civil eficazes, a partir da experiência das estratégias de mobilização de recursos dessas parcerias</p>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MENU INFERIOR -->
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+</div>
+
+</body>
+</html>

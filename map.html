@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/js.js"></script>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+<link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<style>
+  body {
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+    background-color: #D6CEB6;
+  }
+
+  .textopopup p{
+    max-width: 70vw;
+  }
+  
+</style>
+</head>
+<body>
+
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg">
+  </a>
+  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg">
+</div>
+<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
+<div id="overlayMenu" class="overlay-content">
+  <a href="map.html"><div class="menu-item">
+    <img src="assets/icones/mapazul.svg" />
+    <div>MAPA E ROTA DÉCO</div>
+  </div></a>
+  <a href="sobre.html"><div class="menu-item">
+    <img src="assets/icones/infoazul.svg" />
+    <div>SOBRE O PROJETO</div>
+  </div></a>
+  <a href="creditos.html"><div class="menu-item">
+    <img src="assets/icones/pen-toolazul.svg" />
+    <div>CRÉDITOS E CURADORIA</div>
+  </div></a>
+</div>
+<script>
+  const openBtn = document.getElementById("openOverlay");
+  const overlay = document.getElementById("overlayMenu");
+
+  openBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique vá para o document
+    const isVisible = overlay.style.display === "flex";
+    overlay.style.display = isVisible ? "none" : "flex";
+    overlay.style.flexDirection = "column";
+  });
+
+  // Fecha o menu se clicar fora dele
+  document.addEventListener("click", (e) => {
+    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+  // Evita que clique dentro do overlay feche ele
+  overlay.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+
+<div class="mapa-container">
+<div class="mapa">
+  <img src="assets/mapa/Mapa Rio Branco.svg" alt="map" />
+
+  <div class="pin cauduro">
+    <span data-popup="popupCauduro">Edíficio Cauduro</span>
+  </div>
+
+  <div class="pin maua">
+    <span data-popup="popupMaua">Edíficio Mauá</span>
+  </div>
+
+  <div class="pin francismari">
+    <span data-popup="popupFrancismari">Edifício Francismari</span>
+  </div>
+
+  <div class="pin carmen">
+    <span data-popup="popupCarmen">Edifício Carmem Bicca</span>
+  </div>
+
+  <div class="pin emerita">
+    <span data-popup="popupEmerita">Edifício Emérita</span>
+  </div>
+
+  <div class="pin ibirapuita">
+    <span data-popup="popupIbirapuita">Edifício Ibirapuitã</span>
+  </div>
+
+  <div class="pin sm">
+    <span data-popup="popupSM">Edifício Santa Maria</span>
+  </div>
+
+  <div class="pin moraes">
+    <span data-popup="popupMoraes">Edifício Dr. Eduardo de Moraes</span>
+  </div>
+
+  <div class="pin raimundo">
+    <span data-popup="popupRaimundo">Propriedade de Raimundo Cauduro</span>
+  </div>
+
+  <div class="pin correio">
+    <span data-popup="popupCorreio">Edifício Correio do Povo</span>
+  </div>
+
+  <div class="pin prates">
+    <span data-popup="popupPrates">Edifício Residência Darlling Prates</span>
+  </div>
+
+  <div class="pin mabi">
+    <span data-popup="popupMabi">Edifício Mabi</span>
+  </div>
+
+  <div class="pontoreferencia calcadao">
+    <span>Calçadão Salvador Isai</span>
+  </div>
+
+  <div class="pontoreferencia gare">
+    <span>Gare da Viação Férrea</span>
+  </div>
+
+  <div class="pontoreferencia riobranco">
+    <span>Avenida Rio Branco</span>
+  </div>
+
+  <div class="pontoreferencia pracamarinho">
+    <span>Praça Saldanha Marinho</span>
+  </div>
+</div>
+</div>
+
+<!-- POPUPS -->
+
+<div id="popupCauduro" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0820.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Cauduro</h2>
+    <p>Construído em concreto armado com quatro pavimentos, é uma edificação que ainda hoje se impõe na paisagem de Santa Maria, apesar da degradação e da ocupação parcial. O prédio se estende entre as duas ruas, tem sua fachada principal voltada para a Avenida Rio Branco, e é composto por seis andares, dos quais o térreo comporta salas comerciais e, os demais, quartos amplos. Cada andar possuía seis banheiros coletivos. Possuía também dois elevadores, o que era um luxo para a época, e um restaurante no quinto andar, que foi cenário de diversos encontros políticos. O prédio, construído dentro dos princípios modernos, mostra aspectos formais do Art Déco; revestimento em mica, dando aparência acinzentada, aspecto aerodinâmico, detalhes geométricos em relevo na fachada, janelas de madeira, fachada com reentrâncias e saliências, construção arredondada na esquina, relevos verticais, Platibanda escalonada e com frisos geométricos. Na memória da cidade, também ficou à presença comercial da Casa Eny, uma loja tradicional que ocupou o térreo por muitos anos.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 893 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/cauduro.html">Saiba Mais</a></button>
+    </div>
+  </div>
+</div>
+
+<div id="popupMaua" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0572.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Mauá</h2>
+    <p>Com seus oito andares, três apartamentos por andar, além de um piso inteiro dedicado ao comércio (a Eny Calçados funcionou no andar térreo desde a inauguração do prédio até 1998), o Mauá ganhou forma na esquina da Avenida Rio Branco com a Rua Silva Jardim, e tornou-se a quarta construção da cidade a contar com elevador, uma grande modernidade da época.  </p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 1864 - Centro, Santa Maria.</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupFrancismari" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2130-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Francismari</h2>
+    <p>O edifício foi construído, em 1943, pelo engenheiro João Servegmini e pertence a Francisco Isaía. Com três pavimentos e subsolo, é um exemplo de Art Déco pelo seu sistema construtivo e pela aparência formal não só de sua fachada, como da formatação e confluência de suas divisórias. São notáveis, no prédio, a predominância de cheios sobre vazios, os volumes e ornamentos geometrizados e simplificados, o aspecto aerodinâmico da fachada, as estruturas em concreto armado e o revestimento em pó-de-pedra denominado mica.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 548 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupCarmen" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0599.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Carmem Bicca</h2>
+    <p>Nesta edificação, um elemento inédito surge na ornamentação que envolve as laterais das janelas em mica, o buquê floral. Nenhum dos outros exemplares possui este detalhe, nem mesmo mais estilizado. A quadra onde a construção está inserida possui um conjunto de outros edifícios semelhantes em ornamentação Art Déco com o Carmen Bicca, reforçando seu valor como parte de um conjunto histórico.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 404 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupEmerita" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2160-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Emérita</h2>
+    <p>Construído na década de 1950, o edifício Emérita possui diversos elementos característicos de Art Déco, na sua fachada percebe-se a sacada curva na esquina decorada com elementos geométricos zigue-zague e letreiro em alto relevo, indicando o seu nome. Também, na diferença entre as platibandas que compõe o coroamento, na esquina, nota-se a horizontalidade, e nas demais, a verticalidade, que conferem um aspecto ascensional. Uma composição simétrica é encontrada em um volume semi-embutido na lateral do edifício, na qual ocorre uma demarcação da escadaria do acesso.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 390 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupIbirapuita" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2166-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Ibirapuitã</h2>
+    <p>Esta edificação de quatro pavimentos, cuja fachada principal se volta de forma simétrica para o logradouro principal, tem seu acesso principal recuado e protegido por uma marquise. Esse elemento horizontal divide a composição em base, corpo e coroamento, com a presença de frisos em baixo e alto relevo. Esta característica do estilo, conjuntamente com os cheios e vazios, com as aberturas da circulação vertical, com as sacadas em curva localizadas na esquina e os frisos e ornamentações lineares, denotam um aspecto aerodinâmico à edificação.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 378 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupSM" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2173-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Santa Maria</h2>
+    <p>O edifício Santa Maria, com a composição tripartida (base – corpo – coroamento), se destaca devido ao escalonamento que acentua a simetria percebida na esquina. Balcões arredondados e em balanço possuem aplicação de elementos geométricos vazados. O edifício também dispõe de frisos horizontais que destacam a volumetria curva da esquina. Novamente o acesso ocorre pela antiga avenida Progresso.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 354 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupMoraes" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2184-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Dr. Eduardo de Moraes</h2>
+    <p>Localizado na Avenida Rio Branco e construído antes da década de sessenta, o Edifício Eduardo de Moraes apresenta em sua fachada os elementos da arquitetura Art Déco: platibanda em forma aerodinâmica, geometrismo, linhas verticais, construção com estrutura em concreto armado, sacadas, janelas de madeira, escadaria com vitrais e letreiro na fachada com letras características do estilo. Possui construção tripartida em base, corpo e coroamento escalonado, revestimento de granitina e estrutura de concreto armado. É uma construção que está preservada e mantém semelhança com outras que lhe são próximas, formando uma unidade que contribui para a identidade da Avenida Rio Branco. (FOLETTO, 2013, p.163)</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="popupRaimundo" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/_DSC0667-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Propriedade de Raimundo Cauduro</h2>
+    <p>A edificação de quatro pavimentos de propriedade de Raimundo Cauduro também foi construído na década de 1960. São identificados diversos elementos característicos do Art Déco Marajoara na edificação, além da simetria central bilateral, que é marcada por dois acessos, acabamento curvo das sacadas, estrutura tripartida entre base, corpo e coroamento, platibanda escalonada com aplicação de traçado geométrico e elementos zigue-zague. Dentro do nosso percurso, este é o único exemplar que apresenta a influência Marajoara, referência com poucos exemplares na cidade, podendo assim expressar no recorte o universo local.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupCorreio" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2231-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Correio do Povo</h2>
+    <p>Informações e foto do Edifício Correio do Povo.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 148 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+  </div>
+</div>
+</div>
+
+<div id="popupPrates" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2130-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Residência Darlling Prates</h2>
+    <p>Residência construída para a família de Darling Carvalho Prates, localizada na Avenida Rio Branco, 176 e 180, no trecho entre as ruas Ernesto Beck e Manoel Ribas. O edifício faz parte de um conjunto, somado a outros 3, construídos pelo engenheiro civil Luiz Bollick, e que compõem, até hoje, uma das mais belas sequências Art Déco que há na avenida. Quanto aos outros edifícios do conjunto, merecem ser analisados separadamente, em outro momento.
+A residência em questão possui três pavimentos, encrustada sobre uma topografia inclinada, o que produz uma sala no nível do passeio, e ainda outros dois pavimentos acima, esses sim, de uso residencial. No todo, tem-se uma percepção de imponência, típica de uma cidade que desejava a verticalização, apesar de um edifício conciso em área.
+O projeto do conjunto e sua construção dataram do final da década de 1930 e início da década de 1940, e foi viabilizado pelos 4 proprietários com o auxílio da Caixa de Aposentadorias e Pensões dos Ferroviários do Rio Grande do Sul. Hoje, a Residência Prates encontra-se em propriedade da neta de Darling, Ana.
+Texto de Francisco Queruz</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 167 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+</div>  
+</div>
+</div>
+
+<div id="popupMabi" class="popup-overlay">
+  <div class="popup-content">
+    <div style="height: 125px; background: url('assets/fotografia/IMG_2238-min.jpg') center/cover no-repeat; border-top-left-radius: 16px; border-top-right-radius: 16px; position: relative;">
+      <div class="fecharPopup" title="Fechar">
+        <img src="assets/icones/x-square.svg" alt="Fechar popup" />
+      </div>
+    </div>
+    <div style="padding: 16px 20px 20px;" class="textopopup">
+    <h2>Edifício Mabi</h2>
+    <p>O edifício Mabi também situa-se no extremo norte da Avenida Rio Branco, nas proximidades da estação férrea. Construído em 1957, é composto por três pavimentos, sendo o térreo comercial e os outros dois residenciais. As paredes externas são revestidas com mica, e as esquadrias na fachada principal da parte comercial são mistas, de madeira e metálicas. As esquadrias originais de madeira foram mantidas nos demais pavimentos, sem bandeira e com verga reta em formato linear. O edifício possui diversos elementos característicos do Art Déco, tal como balcões, marquises, planos sobrepostos, volumes ritmados, valorização dos acessos, pilares, frisos verticais e a tipologia Broadway sinalizando o seu nome na fachada. Além desses, percebe-se a platibanda escalonada com aplicação de frisos horizontais, sacadas arredondas em balanço, que remetem ao aero dinamismo e simetria bilateral.</p>
+    <p style="font-size: 10pt;">Av. Rio Branco, 134 - Centro, Santa Maria</p>
+    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+ </div>
+</div>
+</div>
+
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+</div>
+
+<script>
+  // Captura todos os spans com data-popup
+  const spans = document.querySelectorAll('.pin span[data-popup]');
+  const popups = document.querySelectorAll('.popup-overlay');
+
+  spans.forEach(span => {
+    span.addEventListener('click', () => {
+      const popupId = span.getAttribute('data-popup');
+      const popup = document.getElementById(popupId);
+      if (popup) {
+        popup.classList.add('active');
+      }
+    });
+  });
+
+  popups.forEach(popup => {
+    // Fecha ao clicar no botão "X"
+    const btnFechar = popup.querySelector('.fecharPopup');
+    btnFechar.addEventListener('click', () => {
+      popup.classList.remove('active');
+    });
+
+    // Fecha ao clicar fora do conteúdo
+    popup.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        popup.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+<script>
+const mapa = document.querySelector('.mapa');
+const container = document.querySelector('.mapa-container');
+
+let isDragging = false;
+let startX, startY;
+let initialX = 0, initialY = 0;
+
+container.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  mapa.classList.add('dragging');
+  startX = e.clientX;
+  startY = e.clientY;
+  initialX = parseInt(mapa.style.left || 0);
+  initialY = parseInt(mapa.style.top || 0);
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+
+  // Calcula a nova posição
+  let newX = initialX + dx;
+  let newY = initialY + dy;
+
+  // Calcula os limites para o eixo X
+  const maxX = 0; // mapa não pode passar para a direita além de 0
+  const minX = container.offsetWidth - mapa.offsetWidth; // máximo para a esquerda
+
+  // Calcula os limites para o eixo Y
+  const maxY = 0; // mapa não pode passar para baixo além de 0
+  const minY = container.offsetHeight - mapa.offsetHeight; // máximo para cima
+
+  // Aplica os limites
+  if (newX > maxX) newX = maxX;
+  if (newX < minX) newX = minX;
+  if (newY > maxY) newY = maxY;
+  if (newY < minY) newY = minY;
+
+  mapa.style.left = `${newX}px`;
+  mapa.style.top = `${newY}px`;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  mapa.classList.remove('dragging');
+});
+
+// Mesma coisa para touch:
+
+container.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  mapa.classList.add('dragging');
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+  initialX = parseInt(mapa.style.left || 0);
+  initialY = parseInt(mapa.style.top || 0);
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const dx = e.touches[0].clientX - startX;
+  const dy = e.touches[0].clientY - startY;
+
+  let newX = initialX + dx;
+  let newY = initialY + dy;
+
+  const maxX = 0;
+  const minX = container.offsetWidth - mapa.offsetWidth;
+
+  const maxY = 0;
+  const minY = container.offsetHeight - mapa.offsetHeight;
+
+  if (newX > maxX) newX = maxX;
+  if (newX < minX) newX = minX;
+  if (newY > maxY) newY = maxY;
+  if (newY < minY) newY = minY;
+
+  mapa.style.left = `${newX}px`;
+  mapa.style.top = `${newY}px`;
+});
+
+document.addEventListener('touchend', () => {
+  isDragging = false;
+  mapa.classList.remove('dragging');
+});
+
+</script>
+
+</body>
+</html>

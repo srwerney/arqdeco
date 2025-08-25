@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
+<style>
+body{
+  margin: 0px;
+  overflow: hidden;
+}
+</style>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+</head>
+<body>
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg">
+  </a>
+  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg">
+</div>
+<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
+<div id="overlayMenu" class="overlay-content">
+  <a href="map.html"><div class="menu-item">
+    <img src="assets/icones/mapazul.svg" />
+    <div>MAPA E ROTA DÉCO</div>
+  </div></a>
+  <a href="sobre.html"><div class="menu-item">
+    <img src="assets/icones/infoazul.svg" />
+    <div>SOBRE O PROJETO</div>
+  </div></a>
+  <a href="creditos.html"><div class="menu-item">
+    <img src="assets/icones/pen-toolazul.svg" />
+    <div>CRÉDITOS E CURADORIA</div>
+  </div></a>
+</div>
+<script>
+  const openBtn = document.getElementById("openOverlay");
+  const overlay = document.getElementById("overlayMenu");
+
+  openBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique vá para o document
+    const isVisible = overlay.style.display === "flex";
+    overlay.style.display = isVisible ? "none" : "flex";
+    overlay.style.flexDirection = "column";
+  });
+
+  // Fecha o menu se clicar fora dele
+  document.addEventListener("click", (e) => {
+    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+  // Evita que clique dentro do overlay feche ele
+  overlay.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+
+<script>
+const PARTICLESIZE = 10;
+const RESOLUTION = 10;
+const MAX_FORCE = 50;
+const MIN_FORCE = 0;
+
+let imgUrl = 'assets/fotografia/16.png';
+let img;
+let particles = [];
+
+function preload(){
+    img = loadImage(imgUrl);
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    spawnParticles();
+}
+
+function draw(){
+    background(40);
+
+    // calcula escala proporcional (cover)
+    let scaleImg = max(width / img.width, height / img.height);
+    let newW = img.width * scaleImg;
+    let newH = img.height * scaleImg;
+
+    // centraliza a imagem
+    let offsetX = (width - newW) / 2;
+    let offsetY = (height - newH) / 2;
+
+    image(img, offsetX, offsetY, newW, newH);
+
+    particles.forEach((particle) => {
+      particle.update();
+      particle.draw();
+    });
+}
+
+function spawnParticles (){
+    for (let i = 0; i < width; i+= RESOLUTION){
+        for (let j=0; j < height; j += RESOLUTION){
+          let x = i / width * img.width;
+          let y = j / height * img.height;
+          const color = img.get(int(x), int(y)); // usa coordenadas inteiras
+          particles.push(new Particle(i + PARTICLESIZE / 2, j + PARTICLESIZE / 2, color));
+        }
+    }
+}
+
+class Particle{
+    constructor(x, y, color){
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.targetX = x;
+      this.targetY = y;
+    }
+
+    update () {
+      let mouseVector = createVector(mouseX, mouseY);
+      let currentVector = createVector(this.x, this.y);
+      let targetVector = createVector(this.targetX, this.targetY);
+
+      let fromMouseToParticle = p5.Vector.sub(currentVector, mouseVector);
+      let distanceToMouse = fromMouseToParticle.mag();
+
+      let fromParticleToTarget = p5.Vector.sub(targetVector, currentVector);
+      let distanceToTarget = fromParticleToTarget.mag();
+
+      let totalForce = createVector(0, 0);
+
+      if (distanceToMouse < 100){
+        let repulsionForce = map(distanceToMouse, 0, 100, MAX_FORCE, MIN_FORCE);
+        fromMouseToParticle.setMag(repulsionForce);
+        totalForce.add(fromMouseToParticle);
+      }
+
+      if (distanceToTarget > 0){
+        let attractionForce = map(distanceToTarget, 0, 100, MIN_FORCE, MAX_FORCE);
+        fromParticleToTarget.setMag(attractionForce);
+        totalForce.add(fromParticleToTarget);
+      }
+
+      this.x += totalForce.x;
+      this.y += totalForce.y;
+    }
+
+    draw (){
+      fill(this.color);
+      noStroke();
+      ellipse(this.x, this.y, PARTICLESIZE);
+    }
+}
+
+// reajusta quando a janela mudar de tamanho
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  particles = [];
+  spawnParticles();
+}
+</script>
+
+    
+
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+</div>
+
+</body>
+</html>
