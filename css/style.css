@@ -1450,17 +1450,22 @@ div#botao svg {
     animation: pulse 1.3s ease-in-out infinite;
   }
   .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 14px;
-    user-select: none;
+  display: none;
+  position: absolute;
+  top: -30px; /* Ajuste conforme a posição que quiser acima do pin */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #162257;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.pin:hover span {
+    display: block;
   }
 
   /* Posicionamento dos prédios */

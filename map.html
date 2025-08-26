@@ -72,52 +72,52 @@
 <div class="mapa">
   <img src="assets/mapa/Mapa Rio Branco.svg" alt="map" />
 
-  <div class="pin cauduro">
-    <span data-popup="popupCauduro">Edíficio Cauduro</span>
+  <div class="pin cauduro" data-popup="popupCauduro">
+    <span>Edíficio Cauduro</span>
   </div>
 
-  <div class="pin maua">
-    <span data-popup="popupMaua">Edíficio Mauá</span>
+  <div class="pin maua" data-popup="popupMaua">
+    <span>Edíficio Mauá</span>
   </div>
 
-  <div class="pin francismari">
-    <span data-popup="popupFrancismari">Edifício Francismari</span>
+  <div class="pin francismari"data-popup="popupFrancismari">
+    <span>Edifício Francismari</span>
   </div>
 
-  <div class="pin carmen">
-    <span data-popup="popupCarmen">Edifício Carmem Bicca</span>
+  <div class="pin carmen" data-popup="popupCarmen">
+    <span>Edifício Carmem Bicca</span>
   </div>
 
-  <div class="pin emerita">
-    <span data-popup="popupEmerita">Edifício Emérita</span>
+  <div class="pin emerita" data-popup="popupEmerita">
+    <span>Edifício Emérita</span>
   </div>
 
-  <div class="pin ibirapuita">
-    <span data-popup="popupIbirapuita">Edifício Ibirapuitã</span>
+  <div class="pin ibirapuita" data-popup="popupIbirapuita">
+    <span>Edifício Ibirapuitã</span>
   </div>
 
-  <div class="pin sm">
-    <span data-popup="popupSM">Edifício Santa Maria</span>
+  <div class="pin sm"data-popup="popupSM">
+    <span>Edifício Santa Maria</span>
   </div>
 
-  <div class="pin moraes">
-    <span data-popup="popupMoraes">Edifício Dr. Eduardo de Moraes</span>
+  <div class="pin moraes" data-popup="popupMoraes">
+    <span>Edifício Dr. Eduardo de Moraes</span>
   </div>
 
-  <div class="pin raimundo">
-    <span data-popup="popupRaimundo">Propriedade de Raimundo Cauduro</span>
+  <div class="pin raimundo" data-popup="popupRaimundo">
+    <span>Propriedade de Raimundo Cauduro</span>
   </div>
 
-  <div class="pin correio">
-    <span data-popup="popupCorreio">Edifício Correio do Povo</span>
+  <div class="pin correio" data-popup="popupCorreio">
+    <span>Edifício Correio do Povo</span>
   </div>
 
-  <div class="pin prates">
-    <span data-popup="popupPrates">Edifício Residência Darlling Prates</span>
+  <div class="pin prates" data-popup="popupPrates">
+    <span>Edifício Residência Darlling Prates</span>
   </div>
 
-  <div class="pin mabi">
-    <span data-popup="popupMabi">Edifício Mabi</span>
+  <div class="pin mabi" data-popup="popupMabi">
+    <span>Edifício Mabi</span>
   </div>
 
   <div class="pontoreferencia calcadao">
@@ -351,19 +351,34 @@ Texto de Francisco Queruz</p>
 </div>
 
 <script>
-  // Captura todos os spans com data-popup
-  const spans = document.querySelectorAll('.pin span[data-popup]');
-  const popups = document.querySelectorAll('.popup-overlay');
+// Captura todos os pins que têm data-popup
+const pins = document.querySelectorAll('.pin[data-popup]');
+const popups = document.querySelectorAll('.popup-overlay');
 
-  spans.forEach(span => {
-    span.addEventListener('click', () => {
-      const popupId = span.getAttribute('data-popup');
-      const popup = document.getElementById(popupId);
-      if (popup) {
-        popup.classList.add('active');
-      }
-    });
+pins.forEach(pin => {
+  pin.addEventListener('click', () => {
+    const popupId = pin.getAttribute('data-popup');
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.classList.add('active');
+    }
   });
+});
+
+popups.forEach(popup => {
+  // Fecha ao clicar no botão "X"
+  const btnFechar = popup.querySelector('.fecharPopup');
+  btnFechar.addEventListener('click', () => {
+    popup.classList.remove('active');
+  });
+
+  // Fecha ao clicar fora do conteúdo
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      popup.classList.remove('active');
+    }
+  });
+});
 
   popups.forEach(popup => {
     // Fecha ao clicar no botão "X"
