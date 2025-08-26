@@ -1431,8 +1431,8 @@ div#botao svg {
   .pin {
     background: #162257;
     position: absolute;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
     color: #F2ECDD;
     cursor: pointer;
@@ -1453,7 +1453,7 @@ div#botao svg {
     display: inline-block;
     white-space: nowrap;
     position: absolute;
-    left: 3.7em;
+    left: 2.7em;
     top: 50%;
     transform: translateY(-50%);
     background: #3B4C99;
@@ -1464,18 +1464,18 @@ div#botao svg {
   }
 
   /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
+  .cauduro { top: 43%; left: 66%; }
+  .maua { top: 40%; left: 50%; }
+  .francismari { top: 42%; left: 47%; }
+  .carmen { top: 45%; left: 42.5%; }
+  .emerita { top: 46%; left: 40%; }
+  .ibirapuita { top: 47%; left: 38.5%; }
+  .sm { top: 48.5%; left: 36%; }
+  .moraes { top: 50%; left: 34%; }
+  .raimundo { top: 52%; left: 32%;  }
+  .correio { top: 54%; left: 29%; }
+  .prates { top: 55%; left: 27.5%; }
+  .mabi { top: 56%; left: 26%; }
   .calcadao { top: 43% ; left: 72% ; }
   .gare {top: 50% ; left: 16.5% ; }
   .riobranco {top: 41.5% ; left: 55% ; }
