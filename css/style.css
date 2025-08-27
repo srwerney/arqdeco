@@ -1,412 +1,6 @@
 /* Estilos para MOBILE (até 600px) */
-@media screen and (max-width: 400px) {
 
-body#inicial {
-  background-image: url('../assets/bg_inicial/modelo\ tela\ abertura.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; /* Garante que a imagem se ajuste sem cortar */
-  background-color: #FFF9E9;
-  background-attachment: fixed; /* Opcional: fixa o fundo enquanto rola a página */
-}
-
-a#botaoinicial{
-  margin:auto; 
-  top:  600px; 
-  position: relative;
-
-}
-
-div#divinicial{
-  margin: auto; 
-  width: 20%; 
-  align-items: center; 
-  display: inline-flex;
-}
-
-div#conteinerindex{
-  position: absolute; /* ou fixed, dependendo do contexto */
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -20%); /* CORRETO: sem parênteses extras */
-  width: 300px; 
-  padding: 10px 10px;
-  gap: 4px;
-  
-  display: inline-flex;
-  justify-content: center; 
-  align-items: center;
-}
-
-div#botao {
-color: #162257;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -150%);
-  padding: 10px;
-  display: inline-flex;
-  border-radius: 16px;
-  outline: 3px #162257 solid;
-  outline-offset: -8px;
-  justify-content: center;
-  align-items: center;
-  transition: color 150ms ease-in-out;
-}
-
-div#botao:hover{
-    background-color: #162257;
-  color: #FFF9E9;
-    
-}
-
-div#botao svg {
-  transition: fill 150ms ease-in-out;
-}
-#menunavfooter {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 30px;
-  width: 90%;
-  height: 60px;
-  background: #162257;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 800;
-  padding: 0 32px;
-  box-sizing: border-box;
-  border-radius: 16px;
-}
-
-#menunavfooter a {
-  text-decoration: none;
-  color: #D9D9D9;
-  font-family: "League Spartan", sans-serif;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#menunavfooter img {
-  width: 30px;
-  height: 30px;
-}
-
-#menunavfooter img:hover {
-  width: 40px;
-  height: 40px;
-  transition: 50ms ease-in-out 50ms;
-}
-
-/* MENU FIXO NO TOPO */
-#menunavtop {
-  position: fixed;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8px;
-  border-radius: 16px;
-  z-index: 1500;
-  background: #fff;
-}
-
-/* Estilo dos ícones */
-#menunavtop img {
-  cursor: pointer;
-}
-
-/* OVERLAY DE MENU EXPANDIDO */
-#overlayMenu {
-  display: none; 
-  position: fixed; 
-  top: 110px; 
-  left: 3vw;
-  right: 3vw; 
-  background: white; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-  z-index: 2000;
-}
-
-/* OVERLAY DE MENU EXPANDIDO */
-#overlayMenu a {
-  text-decoration: none;
-}
-
-#overlayMenu a:hover {
-  background-color: #FFF9E9;
-}
-
-
-/* Itens do menu */
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 32px;
-  font-family: "league spartan", sans-serif;
-  font-weight: 700;
-  font-size: 16.45px;
-  color: #162257;
-  cursor: pointer;
-}
-
-.menu-item img {
-  width: 24px;
-  height: 24px;
-}
-
-.titulo {
-    text-align: center;
-    color: #162257;
-    margin: 2em 0;
-    padding: 0 1em;
-    position: absolute;
-    top: 0;
-    left: 10%;
-    z-index: 10;
-  }
-  .titulo p {
-    max-width: 500px;
-    margin: 1em auto;
-    line-height: 27px;
-  }
-  .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-  position: absolute;
-  width: 600%;
-  height: 600%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 300%;
-    height: 300%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 3.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
-
- 
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .mapa {
-      font-size: 13px;
-    }
-  }
-
-  /* POPUP OVERLAY */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT */
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
-
- #botoesRAVA {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* espaço entre os botões */
-    margin: 100px auto 10px auto; /* top, right, bottom, left */
-  }
-
-  #botoesRAVA button {
-    background: #F2F2F2;
-    color: #484848;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-
-#botoesRAVA a {
-    color: #484848;
-    text-decoration: none;
-  }
-
-  #botoesRAVA a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-    #botoesRAVA button:hover {
-    background: #162257;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-
-}
-
-@media screen and (min-width: 401px) and (max-width: 600px) {
+@media screen and (min-width: 101px) and (max-width: 600px) {
 
 body#inicial {
   background-image: url('../assets/bg_inicial/modelo\ tela\ abertura.png');
@@ -597,8 +191,8 @@ div#botao svg {
 }
   .mapa {
    position: absolute;
-  width: 200%;
-  height: 200%;
+  width: 600%;
+  height: 600%;
   top: 0;
   left: 0;
   cursor: grab;
@@ -643,27 +237,27 @@ div#botao svg {
     background: #3B4C99;
     border-radius: 16px;
     padding: 0.3em 0.6em;
-    font-size: 14px;
+    font-size: 2em;
     user-select: none;
   }
 
   /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
+ .cauduro { top: 43%; left: 66%; }
+  .maua { top: 40%; left: 50%; }
+  .francismari { top: 42%; left: 47%; }
+  .carmen { top: 45%; left: 42.5%; }
+  .emerita { top: 46%; left: 40%; }
+  .ibirapuita { top: 47%; left: 38.5%; }
+  .sm { top: 48.5%; left: 36%; }
+  .moraes { top: 50%; left: 34%; }
+  .raimundo { top: 52%; left: 32%;  }
+  .correio { top: 54%; left: 29%; }
+  .prates { top: 55%; left: 27.5%; }
+  .mabi { top: 56%; left: 26%; }
   .calcadao { top: 43% ; left: 72% ; }
   .gare {top: 50% ; left: 16.5% ; }
   .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
+  .pracamarinho {top: 32.5% ; left: 67.5% ;}
 
  
   .pontoreferencia::before {
@@ -722,11 +316,9 @@ div#botao svg {
     }
   }
 
-  @media screen and (max-width: 600px) {
-    .mapa {
+  .mapa {
       font-size: 13px;
     }
-  }
 
   /* POPUP OVERLAY */
   .popup-overlay {
@@ -1633,4 +1225,11 @@ div#botao svg {
     font-size: 1em;
   }
 
+}
+
+#popup-mapa-overlay{
+  height: 30vh; 
+  border-top-left-radius: 16px; 
+  border-top-right-radius: 16px; 
+  position: relative;
 }
