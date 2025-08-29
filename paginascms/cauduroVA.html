@@ -3,10 +3,9 @@
   <head>
     <title>Edifício Cauduro - AR.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
     <style>
@@ -48,18 +47,18 @@
       });
     </script>
 
- <a-scene mindar-image="imageTargetSrc: ../assets/target/targets.mind;" 
-         vr-mode-ui="enabled: false" 
-         device-orientation-permission-ui="enabled: true" 
-         embedded>
-  
-  <a-camera mindar-image-camera look-controls="enabled: false"></a-camera>
-  
-  <a-entity mindar-image-target="targetIndex: 0">
-    <a-plane color="blue" opacity="0.5" position="0 0 0" height="0.552" width="1"></a-plane>
-  </a-entity>
+    <a-scene mindar-image="imageTargetSrc: ../assets/target/targets.mind;" 
+            vr-mode-ui="enabled: false" 
+            device-orientation-permission-ui="enabled: true" 
+            embedded>
+      
+      <a-camera mindar-image-camera look-controls="enabled: false"></a-camera>
+      
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane color="red" opacity="1" position="0 0 0" height="0.552" width="1"></a-plane>
+      </a-entity>
 
-</a-scene>
+    </a-scene>
 
 
     <!-- RODAPÉ -->
