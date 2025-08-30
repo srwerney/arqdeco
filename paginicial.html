@@ -21,46 +21,7 @@ body{
   <a href="paginicial.html">
     <img class="group-icon" alt="" src="assets/icones/Group.svg">
   </a>
-  <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="assets/icones/menu.svg">
 </div>
-<!-- OVERLAY QUE APARECE ABAIXO DO MENU SUPERIOR -->
-<div id="overlayMenu" class="overlay-content">
-  <a href="map.html"><div class="menu-item">
-    <img src="assets/icones/mapazul.svg" />
-    <div>MAPA E ROTA DÉCO</div>
-  </div></a>
-  <a href="sobre.html"><div class="menu-item">
-    <img src="assets/icones/infoazul.svg" />
-    <div>SOBRE O PROJETO</div>
-  </div></a>
-  <a href="creditos.html"><div class="menu-item">
-    <img src="assets/icones/pen-toolazul.svg" />
-    <div>CRÉDITOS E CURADORIA</div>
-  </div></a>
-</div>
-<script>
-  const openBtn = document.getElementById("openOverlay");
-  const overlay = document.getElementById("overlayMenu");
-
-  openBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Impede que o clique vá para o document
-    const isVisible = overlay.style.display === "flex";
-    overlay.style.display = isVisible ? "none" : "flex";
-    overlay.style.flexDirection = "column";
-  });
-
-  // Fecha o menu se clicar fora dele
-  document.addEventListener("click", (e) => {
-    if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
-      overlay.style.display = "none";
-    }
-  });
-
-  // Evita que clique dentro do overlay feche ele
-  overlay.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
-</script>
 
 
 <script>
@@ -168,6 +129,15 @@ function windowResized() {
 
     
 
+<!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
+<div id="menuToggleBottom">
+  <button id="toggleBtnBottom">☰</button>
+</div>
+
+<!-- OVERLAY ESCURO DO MENU INFERIOR -->
+<div id="menuOverlayBottom"></div>
+
+<!-- MENU INFERIOR (ESCONDIDO INICIALMENTE) -->
 <div id="menunavfooter">
   <a href="paginicial.html">
     <img src="assets/icones/home.svg" alt="Início">
@@ -180,8 +150,29 @@ function windowResized() {
   <a href="map.html">
     <img src="assets/icones/map.svg" alt="Mapa">
     <span>Mapa</span>
+    <a href="creditos.html">
+    <img src="assets/icones/pen-tool.svg" alt="Creditos">
+    <span>Curadoria</span>
+  </a>
   </a>
 </div>
+
+<script>
+const toggleBtnBottom = document.getElementById("toggleBtnBottom");
+const footerMenu = document.getElementById("menunavfooter");
+const overlayBottom = document.getElementById("menuOverlayBottom");
+
+toggleBtnBottom.addEventListener("click", () => {
+  footerMenu.classList.toggle("active");
+  overlayBottom.classList.toggle("active");
+});
+
+// Fecha ao clicar no overlay
+overlayBottom.addEventListener("click", () => {
+  footerMenu.classList.remove("active");
+  overlayBottom.classList.remove("active");
+});
+</script>
 
 </body>
 </html>

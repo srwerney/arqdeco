@@ -15,38 +15,11 @@
   </head>
   <body>
 
-    <!-- MENU SUPERIOR -->
-    <div id="menunavtop">
-      <a href="../paginicial.html">
-        <img class="group-icon" alt="" src="../assets/icones/Group.svg" style="width: 100px;">
-      </a>
-      <img class="menu-icon" id="openOverlay" alt="Abrir menu" src="../assets/icones/menu.svg" style="width: 30px;">
-    </div>
-    <!-- OVERLAY MENU -->
-    <div id="overlayMenu" class="overlay-content" style="display: none; position: absolute; top: 60px; right: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
-      <a href="map.html"><div class="menu-item"><img src="../assets/icones/mapazul.svg" /> MAPA E ROTA DÉCO</div></a>
-      <a href="sobre.html"><div class="menu-item"><img src="../assets/icones/infoazul.svg" /> SOBRE O PROJETO</div></a>
-      <a href="creditos.html"><div class="menu-item"><img src="../assets/icones/pen-toolazul.svg" /> CRÉDITOS E CURADORIA</div></a>
-    </div>
-    <!-- SCRIPT DO MENU -->
-    <script>
-      const openBtn = document.getElementById("openOverlay");
-      const overlay = document.getElementById("overlayMenu");
-      openBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isVisible = overlay.style.display === "flex";
-        overlay.style.display = isVisible ? "none" : "flex";
-        overlay.style.flexDirection = "column";
-      });
-      document.addEventListener("click", (e) => {
-        if (!overlay.contains(e.target) && !openBtn.contains(e.target)) {
-          overlay.style.display = "none";
-        }
-      });
-      overlay.addEventListener("click", (e) => {
-        e.stopPropagation();
-      });
-    </script>
+   <div id="menunavtop">
+  <a href="../paginicial.html">
+    <img class="group-icon" alt="" src="../assets/icones/Group.svg">
+  </a>
+</div>
 
     <a-scene mindar-image="imageTargetSrc: ../assets/target/targets.mind;" 
             vr-mode-ui="enabled: false" 
@@ -62,12 +35,49 @@
     </a-scene>
 
 
-    <!-- RODAPÉ -->
-    <div id="menunavfooter">
-      <a href="../paginicial.html"><img src="../assets/icones/home.svg" alt="Início"><span>Início</span></a>
-      <a href="../sobre.html"><img src="../assets/icones/hexagon.svg" alt="Sobre"><span>Sobre</span></a>
-      <a href="../map.html"><img src="../assets/icones/map.svg" alt="Mapa"><span>Mapa</span></a>
-    </div>
+  <!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
+<div id="menuToggleBottom">
+  <button id="toggleBtnBottom">☰</button>
+</div>
 
+<!-- OVERLAY ESCURO DO MENU INFERIOR -->
+<div id="menuOverlayBottom"></div>
+
+<!-- MENU INFERIOR (ESCONDIDO INICIALMENTE) -->
+<div id="menunavfooter">
+  <a href="../paginicial.html">
+    <img src="../assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="../sobre.html">
+    <img src="../assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="../map.html">
+    <img src="../assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+  <a href="../creditos.html">
+    <img src="../assets/icones/pen-tool.svg" alt="Creditos">
+    <span>Curadoria</span>
+  </a>
+</div>
+
+<script>
+const toggleBtnBottom = document.getElementById("toggleBtnBottom");
+const footerMenu = document.getElementById("menunavfooter");
+const overlayBottom = document.getElementById("menuOverlayBottom");
+
+toggleBtnBottom.addEventListener("click", () => {
+  footerMenu.classList.toggle("active");
+  overlayBottom.classList.toggle("active");
+});
+
+// Fecha ao clicar no overlay
+overlayBottom.addEventListener("click", () => {
+  footerMenu.classList.remove("active");
+  overlayBottom.classList.remove("active");
+});
+</script>
   </body>
 </html>
