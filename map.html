@@ -6,6 +6,7 @@
 <script src="js/js.js"></script>
 <title>Mapa Avenida Rio Branco - ARqDéco</title>
 <link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   body {
     margin: 0;
@@ -23,8 +24,8 @@
 }
   .mapa {
    position: absolute;
-  width: 600%;
-  height: 600%;
+  width: 300%;
+  height: 300%;
   top: 0;
   left: 0;
   cursor: grab;
@@ -41,8 +42,8 @@
   .pin {
     background: #162257;
     position: absolute;
-    width: 3em;
-    height: 3em;
+    width: 0.7em;
+    height: 0.7em;
     border-radius: 50%;
     color: #F2ECDD;
     cursor: pointer;
@@ -63,18 +64,18 @@
     display: inline-block;
     white-space: nowrap;
     position: absolute;
-    left: 3.7em;
+    left: 24px;
     top: 50%;
     transform: translateY(-50%);
     background: #3B4C99;
     border-radius: 16px;
     padding: 0.3em 0.6em;
-    font-size: 2em;
+    font-size: 12px;
     user-select: none;
   }
 
   /* Posicionamento dos prédios */
- .cauduro { top: 43%; left: 66%; }
+ .cauduro { top: 48%; left: 76%; }
   .maua { top: 40%; left: 50%; }
   .francismari { top: 42%; left: 47%; }
   .carmen { top: 45%; left: 42.5%; }
@@ -83,13 +84,13 @@
   .sm { top: 48.5%; left: 36%; }
   .moraes { top: 50%; left: 34%; }
   .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 54%; left: 29%; }
-  .prates { top: 55%; left: 27.5%; }
-  .mabi { top: 56%; left: 26%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ;}
+  .correio { top: 51.9%; left: 16.5%; }
+  .prates { top: 52.3%; left: 14.5%; }
+  .mabi { top: 52.5%; left: 13.5%; }
+  .calcadao { -top: 43% ; -left: 72% ; }
+  .gare {top: -50% ; left: -16.5% ; }
+  .riobranco {top: -41.5% ; left: -55% ; }
+  .pracamarinho {top: -32.5% ; left: -67.5% ;}
 
  
   .pontoreferencia::before {
@@ -1849,7 +1850,7 @@
 </script>
 
 
-<div class="mapa-container">
+<div class="mapa-container" id="mapContainer">
   <div class="mapa-container">
               <!-- Botões de Zoom -->
               <div class="zoom-controls">
@@ -2124,82 +2125,220 @@ Texto de Francisco Queruz</p>
 </div>
 
 <!-- script para controlar zoom -->
-<script>
-  const mapa = document.getElementById("mapa");
-const container = document.querySelector(".mapa-container");
-
-let scale = 1;
-const zoomStep = 0.2;
-const maxZoom = 3;
-const minZoom = 0.8;
-
-let translateX = 0;
-let translateY = 0;
-
-let isDragging = false;
-let startX, startY;
-
-// Atualiza transform no mapa
-function updateTransform() {
-  mapa.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-  mapa.style.transformOrigin = "top left"; // importante p/ manter consistência
+<style>
+/* coloque isso no seu CSS (ou inline) */
+#mapContainer {
+  touch-action: none; /* impede o pinch/scroll nativo do navegador para podermos controlar */
+  overflow: hidden;
+  position: relative;
 }
+.mapa {
+  will-change: transform;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+.mapa.dragging { cursor: grabbing; }
+.zoom-controls { position: absolute; top: 16px; right: 16px; z-index: 1200; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls button { background:#162257;color:#fff;border:none;padding:8px 10px;border-radius:8px;cursor:pointer; }
+</style>
 
-// ---------- Zoom ----------
-document.getElementById("zoomIn").addEventListener("click", () => {
-  if (scale < maxZoom) {
-    scale += zoomStep;
-    updateTransform();
+<script>
+/* Substitua qualquer implementação anterior de zoom/drag por esta */
+(function(){
+  const container = document.getElementById('mapContainer') || document.querySelector('.mapa-container');
+  const mapa = document.getElementById('mapa');
+
+  if (!container || !mapa) {
+    console.warn('mapContainer ou mapa não encontrado. Verifique os IDs/classes.');
+    return;
   }
-});
 
-document.getElementById("zoomOut").addEventListener("click", () => {
-  if (scale > minZoom) {
-    scale -= zoomStep;
-    updateTransform();
+  let scale = 1;
+  const minZoom = 0.8;
+  const maxZoom = 3;
+
+  let translateX = 0;
+  let translateY = 0;
+
+  let isPanning = false;
+  let panStartX = 0;
+  let panStartY = 0;
+
+  // vars p/ pinch
+  let isPinching = false;
+  let pinchStartDist = 0;
+  let pinchStartScale = 1;
+  let pinchStartTranslateX = 0;
+  let pinchStartTranslateY = 0;
+  let pinchCenterContent = { x: 0, y: 0 };
+
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+  function updateTransform(){
+    mapa.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
-});
 
-// ---------- Drag com mouse ----------
-container.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startX = e.clientX - translateX;
-  startY = e.clientY - translateY;
-});
+  // UTIL: distância e centro entre dois toques
+  function touchDistance(t0, t1){
+    const dx = t0.clientX - t1.clientX;
+    const dy = t0.clientY - t1.clientY;
+    return Math.hypot(dx, dy);
+  }
+  function touchCenter(t0, t1){
+    return { x: (t0.clientX + t1.clientX) / 2, y: (t0.clientY + t1.clientY) / 2 };
+  }
 
-document.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  translateX = e.clientX - startX;
-  translateY = e.clientY - startY;
+  // ---------- WHEEL ZOOM (desktop) ----------
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    // multiplicativo (mais suave)
+    const zoomIntensity = 0.0015;
+    const delta = -e.deltaY;
+    const zoomFactor = Math.exp(delta * zoomIntensity);
+    const newScale = clamp(scale * zoomFactor, minZoom, maxZoom);
+
+    // focal point (onde o cursor está)
+    const rect = container.getBoundingClientRect();
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    const contentX = (clientX - rect.left - translateX) / scale;
+    const contentY = (clientY - rect.top - translateY) / scale;
+
+    // ajusta translate para manter o ponto focal no mesmo lugar
+    translateX -= contentX * (newScale - scale);
+    translateY -= contentY * (newScale - scale);
+
+    scale = newScale;
+    updateTransform();
+  }, { passive: false });
+
+  // ---------- MOUSE PAN ----------
+  container.addEventListener('mousedown', (e) => {
+    // apenas botão esquerdo
+    if (e.button !== 0) return;
+    isPanning = true;
+    container.classList.add('dragging');
+    panStartX = e.clientX - translateX;
+    panStartY = e.clientY - translateY;
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isPanning || isPinching) return;
+    translateX = e.clientX - panStartX;
+    translateY = e.clientY - panStartY;
+    updateTransform();
+  });
+
+  document.addEventListener('mouseup', () => {
+    isPanning = false;
+    container.classList.remove('dragging');
+  });
+
+  // ---------- TOUCH: PAN (1 dedo) e PINCH (2 dedos) ----------
+  container.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      // inicia pan com 1 dedo
+      isPanning = true;
+      isPinching = false;
+      panStartX = e.touches[0].clientX - translateX;
+      panStartY = e.touches[0].clientY - translateY;
+    } else if (e.touches.length === 2) {
+      // inicia pinch
+      isPinching = true;
+      isPanning = false;
+      pinchStartDist = touchDistance(e.touches[0], e.touches[1]);
+      pinchStartScale = scale;
+      pinchStartTranslateX = translateX;
+      pinchStartTranslateY = translateY;
+
+      const rect = container.getBoundingClientRect();
+      const center = touchCenter(e.touches[0], e.touches[1]);
+      // guarda a posição do centro em coordenadas do "conteúdo" (antes do zoom)
+      pinchCenterContent.x = (center.x - rect.left - translateX) / scale;
+      pinchCenterContent.y = (center.y - rect.top - translateY) / scale;
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchmove', (e) => {
+    if (isPinching && e.touches.length === 2) {
+      e.preventDefault(); // evita scroll da página
+      const currentDist = touchDistance(e.touches[0], e.touches[1]);
+      const factor = currentDist / pinchStartDist;
+      let newScale = clamp(pinchStartScale * factor, minZoom, maxZoom);
+
+      // recomputa centro (client)
+      const rect = container.getBoundingClientRect();
+      const center = touchCenter(e.touches[0], e.touches[1]);
+
+      // nota: usamos pinchStartTranslate e pinchStartScale para referenciar o estado inicial
+      const contentX = (center.x - rect.left - pinchStartTranslateX) / pinchStartScale;
+      const contentY = (center.y - rect.top - pinchStartTranslateY) / pinchStartScale;
+
+      // ajusta translate para manter o centro da pinça fixo
+      translateX = pinchStartTranslateX - (contentX * (newScale - pinchStartScale));
+      translateY = pinchStartTranslateY - (contentY * (newScale - pinchStartScale));
+
+      scale = newScale;
+      updateTransform();
+      return;
+    }
+
+    // pan com 1 dedo
+    if (isPanning && e.touches.length === 1) {
+      e.preventDefault();
+      translateX = e.touches[0].clientX - panStartX;
+      translateY = e.touches[0].clientY - panStartY;
+      updateTransform();
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) {
+      isPanning = false;
+      isPinching = false;
+    } else if (e.touches.length === 1) {
+      // se saiu do pinch e restou um dedo, transforme para pan
+      isPinching = false;
+      isPanning = true;
+      panStartX = e.touches[0].clientX - translateX;
+      panStartY = e.touches[0].clientY - translateY;
+    }
+  });
+
+  // Botões + / - (mantive comportamento simples centrado)
+  const zin = document.getElementById('zoomIn');
+  const zout = document.getElementById('zoomOut');
+  if (zin) zin.addEventListener('click', () => {
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    const contentX = (centerX - rect.left - translateX) / scale;
+    const contentY = (centerY - rect.top - translateY) / scale;
+    const newScale = clamp(scale + 0.2, minZoom, maxZoom);
+    translateX -= contentX * (newScale - scale);
+    translateY -= contentY * (newScale - scale);
+    scale = newScale; updateTransform();
+  });
+  if (zout) zout.addEventListener('click', () => {
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    const contentX = (centerX - rect.left - translateX) / scale;
+    const contentY = (centerY - rect.top - translateY) / scale;
+    const newScale = clamp(scale - 0.2, minZoom, maxZoom);
+    translateX -= contentX * (newScale - scale);
+    translateY -= contentY * (newScale - scale);
+    scale = newScale; updateTransform();
+  });
+
+  // inicializa
   updateTransform();
-});
-
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-});
-
-// ---------- Drag com touch ----------
-container.addEventListener("touchstart", (e) => {
-  isDragging = true;
-  startX = e.touches[0].clientX - translateX;
-  startY = e.touches[0].clientY - translateY;
-});
-
-container.addEventListener("touchmove", (e) => {
-  if (!isDragging) return;
-  translateX = e.touches[0].clientX - startX;
-  translateY = e.touches[0].clientY - startY;
-  updateTransform();
-});
-
-container.addEventListener("touchend", () => {
-  isDragging = false;
-});
-
-// Inicializa transform
-updateTransform();
-
+})();
 </script>
+
+
 
 
 <div id="menunavfooter">
