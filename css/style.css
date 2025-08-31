@@ -1,7 +1,7 @@
 /* Estilos para MOBILE (até 600px) */
-
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
 body{
-  font-family: league-spartan;
+  font-family: "League Spartan", sans-serif;
   -webkit-box-sizing: border-box; /* coloca o prefixo do browser do iOS */
   box-sizing: border-box;
 }
@@ -711,7 +711,7 @@ div#botao svg {
   gap: 64px;
   z-index: 1500;
   transition: transform 0.35s ease-in-out;
-  font-family: league spartan;
+  font-family: "League Spartan", sans-serif;
 }
 
 /* Quando ativo, sobe na tela */
