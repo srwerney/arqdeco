@@ -156,7 +156,29 @@
     display: flex;
   }
 
-  /* POPUP CONTENT */
+  /* POPUP OVERLAY MAPA*/
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: league spartan;
+    color: #131313;
+  }
+
+    .popup-overlay a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
+  .popup-overlay.active {
+    display: flex;
+  }
+
+  /* POPUP CONTENT MAPA*/
   .popup-content {
     width: 100%;
     max-height: 100vh;
@@ -168,25 +190,61 @@
     position: relative;
   }
 
-  /* Botão fechar */
+  /* Botão fechar MAPA */
   .fecharPopup {
     position: absolute;
     top: 16px;
     right: 24px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
+
+  
+
   .fecharPopup img {
     width: 100%;
     height: 100%;
   }
+   .fecharPopup img:hover {
+    background-color: #162257;
+    border-radius: 8px;
+    transition: ease-in-out;
+  }
 
-   #popup-mapa-overlay{
+  #popup-mapa-overlay{
   height: 30vh; 
   border-top-left-radius: 16px; 
   border-top-right-radius: 16px; 
   position: relative;
+}
+
+.textopopup p {
+  font-family: league spartan;
+  line-height: 1.2;
+  font-size: 14px;
+  max-width: 70vw;
+
+  display: -webkit-box;         /* ativa flexbox para o corte */
+  -webkit-line-clamp: 4;        /* número de linhas que deseja exibir */
+  -webkit-box-orient: vertical; /* orientação vertical */
+  overflow: hidden;             /* esconde o excesso */
+  text-overflow: ellipsis;      /* adiciona os "..." */
+  max-height: calc(1.2em * 4);  /* garante a altura máxima (5 linhas) */
+}
+
+
+.textopopup h2{
+font-family: league spartan;
+  font-size: 24px;
+  max-width: 60vw;
+  color: #060D2C;
+}
+
+.endereco{
+  font-family: league spartan;
+  font-size: 12px;
+  color: #060D2C;
 }
 
 .mapa.dragging { cursor: grabbing; }
@@ -196,10 +254,7 @@
   }
 
   @media screen and (min-width: 1025px) and (max-width: 1799px){
-  .textopopup p{
-    max-width: 70vw;
-  }
-
+ 
     .mapa-container {
   width: 100vw;
   height: 100vh;
@@ -335,7 +390,7 @@
     justify-content: center;
     align-items: flex-end;
     font-family: league spartan;
-    color: #545454;
+    color: #131313;
   }
 
     .popup-overlay a {
@@ -365,12 +420,20 @@
     top: 16px;
     right: 24px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
+
+  
+
   .fecharPopup img {
     width: 100%;
     height: 100%;
+  }
+   .fecharPopup img:hover {
+    background-color: #162257;
+    border-radius: 8px;
+    transition: ease-in-out;
   }
 
   #popup-mapa-overlay{
@@ -380,8 +443,35 @@
   position: relative;
 }
 
+.textopopup p {
+  font-family: league spartan;
+  line-height: 1.2;
+  font-size: 18px;
+  max-width: 70vw;
+
+   display: -webkit-box;         /* ativa flexbox para o corte */
+  -webkit-line-clamp: 3;        /* número de linhas que deseja exibir */
+  -webkit-box-orient: vertical; /* orientação vertical */
+  overflow: hidden;             /* esconde o excesso */
+  text-overflow: ellipsis;      /* adiciona os "..." */
+  max-height: calc(1.2em * 3);  /* garante a altura máxima (5 linhas) */
+} 
+
+.textopopup h2{
+font-family: league spartan;
+  font-size: 32px;
+  max-width: 60vw;
+  color: #060D2C;
+}
+
+.endereco{
+  font-family: league spartan;
+  font-size: 16px;
+  color: #060D2C;
+}
+
 .mapa.dragging { cursor: grabbing; }
-.zoom-controls { position: fixed; bottom: 80px; right: 42px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls { position: fixed; bottom: 110px; right: 45px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
 .zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
 .zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
   }
@@ -526,7 +616,7 @@
     justify-content: center;
     align-items: flex-end;
     font-family: league spartan;
-    color: #545454;
+    color: #131313;
   }
 
     .popup-overlay a {
@@ -556,12 +646,18 @@
     top: 16px;
     right: 24px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
+
   .fecharPopup img {
     width: 100%;
     height: 100%;
+  }
+   .fecharPopup img:hover {
+    background-color: #162257;
+    border-radius: 8px;
+    transition: ease-in-out;
   }
 
   #popup-mapa-overlay{
@@ -571,8 +667,34 @@
   position: relative;
 }
 
+.textopopup p {
+  font-family: league spartan;
+  line-height: 1.2;
+  font-size: 20px;
+  max-width: 70vw;
+
+   display: -webkit-box;         /* ativa flexbox para o corte */
+  -webkit-line-clamp: 3;        /* número de linhas que deseja exibir */
+  -webkit-box-orient: vertical; /* orientação vertical */
+  overflow: hidden;             /* esconde o excesso */
+  text-overflow: ellipsis;      /* adiciona os "..." */
+  max-height: calc(1.2em * 3);  /* garante a altura máxima (5 linhas) */
+} 
+
+.textopopup h2{
+font-family: league spartan;
+  font-size: 42px;
+  max-width: 60vw;
+  color: #060D2C;
+}
+.endereco{
+  font-family: league spartan;
+  font-size: 16px;
+  color: #060D2C;
+}
+
 .mapa.dragging { cursor: grabbing; }
-.zoom-controls { position: fixed; bottom: 80px; right: 42px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls { position: fixed; bottom: 110px; right: 45px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
 .zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
 .zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
   }
@@ -967,7 +1089,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Cauduro</h2>
     <p>Construído em concreto armado com quatro pavimentos, é uma edificação que ainda hoje se impõe na paisagem de Santa Maria, apesar da degradação e da ocupação parcial. O prédio se estende entre as duas ruas, tem sua fachada principal voltada para a Avenida Rio Branco, e é composto por seis andares, dos quais o térreo comporta salas comerciais e, os demais, quartos amplos. Cada andar possuía seis banheiros coletivos. Possuía também dois elevadores, o que era um luxo para a época, e um restaurante no quinto andar, que foi cenário de diversos encontros políticos. O prédio, construído dentro dos princípios modernos, mostra aspectos formais do Art Déco; revestimento em mica, dando aparência acinzentada, aspecto aerodinâmico, detalhes geométricos em relevo na fachada, janelas de madeira, fachada com reentrâncias e saliências, construção arredondada na esquina, relevos verticais, Platibanda escalonada e com frisos geométricos. Na memória da cidade, também ficou à presença comercial da Casa Eny, uma loja tradicional que ocupou o térreo por muitos anos.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 893 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 893 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/cauduro.html">Saiba Mais</a></button>
     </div>
   </div>
@@ -983,7 +1105,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Mauá</h2>
     <p>Com seus oito andares, três apartamentos por andar, além de um piso inteiro dedicado ao comércio (a Eny Calçados funcionou no andar térreo desde a inauguração do prédio até 1998), o Mauá ganhou forma na esquina da Avenida Rio Branco com a Rua Silva Jardim, e tornou-se a quarta construção da cidade a contar com elevador, uma grande modernidade da época.  </p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 1864 - Centro, Santa Maria.</p>
+    <p CLASS="endereco">Av. Rio Branco, 1864 - Centro, Santa Maria.</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
@@ -999,7 +1121,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Francismari</h2>
     <p>O edifício foi construído, em 1943, pelo engenheiro João Servegmini e pertence a Francisco Isaía. Com três pavimentos e subsolo, é um exemplo de Art Déco pelo seu sistema construtivo e pela aparência formal não só de sua fachada, como da formatação e confluência de suas divisórias. São notáveis, no prédio, a predominância de cheios sobre vazios, os volumes e ornamentos geometrizados e simplificados, o aspecto aerodinâmico da fachada, as estruturas em concreto armado e o revestimento em pó-de-pedra denominado mica.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 548 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 548 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
@@ -1015,7 +1137,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Carmem Bicca</h2>
     <p>Nesta edificação, um elemento inédito surge na ornamentação que envolve as laterais das janelas em mica, o buquê floral. Nenhum dos outros exemplares possui este detalhe, nem mesmo mais estilizado. A quadra onde a construção está inserida possui um conjunto de outros edifícios semelhantes em ornamentação Art Déco com o Carmen Bicca, reforçando seu valor como parte de um conjunto histórico.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 404 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 404 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
   </div>
 </div>
@@ -1031,7 +1153,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Emérita</h2>
     <p>Construído na década de 1950, o edifício Emérita possui diversos elementos característicos de Art Déco, na sua fachada percebe-se a sacada curva na esquina decorada com elementos geométricos zigue-zague e letreiro em alto relevo, indicando o seu nome. Também, na diferença entre as platibandas que compõe o coroamento, na esquina, nota-se a horizontalidade, e nas demais, a verticalidade, que conferem um aspecto ascensional. Uma composição simétrica é encontrada em um volume semi-embutido na lateral do edifício, na qual ocorre uma demarcação da escadaria do acesso.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 390 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 390 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
   </div>
 </div>
@@ -1047,7 +1169,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Ibirapuitã</h2>
     <p>Esta edificação de quatro pavimentos, cuja fachada principal se volta de forma simétrica para o logradouro principal, tem seu acesso principal recuado e protegido por uma marquise. Esse elemento horizontal divide a composição em base, corpo e coroamento, com a presença de frisos em baixo e alto relevo. Esta característica do estilo, conjuntamente com os cheios e vazios, com as aberturas da circulação vertical, com as sacadas em curva localizadas na esquina e os frisos e ornamentações lineares, denotam um aspecto aerodinâmico à edificação.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 378 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 378 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
   </div>
 </div>
@@ -1063,7 +1185,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Santa Maria</h2>
     <p>O edifício Santa Maria, com a composição tripartida (base – corpo – coroamento), se destaca devido ao escalonamento que acentua a simetria percebida na esquina. Balcões arredondados e em balanço possuem aplicação de elementos geométricos vazados. O edifício também dispõe de frisos horizontais que destacam a volumetria curva da esquina. Novamente o acesso ocorre pela antiga avenida Progresso.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 354 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 354 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
@@ -1079,7 +1201,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Dr. Eduardo de Moraes</h2>
     <p>Localizado na Avenida Rio Branco e construído antes da década de sessenta, o Edifício Eduardo de Moraes apresenta em sua fachada os elementos da arquitetura Art Déco: platibanda em forma aerodinâmica, geometrismo, linhas verticais, construção com estrutura em concreto armado, sacadas, janelas de madeira, escadaria com vitrais e letreiro na fachada com letras características do estilo. Possui construção tripartida em base, corpo e coroamento escalonado, revestimento de granitina e estrutura de concreto armado. É uma construção que está preservada e mantém semelhança com outras que lhe são próximas, formando uma unidade que contribui para a identidade da Avenida Rio Branco. (FOLETTO, 2013, p.163)</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
@@ -1095,7 +1217,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Propriedade de Raimundo Cauduro</h2>
     <p>A edificação de quatro pavimentos de propriedade de Raimundo Cauduro também foi construído na década de 1960. São identificados diversos elementos característicos do Art Déco Marajoara na edificação, além da simetria central bilateral, que é marcada por dois acessos, acabamento curvo das sacadas, estrutura tripartida entre base, corpo e coroamento, platibanda escalonada com aplicação de traçado geométrico e elementos zigue-zague. Dentro do nosso percurso, este é o único exemplar que apresenta a influência Marajoara, referência com poucos exemplares na cidade, podendo assim expressar no recorte o universo local.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
   </div>
 </div>
@@ -1111,7 +1233,7 @@
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Correio do Povo</h2>
     <p>Informações e foto do Edifício Correio do Povo.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 148 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 148 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
   </div>
 </div>
@@ -1130,7 +1252,7 @@
 A residência em questão possui três pavimentos, encrustada sobre uma topografia inclinada, o que produz uma sala no nível do passeio, e ainda outros dois pavimentos acima, esses sim, de uso residencial. No todo, tem-se uma percepção de imponência, típica de uma cidade que desejava a verticalização, apesar de um edifício conciso em área.
 O projeto do conjunto e sua construção dataram do final da década de 1930 e início da década de 1940, e foi viabilizado pelos 4 proprietários com o auxílio da Caixa de Aposentadorias e Pensões dos Ferroviários do Rio Grande do Sul. Hoje, a Residência Prates encontra-se em propriedade da neta de Darling, Ana.
 Texto de Francisco Queruz</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 167 - Centro, Santa Maria</p>
+    <p CLASS="endereco">Av. Rio Branco, 167 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
 </div>  
 </div>
@@ -1146,8 +1268,8 @@ Texto de Francisco Queruz</p>
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Mabi</h2>
     <p>O edifício Mabi também situa-se no extremo norte da Avenida Rio Branco, nas proximidades da estação férrea. Construído em 1957, é composto por três pavimentos, sendo o térreo comercial e os outros dois residenciais. As paredes externas são revestidas com mica, e as esquadrias na fachada principal da parte comercial são mistas, de madeira e metálicas. As esquadrias originais de madeira foram mantidas nos demais pavimentos, sem bandeira e com verga reta em formato linear. O edifício possui diversos elementos característicos do Art Déco, tal como balcões, marquises, planos sobrepostos, volumes ritmados, valorização dos acessos, pilares, frisos verticais e a tipologia Broadway sinalizando o seu nome na fachada. Além desses, percebe-se a platibanda escalonada com aplicação de frisos horizontais, sacadas arredondas em balanço, que remetem ao aero dinamismo e simetria bilateral.</p>
-    <p>Av. Rio Branco, 134 - Centro, Santa Maria</p>
-    <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
+    <p CLASS="endereco">Av. Rio Branco, 134 - Centro, Santa Maria</p>
+    <button style="font-family: league spartan;  background:#162257;color:#fff;padding:12px 24px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
 </div>
