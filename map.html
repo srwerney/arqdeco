@@ -14,7 +14,7 @@
     background-color: #f4f3ef;
   }
 
-  @media screen and (min-width: 101px) and (max-width:299px){
+  @media screen and (min-width: 300px) and (max-width: 1024px){
    .mapa-container {
   width: 100vw;
   height: 100vh;
@@ -24,8 +24,8 @@
 }
   .mapa {
    position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 500%;
+  height: 500%;
   top: 0;
   left: 0;
   cursor: grab;
@@ -42,8 +42,8 @@
   .pin {
     background: #162257;
     position: absolute;
-    width: 0.7em;
-    height: 0.7em;
+    width: 1em;
+    height: 1em;
     border-radius: 50%;
     color: #F2ECDD;
     cursor: pointer;
@@ -64,7 +64,7 @@
     display: inline-block;
     white-space: nowrap;
     position: absolute;
-    left: 24px;
+    left: 2em;
     top: 50%;
     transform: translateY(-50%);
     background: #3B4C99;
@@ -74,25 +74,6 @@
     user-select: none;
   }
 
-  /* Posicionamento dos prédios */
- .cauduro { top: 48%; left: 76%; }
-  .maua { top: 40%; left: 50%; }
-  .francismari { top: 42%; left: 47%; }
-  .carmen { top: 45%; left: 42.5%; }
-  .emerita { top: 46%; left: 40%; }
-  .ibirapuita { top: 47%; left: 38.5%; }
-  .sm { top: 48.5%; left: 36%; }
-  .moraes { top: 50%; left: 34%; }
-  .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 51.9%; left: 16.5%; }
-  .prates { top: 52.3%; left: 14.5%; }
-  .mabi { top: 52.5%; left: 13.5%; }
-  .calcadao { -top: 43% ; -left: 72% ; }
-  .gare {top: -50% ; left: -16.5% ; }
-  .riobranco {top: -41.5% ; left: -55% ; }
-  .pracamarinho {top: -32.5% ; left: -67.5% ;}
-
- 
   .pontoreferencia::before {
     content: '';
     position: absolute;
@@ -207,912 +188,14 @@
   border-top-right-radius: 16px; 
   position: relative;
 }
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
 
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
-  }
-
-  @media screen and (min-width: 300px) and (max-width: 599px){
-   .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 3.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 2em;
-    user-select: none;
-  }
-
-  /* Posicionamento dos prédios */
- .cauduro { top: 43%; left: 66%; }
-  .maua { top: 40%; left: 50%; }
-  .francismari { top: 42%; left: 47%; }
-  .carmen { top: 45%; left: 42.5%; }
-  .emerita { top: 46%; left: 40%; }
-  .ibirapuita { top: 47%; left: 38.5%; }
-  .sm { top: 48.5%; left: 36%; }
-  .moraes { top: 50%; left: 34%; }
-  .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 54%; left: 29%; }
-  .prates { top: 55%; left: 27.5%; }
-  .mabi { top: 56%; left: 26%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ;}
-
- 
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-  .mapa {
-      font-size: 13px;
-    }
-
-  /* POPUP OVERLAY */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT */
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
-
-   #popup-mapa-overlay{
-  height: 30vh; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  position: relative;
-}
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
-  }
-
-  @media screen and (min-width: 600px) and (max-width: 799px){
-  .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 3.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
-
- 
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .mapa {
-      font-size: 13px;
-    }
-  }
-
-  /* POPUP OVERLAY */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT */
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
- #popup-mapa-overlay{
-  height: 30vh; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  position: relative;
-}
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
-  }
-
-  @media screen and (min-width: 800px) and (max-width: 1024px){
-  .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 3.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
-
- 
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .mapa {
-      font-size: 13px;
-    }
-  }
-
-  /* POPUP OVERLAY */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT */
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
- #popup-mapa-overlay{
-  height: 30vh; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  position: relative;
-}
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
-  }
-
-  @media screen and (min-width: 1025px) and (max-width: 1499px){
-  .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 3.7em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #3B4C99;
-    border-radius: 16px;
-    padding: 0.3em 0.6em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 67%; }
-  .maua { top: 36%; left: 56%; }
-  .francismari { top: 53%; left: 58%; }
-  .carmen { top: 20%; left: 48%; }
-  .emerita { top: 83%; left: 38%; }
-  .ibirapuita { top: 28%; left: 48%; }
-  .sm { top: 43%; left: 48%; }
-  .moraes { top: 53%; left: 58%; }
-  .raimundo { top: 65%; left: 45%; }
-  .correio { top: 63%; left: 18%; }
-  .prates { top: 13%; left: 48%; }
-  .mabi { top: 56%; left: 25%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
-
- 
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .mapa {
-      font-size: 13px;
-    }
-  }
-
-  /* POPUP OVERLAY */
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT */
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
- #popup-mapa-overlay{
-  height: 30vh; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  position: relative;
-}
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
+.mapa.dragging { cursor: grabbing; }
+.zoom-controls { position: fixed; bottom: 80px; right: 28px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; font-size: 16px; }
+.zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
   }
 
-  @media screen and (min-width: 1500px) and (max-width: 1799px){
+  @media screen and (min-width: 1025px) and (max-width: 1799px){
   .textopopup p{
     max-width: 70vw;
   }
@@ -1180,24 +263,6 @@
 .pin:hover span {
     display: block;
   }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 66%; }
-  .maua { top: 40%; left: 50%; }
-  .francismari { top: 42%; left: 47%; }
-  .carmen { top: 45%; left: 42.5%; }
-  .emerita { top: 46%; left: 40%; }
-  .ibirapuita { top: 47%; left: 38.5%; }
-  .sm { top: 48.5%; left: 36%; }
-  .moraes { top: 50%; left: 34%; }
-  .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 54%; left: 29%; }
-  .prates { top: 55%; left: 27.5%; }
-  .mabi { top: 56%; left: 26%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
 
  
   .pontoreferencia::before {
@@ -1315,33 +380,13 @@
   position: relative;
 }
 
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
+.mapa.dragging { cursor: grabbing; }
+.zoom-controls { position: fixed; bottom: 80px; right: 42px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
+.zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
   }
 
-  @media screen and (min-width: 1800px) and (max-width: 1999px){
+  @media screen and (min-width: 1800px) {
   .textopopup p{
     max-width: 70vw;
   }
@@ -1409,24 +454,6 @@
 .pin:hover span {
     display: block;
   }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 66%; }
-  .maua { top: 40%; left: 50%; }
-  .francismari { top: 42%; left: 47%; }
-  .carmen { top: 45%; left: 42.5%; }
-  .emerita { top: 46%; left: 40%; }
-  .ibirapuita { top: 47%; left: 38.5%; }
-  .sm { top: 48.5%; left: 36%; }
-  .moraes { top: 50%; left: 34%; }
-  .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 54%; left: 29%; }
-  .prates { top: 55%; left: 27.5%; }
-  .mabi { top: 56%; left: 26%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
 
  
   .pontoreferencia::before {
@@ -1544,259 +571,298 @@
   position: relative;
 }
 
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
+.mapa.dragging { cursor: grabbing; }
+.zoom-controls { position: fixed; bottom: 80px; right: 42px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
+.zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
+.zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
   }
-
-  @media screen and (min-width: 2000px) {
-  .textopopup p{
-    max-width: 70vw;
-  }
-
-    .mapa-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  touch-action: none;
-}
-  .mapa {
-   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: 0;
-  left: 0;
-  cursor: grab;
-  transition: cursor 0.2s;
-}
-.mapa.dragging {
-  cursor: grabbing;
-}
-  .mapa img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .pin {
-    background: #162257;
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    color: #F2ECDD;
-    cursor: pointer;
-  }
-  .pin::before {
-    content: '';
-    background: #3046A6;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: pulse 1.3s ease-in-out infinite;
-  }
-  .pin span {
-  display: none;
-  position: absolute;
-  top: -30px; /* Ajuste conforme a posição que quiser acima do pin */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #162257;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 8px;
-  white-space: nowrap;
-  font-size: 12px;
-  z-index: 10;
-}
-
-.pin:hover span {
-    display: block;
-  }
-
-  /* Posicionamento dos prédios */
-  .cauduro { top: 43%; left: 66%; }
-  .maua { top: 40%; left: 50%; }
-  .francismari { top: 42%; left: 47%; }
-  .carmen { top: 45%; left: 42.5%; }
-  .emerita { top: 46%; left: 40%; }
-  .ibirapuita { top: 47%; left: 38.5%; }
-  .sm { top: 48.5%; left: 36%; }
-  .moraes { top: 50%; left: 34%; }
-  .raimundo { top: 52%; left: 32%;  }
-  .correio { top: 54%; left: 29%; }
-  .prates { top: 55%; left: 27.5%; }
-  .mabi { top: 56%; left: 26%; }
-  .calcadao { top: 43% ; left: 72% ; }
-  .gare {top: 50% ; left: 16.5% ; }
-  .riobranco {top: 41.5% ; left: 55% ; }
-  .pracamarinho {top: 32.5% ; left: 67.5% ; }
 
  
-  .pontoreferencia::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+  /* MEDIA QUERY PARA PONTO NOS MAPAS */
+
+    @media screen and (min-width: 300px) and (max-width: 350px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 47.5%; left: 76.2%; }
+        .maua { top: 47.1%; left: 51%; }
+        .francismari { top: 48%; left: 45%; }
+        .carmen { top: 49.1%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.2%; left: 30%;  }
+        .moraes { top: 50.5%; left: 27.6%; }
+        .raimundo {top: 51%; left: 24.5%;  }
+        .correio { top: 52.2%; left: 17%; }
+        .prates { top: 52%; left: 19%; }
+        .mabi { top: 52.5%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 350px) and (max-width: 400px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 47%; left: 76.2%; }
+        .maua { top: 46.5%; left: 51%; }
+        .francismari { top: 47.5%; left: 45%; }
+        .carmen { top: 48.8%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.2%; left: 30%;  }
+        .moraes { top: 50.5%; left: 27.6%; }
+        .raimundo {top: 51%; left: 24.5%;  }
+        .correio { top: 52.6%; left: 17%; }
+        .prates { top: 52.3%; left: 19%; }
+        .mabi { top: 53%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 400px) and (max-width: 500px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 46.8%; left: 76.2%; }
+        .maua { top: 45.7%; left: 51%; }
+        .francismari { top: 47.2%; left: 45%; }
+        .carmen { top: 48.8%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.4%; left: 30%;  }
+        .moraes { top: 50.9%; left: 27.6%; }
+        .raimundo {top: 51.6%; left: 24.5%;  }
+        .correio { top: 53%; left: 17%; }
+        .prates { top: 52.6%; left: 19%; }
+        .mabi { top: 53.3%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 500px) and (max-width: 600px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 46%; left: 76.2%; }
+        .maua { top: 45.2%; left: 51%; }
+        .francismari { top: 46.5%; left: 45%; }
+        .carmen { top: 48.4%; left: 38%; }
+        .emerita { top: 49%; left: 34.8%; }
+        .ibirapuita { top: 49.5%; left: 33%; }
+        .sm { top: 50.3%; left: 30.2%;  }
+        .moraes { top: 51.1%; left: 27.6%; }
+        .raimundo {top: 52.1%; left: 24.5%;  }
+        .correio { top: 54.2%; left: 17%; }
+        .prates { top: 53.8%; left: 19%; }
+        .mabi { top: 54.7%; left: 15.5%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 600px) and (max-width: 700px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 45%; left: 76.2%; }
+        .maua { top: 44.2%; left: 51%; }
+        .francismari { top: 46%; left: 45%; }
+        .carmen { top: 47.9%; left: 38%; }
+        .emerita { top: 48.8%; left: 34.8%; }
+        .ibirapuita { top: 49.4%; left: 33%; }
+        .sm { top: 50.5%; left: 30.2%;  }
+        .moraes { top: 51.5%; left: 27.6%; }
+        .raimundo {top: 52.6%; left: 24.5%;  }
+        .correio { top: 55.2%; left: 17%; }
+        .prates { top: 54.7%; left: 19%; }
+        .mabi { top: 55.8%; left: 15.5%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 700px) and (max-width: 800px){
+       /* Posicionamento dos prédios */
+      .cauduro { top: 44%; left: 76.2%; }
+        .maua { top: 43.2%; left: 51%; }
+        .francismari { top: 45.5%; left: 45%; }
+        .carmen { top: 47.9%; left: 38%; }
+        .emerita { top: 48.8%; left: 34.8%; }
+        .ibirapuita { top: 49.4%; left: 33%; }
+        .sm { top: 50.5%; left: 30.2%;  }
+        .moraes { top: 51.5%; left: 27.6%; }
+        .raimundo {top: 52.6%; left: 24.5%;  }
+        .correio { top: 56.2%; left: 17%; }
+        .prates { top: 55.7%; left: 19%; }
+        .mabi { top: 56.8%; left: 15.5%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 800px) and (max-width: 900px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 44%; left: 75.5%; }
+        .maua { top: 43%; left: 51.5%; }
+        .francismari { top: 45%; left: 46%; }
+        .carmen { top: 47.1%; left: 41%; }
+        .emerita { top: 48.8%; left: 35.3%; }
+        .ibirapuita { top: 49.6%; left: 33.5%; }
+        .sm { top: 50.6%; left: 31.2%;  }
+        .moraes { top: 51.5%; left: 28.6%; }
+        .raimundo {top: 52.8%; left: 25.5%;  }
+        .correio { top: 56.2%; left: 19%; }
+        .prates { top: 55.4%; left: 20.3%; }
+        .mabi { top: 56.8%; left: 17%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+      @media screen and (min-width: 900px) and (max-width: 1000px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 44%; left: 71%; }
+        .maua { top: 42.7%; left: 51.6%; }
+        .francismari { top: 45.2%; left: 46%; }
+        .carmen { top: 47.3%; left: 42%; }
+        .emerita { top: 48.8%; left: 37.9%; }
+        .ibirapuita { top: 49.4%; left: 36.3%; }
+        .sm { top: 50.5%; left: 34.3%;  }
+        .moraes { top: 51.5%; left: 32.5%; }
+        .raimundo {top: 52.8%; left: 30%;  }
+        .correio { top: 56.3%; left: 24%;  }
+        .prates { top: 55.8%; left: 25%;  }
+        .mabi { top: 57%; left: 22.6%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 1000px) and (max-width: 1100px){
+       .cauduro { top: 44%; left: 70%; }
+        .maua { top: 41%; left: 50%; }
+        .francismari { top: 43%; left: 45.8%; }
+        .carmen { top: 45%; left: 42%; }
+        .emerita { top: 48.8%; left: 37.9%; }
+        .ibirapuita { top: 49.4%; left: 36.3%; }
+        .sm { top: 50.5%; left: 34.3%;  }
+        .moraes { top: 51.5%; left: 32.5%; }
+        .raimundo {top: 52.8%; left: 30%;  }
+        .correio { top: 56.3%; left: 24%;  }
+        .prates { top: 55.8%; left: 25%;  }
+        .mabi { top: 57%; left: 22.6%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 1100px) and (max-width: 1200px){
+        .cauduro { top: 44%; left: 67%; }
+        .maua { top: 41%; left: 50%; }
+        .francismari { top: 43%; left: 45.8%; }
+        .carmen { top: 45%; left: 42%; }
+        .emerita { top: 47%; left: 39.6%; }
+        .ibirapuita { top: 48%; left: 38.2%; }
+        .sm { top: 49%; left: 36%;  }
+        .moraes { top: 50%; left: 34.5%; }
+        .raimundo {top: 51%; left: 33%;  }
+        .correio { top: 55%; left: 28%;  }
+        .prates { top: 54%; left: 29%;  }
+        .mabi { top: 56%; left: 27%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+    @media screen and (min-width: 1200px) and (max-width: 1300px){
+              .cauduro { top: 44%; left: 67%; }
+        .maua { top: 41%; left: 50%; }
+        .francismari { top: 43%; left: 45.8%; }
+        .carmen { top: 45%; left: 42%; }
+        .emerita { top: 47%; left: 39.6%; }
+        .ibirapuita { top: 48%; left: 38.2%; }
+        .sm { top: 49%; left: 36%;  }
+        .moraes { top: 50%; left: 34.5%; }
+        .raimundo {top: 51%; left: 33%;  }
+        .correio { top: 55%; left: 28%;  }
+        .prates { top: 54%; left: 29%;  }
+        .mabi { top: 56%; left: 27%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+  @media screen and (min-width: 1300px) and (max-width: 1400px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 47.5%; left: 76.2%; }
+        .maua { top: 47.4%; left: 51%; }
+        .francismari { top: 48%; left: 45%; }
+        .carmen { top: 49.1%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.2%; left: 30%;  }
+        .moraes { top: 50.5%; left: 27.6%; }
+        .raimundo {top: 51%; left: 24.5%;  }
+        .correio { top: 52.2%; left: 17%; }
+        .prates { top: 52%; left: 19%; }
+        .mabi { top: 52.5%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+  @media screen and (min-width: 1400px) and (max-width: 1500px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 47.5%; left: 76.2%; }
+        .maua { top: 47.4%; left: 51%; }
+        .francismari { top: 48%; left: 45%; }
+        .carmen { top: 49.1%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.2%; left: 30%;  }
+        .moraes { top: 50.5%; left: 27.6%; }
+        .raimundo {top: 51%; left: 24.5%;  }
+        .correio { top: 52.2%; left: 17%; }
+        .prates { top: 52%; left: 19%; }
+        .mabi { top: 52.5%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+  @media screen and (min-width: 1500Px) and (max-width: 1700px){
+      /* Posicionamento dos prédios */
+      .cauduro { top: 47.5%; left: 76.2%; }
+        .maua { top: 47.4%; left: 51%; }
+        .francismari { top: 48%; left: 45%; }
+        .carmen { top: 49.1%; left: 38%; }
+        .emerita { top: 49.5%; left: 34.8%; }
+        .ibirapuita { top: 49.8%; left: 33%; }
+        .sm { top: 50.2%; left: 30%;  }
+        .moraes { top: 50.5%; left: 27.6%; }
+        .raimundo {top: 51%; left: 24.5%;  }
+        .correio { top: 52.2%; left: 17%; }
+        .prates { top: 52%; left: 19%; }
+        .mabi { top: 52.5%; left: 15.3%; }
+        .calcadao { -top: 43% ; left: -72% ; }
+        .gare {top: -50% ; left: -16.5% ; }
+        .riobranco {top: -41.5% ; left: -55% ; }
+        .pracamarinho {top: -32.5% ; left: -67.5% ;}
+  }
+  @media screen and (min-width: 1700px) {
+       /* Posicionamento dos prédios */
+      .cauduro { top: 43%; left: 66%; }
+      .maua { top: 40%; left: 50%; }
+      .francismari { top: 42%; left: 47%; }
+      .carmen { top: 45%; left: 42.5%; }
+      .emerita { top: 46%; left: 40%; }
+      .ibirapuita { top: 47%; left: 38.5%; }
+      .sm { top: 48.5%; left: 36%; }
+      .moraes { top: 50%; left: 34%; }
+      .raimundo { top: 52%; left: 32%;  }
+      .correio { top: 54%; left: 29%; }
+      .prates { top: 55%; left: 27.5%; }
+      .mabi { top: 56%; left: 26%; }
+      .calcadao { top: 43% ; left: 72% ; }
+      .gare {top: 50% ; left: 16.5% ; }
+      .riobranco {top: 41.5% ; left: 55% ; }
+      .pracamarinho {top: 32.5% ; left: 67.5% ; }
   }
 
-.pontoreferencia{
-    background: #574B27;
-    position: absolute;
-    color: #F2ECDD;
-  }
-
- .pontoreferencia span {
-    display: inline-block;
-    white-space: nowrap;
-    position: absolute;
-    left: 2.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    font-size: 14px;
-    user-select: none;
-  }
-
-.calcadao span {
-  transform: translateY(-50%) rotate(55deg); /* exemplo: rotaciona 20 graus no sentido anti-horário */
-  background: #060D2C;
-}
-
-.gare span {
-  transform: translateY(-50%) rotate(278deg);
-  background: #060D2C;
-}
-
-.riobranco span {
-  transform: translateY(-50%) rotate(-14deg); /* sem rotação, se quiser manter reto */
-}
-
-.pracamarinho span {
-  transform: translateY(-50%) rotate(330deg);
-  background: #060D2C;
-}
-
-
-  @keyframes pulse {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(2.5);
-    }
-  }
-
-   .mapa {
-      font-size: 13px;
-    }
-
-  /* POPUP OVERLAY MAPA*/
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: league spartan;
-    color: #545454;
-  }
-
-    .popup-overlay a {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .popup-overlay.active {
-    display: flex;
-  }
-
-  /* POPUP CONTENT MAPA*/
-  .popup-content {
-    width: 100%;
-    max-height: 100vh;
-    background: white;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    overflow: hidden;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  /* Botão fechar MAPA */
-  .fecharPopup {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-  }
-  .fecharPopup img {
-    width: 100%;
-    height: 100%;
-  }
-
-  #popup-mapa-overlay{
-  height: 30vh; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  position: relative;
-}
-.zoom-controls {
-  position: absolute;
-  top: 70%;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 1100;
-}
-
-.zoom-controls button {
-  background: #162257;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.zoom-controls button:hover {
-  background: #3046A6;
-}
-  }
 
 
 </style>
@@ -2080,7 +1146,7 @@ Texto de Francisco Queruz</p>
     <div style="padding: 16px 20px 20px;" class="textopopup">
     <h2>Edifício Mabi</h2>
     <p>O edifício Mabi também situa-se no extremo norte da Avenida Rio Branco, nas proximidades da estação férrea. Construído em 1957, é composto por três pavimentos, sendo o térreo comercial e os outros dois residenciais. As paredes externas são revestidas com mica, e as esquadrias na fachada principal da parte comercial são mistas, de madeira e metálicas. As esquadrias originais de madeira foram mantidas nos demais pavimentos, sem bandeira e com verga reta em formato linear. O edifício possui diversos elementos característicos do Art Déco, tal como balcões, marquises, planos sobrepostos, volumes ritmados, valorização dos acessos, pilares, frisos verticais e a tipologia Broadway sinalizando o seu nome na fachada. Além desses, percebe-se a platibanda escalonada com aplicação de frisos horizontais, sacadas arredondas em balanço, que remetem ao aero dinamismo e simetria bilateral.</p>
-    <p style="font-size: 10pt;">Av. Rio Branco, 134 - Centro, Santa Maria</p>
+    <p>Av. Rio Branco, 134 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;">Saiba Mais</button>
  </div>
 </div>
@@ -2100,10 +1166,7 @@ Texto de Francisco Queruz</p>
   cursor: grab;
   user-select: none;
 }
-.mapa.dragging { cursor: grabbing; }
-.zoom-controls { position: fixed; bottom: 80px; right: 42px; z-index: 600; display:flex; flex-direction:column; gap:8px; }
-.zoom-controls button { background:#1E1E1E;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
-.zoom-controls button:hover { background:#0d0d0d;color:#fff;border:none;padding:12px 16px;border-radius:20%;cursor:pointer; }
+
 </style>
 
 <script>
