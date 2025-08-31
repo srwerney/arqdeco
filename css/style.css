@@ -88,6 +88,11 @@ div#botao svg {
   height: 48px;
   font-size: 24px;
   cursor: pointer;
+
+  display: flex;              /* ativa flexbox */
+  align-items: center;        /* centraliza verticalmente */
+  justify-content: center;    /* centraliza horizontalmente */
+  padding: 0;                 /* remove espaçamento extra */
 }
 
 /* Overlay escuro */
@@ -364,8 +369,8 @@ div#botao svg {
 /* Botão sanduíche fixo no canto inferior direito */
 #menuToggleBottom {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  bottom: 24px;
+  right: 24px;
   z-index: 801;
 }
 #toggleBtnBottom {
@@ -373,10 +378,15 @@ div#botao svg {
   color: white;
   border: none;
   border-radius: 20%;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   font-size: 24px;
   cursor: pointer;
+
+  display: flex;              /* ativa flexbox */
+  align-items: center;        /* centraliza verticalmente */
+  justify-content: center;    /* centraliza horizontalmente */
+  padding: 0;                 /* remove espaçamento extra */
 }
 
 /* Overlay escuro */
@@ -669,6 +679,11 @@ div#botao svg {
   height: 64px;
   font-size: 24px;
   cursor: pointer;
+
+    display: flex;              /* ativa flexbox */
+  align-items: center;        /* centraliza verticalmente */
+  justify-content: center;    /* centraliza horizontalmente */
+  padding: 0;                 /* remove espaçamento extra */
 }
 
 /* Overlay escuro */
