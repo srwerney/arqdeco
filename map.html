@@ -1327,6 +1327,28 @@ Texto de Francisco Queruz</p>
     mapa.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
 
+// Função para centralizar o mapa no carregamento
+function centralizarMapa() {
+  const rectContainer = container.getBoundingClientRect();
+  const rectMapa = mapa.getBoundingClientRect();
+
+  // Dimensões reais do mapa (considerando o scale inicial = 1)
+  const mapaWidth = mapa.offsetWidth;
+  const mapaHeight = mapa.offsetHeight;
+
+  // Centralizar
+  translateX = (rectContainer.width - mapaWidth) / 2;
+  translateY = (rectContainer.height - mapaHeight) / 2;
+
+  scale = 1; // opcional, garante que inicie sem zoom
+  updateTransform();
+}
+
+// Chamar quando a página carregar
+window.addEventListener("load", centralizarMapa);
+
+
+
   // UTIL: distância e centro entre dois toques
   function touchDistance(t0, t1){
     const dx = t0.clientX - t1.clientX;
