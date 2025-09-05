@@ -6,7 +6,7 @@ body{
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 101px) and (max-width: 600px) {
+@media screen and (min-width: 100px) and (max-width: 600px) {
 
 body#inicial {
   background-image: url('../assets/bg_inicial/modelo\ tela\ abertura.png');
@@ -300,7 +300,7 @@ font-weight: 300;
 }
 }
 
-@media screen and  (min-width: 601px) and (max-width: 1024px) {
+@media screen and  (min-width: 600px) and (max-width: 1024px) {
 
 body#inicial {
   background-image: url('../assets/bg_inicial/modelo\ tela\ abertura.png');
@@ -595,7 +595,7 @@ font-weight: 300;
 }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
 
   /* index */
 body#inicial {
@@ -813,7 +813,7 @@ div#botao svg {
 /* CMS PRÉDIOS */
  #botoesRAVA {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     gap: 20px; /* espaço entre os botões */
     margin: 10% auto 10px 60px; /* top, right, bottom, left */
   }

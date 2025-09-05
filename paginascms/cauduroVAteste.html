@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+    <title>Edifício Cauduro - AR.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- p5 + handtrack -->
+  <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handtrackjs@0.1.5/dist/handtrack.min.js"></script>
+
+  <!-- model-viewer para renderizar GLB -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    html, body { height: 100%; margin: 0; background: #000; }
+    /* palco full screen — canvas + overlay 3D empilhados */
+    #stage {
+      position: fixed;
+      inset: 0;            /* top:0; right:0; bottom:0; left:0; */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      touch-action: none;
+      background: #000;
+    }
+
+    /* garantir que o canvas p5 ocupe a tela inteira */
+    .p5Canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* preenche a tela sem deixar bordas pretas */
+    }
+
+    /* overlay 3D (o modelo que "fica na palma") */
+    #palma3d {
+      position: absolute;
+      transform: translate(-50%, -50%); /* centra o elemento em left/top */
+      pointer-events: none;   /* permite interagir com a página "atrás" se quiser */
+      z-index: 9999;
+      background: transparent;
+      display: none; /* escondido até a detecção */
+      will-change: transform, left, top, width, height;
+    }
+    /* tornar o model-viewer com fundo transparente explicitamente */
+    model-viewer { background: transparent; }
+  </style>
+</head>
+<body>
+     <div id="menunavtop">
+  <a href="../paginicial.html">
+    <img class="group-icon" alt="" src="../assets/icones/Group.svg">
+  </a>
+</div>
+
+
+  <div id="stage"></div>
+
+  <!-- overlay 3D: fica posicionado dinamicamente via JS -->
+<model-viewer id="palma3d"
+  src="../assets/3d/jantzen.glb"
+  exposure="1"
+  camera-controls
+  interaction-prompt="none"
+  disable-zoom
+  shadow-intensity="0"
+  reveal="auto">
+</model-viewer>
+
+  <script>
+    // Detector + previsões
+    let detectorModel = null;
+    let predictions = [];
+
+    // p5 elements
+    let canvas, capture, ctx;
+
+    // referência DOM do model-viewer
+    const mv = document.getElementById('palma3d');
+
+    // Ajuste: se quiser ver o espelho (efeito selfie), deixe true.
+    // Quando true, nós desenhamos o vídeo espelhado e calculamos a coordenada X espelhada.
+    const USE_MIRROR = true;
+
+    const settings = {
+      flipHorizontal: USE_MIRROR, // importante para consistência com o desenho espelhado
+      maxNumBoxes: 10,
+      iouThreshold: 0.5,
+      scoreThreshold: 0.6
+    };
+
+    // loop de detecção (não desenha caixas — evita poluir o canvas)
+    function runDetectionLoop() {
+      if (!capture || !detectorModel) return;
+      detectorModel.detect(capture.elt).then(preds => {
+        predictions = preds;
+        requestAnimationFrame(runDetectionLoop);
+      }).catch(err => {
+        // em caso de erro, tenta novamente
+        console.warn('handtrack detect error:', err);
+        requestAnimationFrame(runDetectionLoop);
+      });
+    }
+
+    function setup() {
+      // canvas full screen
+      canvas = createCanvas(windowWidth, windowHeight);
+      canvas.parent('stage');
+
+      // captura de vídeo (escondemos o <video>, desenhamos no canvas)
+      capture = createCapture(VIDEO, () => {
+        handTrack.load(settings).then(m => {
+          detectorModel = m;
+          runDetectionLoop();
+        });
+      });
+      capture.size(windowWidth, windowHeight);
+      capture.hide();
+
+      ctx = canvas.elt.getContext('2d');
+      imageMode(CORNER);
+      noStroke();
+      fill(255);
+    }
+
+    function draw() {
+    if (!capture) return;
+
+    // vídeo espelhado ou não
+    if (USE_MIRROR) {
+      push();
+      translate(width, 0);
+      scale(-1, 1);
+      image(capture, 0, 0, width, height);
+      pop();
+    } else {
+      image(capture, 0, 0, width, height);
+    }
+
+    const hand = predictions.find(p =>
+      p.label === 'open' || p.label === 'closed' || p.label === 'point'
+    );
+
+    if (hand) {
+      const [bx, by, bw, bh] = hand.bbox;
+      const centerX = bx + bw / 2;
+      const centerY = by + bh / 2;
+
+      const displayX = USE_MIRROR ? (width - centerX) : centerX;
+      const displayY = centerY;
+
+      // --- OFFSET: desloca um pouco para cima da caixa (região da palma) ---
+      const offsetY = displayY - bh * 0.3;
+
+      // --- TAMANHO proporcional ---
+      const size = Math.max(100, Math.min(480, (bw + bh) * 0.6));
+
+      // --- ROTAÇÃO aproximada pela razão largura/altura ---
+      // --- ROTAÇÃO aproximada pela razão largura/altura ---
+const ratio = bw / bh;
+let rot = 0;
+if (ratio > 1.2) rot = 20;      // mão deitada → gira
+else if (ratio < 0.8) rot = -20; // mão em pé → gira pro outro lado
+
+mv.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+
+      // aplica no model-viewer
+      mv.style.display = 'block';
+      mv.style.left = `${Math.round(displayX)}px`;
+      mv.style.top = `${Math.round(offsetY)}px`;
+      mv.style.width = `${Math.round(size)}px`;
+      mv.style.height = `${Math.round(size)}px`;
+
+      // --- IMPORTANTE: reset + aplicar rotação + centralizar ---
+      mv.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+
+    } else {
+      mv.style.display = 'none';
+    }
+  }
+</script>
+
+    // segurança: caso queira forçar um reload do modelo 3D em runtime
+    // mv.reload(); // método do model-viewer (se necessário)
+  </script>
+
+
+
+
+
+
+
+    <!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
+<div id="menuToggleBottom">
+  <button id="toggleBtnBottom">☰</button>
+</div>
+
+<!-- OVERLAY ESCURO DO MENU INFERIOR -->
+<div id="menuOverlayBottom"></div>
+
+<!-- MENU INFERIOR (ESCONDIDO INICIALMENTE) -->
+<div id="menunavfooter">
+  <a href="../paginicial.html">
+    <img src="../assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="../sobre.html">
+    <img src="../assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="../map.html">
+    <img src="../assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+  <a href="../creditos.html">
+    <img src="../assets/icones/pen-tool.svg" alt="Creditos">
+    <span>Curadoria</span>
+  </a>
+</div>
+
+<script>
+const toggleBtnBottom = document.getElementById("toggleBtnBottom");
+const footerMenu = document.getElementById("menunavfooter");
+const overlayBottom = document.getElementById("menuOverlayBottom");
+
+toggleBtnBottom.addEventListener("click", () => {
+  footerMenu.classList.toggle("active");
+  overlayBottom.classList.toggle("active");
+});
+
+// Fecha ao clicar no overlay
+overlayBottom.addEventListener("click", () => {
+  footerMenu.classList.remove("active");
+  overlayBottom.classList.remove("active");
+});
+</script>
+</body>
+</html>

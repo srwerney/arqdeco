@@ -10,6 +10,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+      body{
+        background-color: #ffffff;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+@media screen and (min-width: 1024px) {
+        .nomedopredio {
+            align-self: stretch;
+            position: relative;
+            font-weight: 800;
+            font-size: 350%;
+        }
+        .crditos-e-curadoria {
+            align-self: stretch;
+            position: relative;
+            font-size: 24px;
+            line-height: 26px;
+            font-weight: 800;
+        }
+        .arqdco-parent {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .texto-texto-texto {
+            max-width: 40vw;
+            font-size: 24px;
+            line-height: 26px;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+        .frame-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 8px;
+            padding: 35vh 12%;
+        }
+        .frame-wrapper {
+            align-self: stretch;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-image: url('../assets/fotografia/003.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            font-size: 64px;
+        }
+
+
+
+.prediocms {
+	width: 100%;
+	background-color: #fff9e9;
+	min-height: 100vh; /* garante altura mínima */
+	text-align: left;
+	font-size: 0.9em;
+	color: #fff;
+	font-family: 'League Spartan';
+	display: flex;
+	flex-direction: column;
+	}
+
+
+}
        .conteudo {
     display: flex;
     justify-content: center;
@@ -24,6 +96,7 @@
   }
 
     </style>
+    
   </head>
   <!-- Lightbox2 JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
@@ -36,24 +109,23 @@
   </a>
 </div>
 
-    
-<div id="botoesRAVA">
-  <button><a href="cauduroRA.html">Realidade Aumentada</a></button>
-  <button><a href="cauduroVA.html">Virtualidade Aumentada</a></button>
-</div>
-
-<div id="descricaopredios" class="conteudo">
-  <div id="descricaoconteiner">
-    <div id="titulopredio">
-      Edifício Cauduro
-    </div>
-    <div id="descricaotexto">
-      O Edifício Cauduro, mais conhecido como “antigo Hotel Jantzen”, está localizado na Avenida Rio Branco, centro histórico da cidade de Santa Maria, no Rio Grande do Sul. A edificação, Art Déco, de uso misto, comercial e hospedagem, construído entre 1939 e 1941, representa um momento de auge do crescimento econômico e urbano de uma cidade no interior do estado.
-    </div>
-    <div id="endereco">
-      Av. Rio Branco, 893 - Centro, Santa Maria
+<div class="prediocms">
+  <div class="frame-wrapper">
+    <div class="frame-group">
+      <div class="arqdco-parent">
+        <div class="nomedopredio">Edifício Cauduro</div>
+        <div class="crditos-e-curadoria">Av. Rio Branco, 893 - Centro, Santa Maria</div>
+      </div>
+      <div class="texto-texto-texto">
+         O Edifício Cauduro, mais conhecido como “antigo Hotel Jantzen”, está localizado na Avenida Rio Branco, centro histórico da cidade de Santa Maria, no Rio Grande do Sul. A edificação, Art Déco, de uso misto, comercial e hospedagem, construído entre 1939 e 1941, representa um momento de auge do crescimento econômico e urbano de uma cidade no interior do estado.
+      </div>
     </div>
   </div>
+    
+
+<div id="botoesRAVA">
+  <button><a href="cauduroRA.html">Realidade Aumentada</a></button>
+  <button><a href="cauduroVAteste.html">Virtualidade Aumentada</a></button>
 </div>
 
   <div id="a-frame">
