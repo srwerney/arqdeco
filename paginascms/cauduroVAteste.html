@@ -61,6 +61,20 @@
   </a>
 </div>
 
+<button id="switchCameraBtn" style="
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 10000;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+">
+Trocar Câmera
+</button>
+
 
   <div id="stage"></div>
 
@@ -75,67 +89,84 @@
   reveal="auto">
 </model-viewer>
 
-  <script>
-    // Detector + previsões
-    let detectorModel = null;
-    let predictions = [];
+<script>
+  // Detector + previsões
+  let detectorModel = null;
+  let predictions = [];
 
-    // p5 elements
-    let canvas, capture, ctx;
+  // p5 elements
+  let canvas, capture, ctx;
 
-    // referência DOM do model-viewer
-    const mv = document.getElementById('palma3d');
+  // referência DOM do model-viewer
+  const mv = document.getElementById('palma3d');
 
-    // Ajuste: se quiser ver o espelho (efeito selfie), deixe true.
-    // Quando true, nós desenhamos o vídeo espelhado e calculamos a coordenada X espelhada.
-    const USE_MIRROR = true;
+  // Ajuste: se quiser ver o espelho (efeito selfie), deixe true.
+  const USE_MIRROR = true;
 
-    const settings = {
-      flipHorizontal: USE_MIRROR, // importante para consistência com o desenho espelhado
-      maxNumBoxes: 10,
-      iouThreshold: 0.5,
-      scoreThreshold: 0.6
-    };
+  const settings = {
+    flipHorizontal: USE_MIRROR,
+    maxNumBoxes: 10,
+    iouThreshold: 0.5,
+    scoreThreshold: 0.6
+  };
 
-    // loop de detecção (não desenha caixas — evita poluir o canvas)
-    function runDetectionLoop() {
-      if (!capture || !detectorModel) return;
-      detectorModel.detect(capture.elt).then(preds => {
-        predictions = preds;
-        requestAnimationFrame(runDetectionLoop);
-      }).catch(err => {
-        // em caso de erro, tenta novamente
-        console.warn('handtrack detect error:', err);
-        requestAnimationFrame(runDetectionLoop);
-      });
+  let currentFacingMode = "user"; // começa com câmera frontal
+
+  // loop de detecção (não desenha caixas — evita poluir o canvas)
+  function runDetectionLoop() {
+    if (!capture || !detectorModel) return;
+    detectorModel.detect(capture.elt).then(preds => {
+      predictions = preds;
+      requestAnimationFrame(runDetectionLoop);
+    }).catch(err => {
+      console.warn('handtrack detect error:', err);
+      requestAnimationFrame(runDetectionLoop);
+    });
+  }
+
+  function setup() {
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('stage');
+
+    startCapture();
+
+    ctx = canvas.elt.getContext('2d');
+    imageMode(CORNER);
+    noStroke();
+    fill(255);
+
+    // botão de troca
+    document.getElementById("switchCameraBtn").addEventListener("click", switchCamera);
+  }
+
+  function startCapture() {
+    if (capture) {
+      capture.remove(); // remove vídeo anterior
     }
 
-    function setup() {
-      // canvas full screen
-      canvas = createCanvas(windowWidth, windowHeight);
-      canvas.parent('stage');
-
-      // captura de vídeo (escondemos o <video>, desenhamos no canvas)
-      capture = createCapture(VIDEO, () => {
-        handTrack.load(settings).then(m => {
-          detectorModel = m;
-          runDetectionLoop();
-        });
+    capture = createCapture({
+      video: { facingMode: currentFacingMode }
+    }, () => {
+      handTrack.load(settings).then(m => {
+        detectorModel = m;
+        runDetectionLoop();
       });
-      capture.size(windowWidth, windowHeight);
-      capture.hide();
+    });
 
-      ctx = canvas.elt.getContext('2d');
-      imageMode(CORNER);
-      noStroke();
-      fill(255);
-    }
+    capture.size(windowWidth, windowHeight);
+    capture.hide();
+  }
 
-    function draw() {
+  function switchCamera() {
+    currentFacingMode = (currentFacingMode === "user") ? "environment" : "user";
+    startCapture();
+  }
+
+  function draw() {
     if (!capture) return;
 
     // vídeo espelhado ou não
-    if (USE_MIRROR) {
+    if (USE_MIRROR && currentFacingMode === "user") {
       push();
       translate(width, 0);
       scale(-1, 1);
@@ -154,39 +185,30 @@
       const centerX = bx + bw / 2;
       const centerY = by + bh / 2;
 
-      const displayX = USE_MIRROR ? (width - centerX) : centerX;
+      const displayX = (USE_MIRROR && currentFacingMode === "user") ? (width - centerX) : centerX;
       const displayY = centerY;
 
-      // --- OFFSET: desloca um pouco para cima da caixa (região da palma) ---
       const offsetY = displayY - bh * 0.3;
-
-      // --- TAMANHO proporcional ---
       const size = Math.max(100, Math.min(480, (bw + bh) * 0.6));
 
-      // --- ROTAÇÃO aproximada pela razão largura/altura ---
-      // --- ROTAÇÃO aproximada pela razão largura/altura ---
-const ratio = bw / bh;
-let rot = 0;
-if (ratio > 1.2) rot = 20;      // mão deitada → gira
-else if (ratio < 0.8) rot = -20; // mão em pé → gira pro outro lado
+      const ratio = bw / bh;
+      let rot = 0;
+      if (ratio > 1.2) rot = 20;
+      else if (ratio < 0.8) rot = -20;
 
-mv.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
-
-      // aplica no model-viewer
       mv.style.display = 'block';
       mv.style.left = `${Math.round(displayX)}px`;
       mv.style.top = `${Math.round(offsetY)}px`;
       mv.style.width = `${Math.round(size)}px`;
       mv.style.height = `${Math.round(size)}px`;
-
-      // --- IMPORTANTE: reset + aplicar rotação + centralizar ---
       mv.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
-
     } else {
       mv.style.display = 'none';
     }
   }
 </script>
+
+
 
     // segurança: caso queira forçar um reload do modelo 3D em runtime
     // mv.reload(); // método do model-viewer (se necessário)

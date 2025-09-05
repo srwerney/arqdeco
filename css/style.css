@@ -215,50 +215,7 @@ div#botao svg {
   }
  
 
- #botoesRAVA {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* espaço entre os botões */
-    margin: 100px auto 10px auto; /* top, right, bottom, left */
-  }
 
-  #botoesRAVA button {
-    background: #F2F2F2;
-    color: #484848;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-
-#botoesRAVA a {
-    color: #484848;
-    text-decoration: none;
-  }
-
-  #botoesRAVA a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-    #botoesRAVA button:hover {
-    background: #162257;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-/* todos os blocos principais alinhados à esquerda */
-.conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* força alinhamento à esquerda */
-  justify-content: flex-start;
-  margin-left: 20px; /* opcional: margem da borda da tela */
-  text-align: left;
-}
 
 #descricaoconteiner{
   width: 60%; 
@@ -509,51 +466,6 @@ div#botao svg {
     line-height: 27px;
   }
 
-
- #botoesRAVA {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* espaço entre os botões */
-    margin: 100px auto 10px auto; /* top, right, bottom, left */
-  }
-
-  #botoesRAVA button {
-    background: #F2F2F2;
-    color: #484848;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-
-#botoesRAVA a {
-    color: #484848;
-    text-decoration: none;
-  }
-
-  #botoesRAVA a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-    #botoesRAVA button:hover {
-    background: #162257;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-/* todos os blocos principais alinhados à esquerda */
-.conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* força alinhamento à esquerda */
-  justify-content: flex-start;
-  margin-left: 20px; /* opcional: margem da borda da tela */
-  text-align: left;
-}
 
 #descricaoconteiner{
   width: 60%; 
@@ -810,52 +722,11 @@ div#botao svg {
 
     /* MAPA */
 
-/* CMS PRÉDIOS */
- #botoesRAVA {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* espaço entre os botões */
-    margin: 10% auto 10px 60px; /* top, right, bottom, left */
-  }
 
-  #botoesRAVA button {
-    background: #F2F2F2;
-    color: #484848;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
 
-#botoesRAVA a {
-    color: #484848;
-    text-decoration: none;
-  }
-
-  #botoesRAVA a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-    #botoesRAVA button:hover {
-    background: #162257;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 1em;
-  }
 
 /* todos os blocos principais alinhados à esquerda */
-.conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* força alinhamento à esquerda */
-  justify-content: flex-start;
-  margin-left: 20px; /* opcional: margem da borda da tela */
-  text-align: left;
-}
+
 
 #descricaoconteiner{
   width: 60%; 
