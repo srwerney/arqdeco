@@ -14,6 +14,51 @@
     background-color: #f4f3ef;
   }
 
+/* container fixo no canto */
+#viewToggle {
+  position: fixed;
+  bottom: 30px;
+  left: 35px;
+  display: flex;
+  flex-direction: column; /* empilha em coluna */
+  gap: 10px;              /* espaçamento entre os botões */
+  z-index: 1100;
+}
+
+/* estilo dos botões */
+#viewToggle a {
+  background: #666;
+  border-radius: 16px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* hover */
+#viewToggle a:hover {
+  transform: scale(1.1);
+  background-color: #162257;
+}
+
+/* estado ativo */
+#viewToggle a.active {
+  background-color: #162257;
+}
+
+/* ícone */
+#viewToggle img {
+  width: 22px;
+  height: 22px;
+}
+
+
+
+
   @media screen and (min-width: 300px) and (max-width: 1024px){
    .mapa-container {
   width: 100vw;
@@ -997,6 +1042,32 @@ font-family: league spartan;
     <img class="group-icon" alt="" src="assets/icones/Group.svg">
   </a>
 </div>
+
+
+<div id="viewToggle">
+  <a href="map.html" title="Ver Mapa">
+    <img src="assets/icones/map.svg" alt="Mapa"class="active">
+  </a>
+  <a href="mapatabela.html" title="Ver Tabela" >
+    <img src="assets/icones/table.svg" alt="Tabela">
+  </a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("#viewToggle a");
+  const currentPage = location.pathname.split("/").pop(); // pega só o nome do arquivo
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+
 
 
 

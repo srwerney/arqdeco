@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/js.js"></script>
+<title>Mapa Avenida Rio Branco - ARqDéco</title>
+<link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<style>
+    
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+/* container fixo no canto */
+#viewToggle {
+  position: fixed;
+  bottom: 30px;
+  left: 35px;
+  display: flex;
+  flex-direction: column; /* empilha em coluna */
+  gap: 10px;              /* espaçamento entre os botões */
+  z-index: 1100;
+}
+
+/* estilo dos botões */
+#viewToggle a {
+  background: #666;
+  border-radius: 16px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* hover */
+#viewToggle a:hover {
+  transform: scale(1.1);
+  background-color: #162257;
+}
+
+/* estado ativo */
+#viewToggle a.active {
+  background-color: #162257;
+}
+
+/* ícone */
+#viewToggle img {
+  width: 22px;
+  height: 22px;
+}
+
+
+
+                    /* Página configurações */
+
+    .visualizar-rota-em-ra{ padding:64px 20px; }
+.frame-parent{ 
+  display:grid;
+  gap:20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  max-width:1200px;
+  margin: 80px auto;
+}
+.card{
+  background:#fff;
+  border-radius:12px;
+  box-shadow: 1px 1px 8px rgba(6,13,44,0.06);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  padding:12px;
+  gap:8px;
+}
+.card .frame-child{ height:140px; width:100%; object-fit:cover; border-radius:8px; }
+.card-title{ font-size:16px; color:#162257; margin:0; font-weight:700; }
+.av-rio-branco{ font-size:13px; color:#666; margin:0; }
+.btn{ margin-top:8px; display:inline-block; background:#162257; color:#fff; padding:8px 14px; border-radius:12px; text-decoration:none; }
+
+
+</style>
+
+<body>
+
+<!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="paginicial.html">
+    <img class="group-icon" alt="" src="assets/icones/Group.svg">
+  </a>
+</div>
+
+<div id="viewToggle">
+  <a href="map.html" title="Ver Mapa">
+    <img src="assets/icones/map.svg" alt="Mapa">
+  </a>
+  <a href="mapatabela.html" title="Ver Tabela" class="active">
+    <img src="assets/icones/table.svg" alt="Tabela">
+  </a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("#viewToggle a");
+  const currentPage = location.pathname.split("/").pop(); // pega só o nome do arquivo
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+<div class="visualizar-rota-em-ra">
+  <div class="frame-parent">
+    <!-- card 1 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/_DSC0820.jpg" alt="Edifício Cauduro">
+      <h3 class="card-title">Edifício Cauduro</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 893 - Centro, Santa Maria</p>
+      <a href="paginascms/cauduro.html" class="btn">Saiba mais</a>
+    </article>
+
+    <!-- card 2 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/_DSC0572.jpg" alt="Edifício Mauá">
+      <h3 class="card-title">Edifício Mauá</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 1864 - Centro, Santa Maria.</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 3 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2130-min.jpg" alt="Edíficio Francismari">
+      <h3 class="card-title">Edíficio Francismari</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 548 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 4 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/_DSC0599.jpg" alt="Edíficio Carmen Bicca">
+      <h3 class="card-title">Edíficio Carmen Bicca</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 404 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 5 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2160-min.jpg" alt="Edíficio Emérita">
+      <h3 class="card-title">Edíficio Emérita</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 390 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 6 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2166-min.jpg" alt="Edíficio Ibirapuitã">
+      <h3 class="card-title">Edíficio Ibirapuitã</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 354 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 7 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2173-min.jpg" alt="Edíficio Santa Maria">
+      <h3 class="card-title">Edíficio Santa Maria</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 354 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 8 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2184-min.jpg" alt="Edíficio Dr. Eduardo de Moraes">
+      <h3 class="card-title">Edíficio Dr. Eduardo de Moraes</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 9 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/_DSC0667-min.jpg" alt="Propriedade de Raimundo Cauduro">
+      <h3 class="card-title">Propriedade de Raimundo Cauduro</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 10 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2231-min.jpg" alt="Edíficio Correio do Povo">
+      <h3 class="card-title">Edíficio Correio do Povo</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 148 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 11 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2130-min.jpg" alt="Residência Darlling Prates">
+      <h3 class="card-title">Residência Darlling Prates</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 167 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+
+     <!-- card 12 -->
+    <article class="card">
+      <img class="frame-child" src="assets/fotografia/IMG_2238-min.jpg" alt="Edíficio Mabi">
+      <h3 class="card-title">Edíficio Mabi</h3>
+      <p class="av-rio-branco">Av. Rio Branco, 134 - Centro, Santa Maria</p>
+      <a href="#" class="btn">Saiba mais</a>
+    </article>
+    <!-- repita para os demais prédios -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
+<div id="menuToggleBottom">
+  <button id="toggleBtnBottom">☰</button>
+</div>
+
+<!-- OVERLAY ESCURO DO MENU INFERIOR -->
+<div id="menuOverlayBottom"></div>
+
+<!-- MENU INFERIOR (ESCONDIDO INICIALMENTE) -->
+<div id="menunavfooter">
+  <a href="paginicial.html">
+    <img src="assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="sobre.html">
+    <img src="assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="map.html">
+    <img src="assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+    <a href="creditos.html">
+    <img src="assets/icones/pen-tool.svg" alt="Creditos">
+    <span>Curadoria</span>
+  </a>
+  </a>
+</div>
+
+<script>
+const toggleBtnBottom = document.getElementById("toggleBtnBottom");
+const footerMenu = document.getElementById("menunavfooter");
+const overlayBottom = document.getElementById("menuOverlayBottom");
+
+toggleBtnBottom.addEventListener("click", () => {
+  footerMenu.classList.toggle("active");
+  overlayBottom.classList.toggle("active");
+});
+
+// Fecha ao clicar no overlay
+overlayBottom.addEventListener("click", () => {
+  footerMenu.classList.remove("active");
+  overlayBottom.classList.remove("active");
+});
+</script>
+
+</body>
+</html>
