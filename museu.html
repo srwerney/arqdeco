@@ -863,7 +863,7 @@ body {
         <textarea name="descricao" rows="4" required></textarea>
         <button type="submit">Enviar memória</button>
         <button type="button" id="voltar-contato">Voltar</button>
-      </form>
+     </form>
     </div>
   </div>
 
@@ -958,9 +958,10 @@ body {
 
       // Envio para Apps Script
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyjUsx5cu6rlN_G4k3mhbcYr-UpoPhQqgiWtOla6yp6Yf_ebfk29dc1sQ62dSdo5SYiyQ/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyusAH8OczIuLnmKT1oQCwpt3FlQoY85cm6DqC1ImmV_yoHylJPW4X1NDrCVGz6RsHvjw/exec", {
           method: "POST",
           body: JSON.stringify(dadosCompletos),
+          mode: "cors",
           headers: { "Content-Type": "application/json" }
         });
         const result = await response.json();
