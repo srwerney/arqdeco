@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="initial-scale=1, width=device-width">
+  	
+  	<link rel="stylesheet"  href="./index.css" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Museu da Memória - ARqDéco</title>
+
+    <style>
+        
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+
+
+
+
+/* Reset */
+body {
+  margin: 0;
+  font-family: 'League Spartan', sans-serif;
+  color: #060d2c;
+}
+
+/* PRIMEIRA SESSÃO */
+.museu-de-memorias-locais {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Container principal */
+.frame-container-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 80px;
+  width: 100%;
+}
+
+/* Título centralizado, largura máxima 70% da tela */
+.frame-container-principal h1 {
+  text-align: center;
+  font-size: 3vw;
+  margin: 0 auto;
+}
+
+/* Grid de imagens modular */
+.museu-de-memorias-locais .imagens-principais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-rows: 150px; /* altura base das linhas */
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Cada imagem ocupa um espaço diferente */
+.museu-de-memorias-locais .imagens-principais img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Tamanhos diferentes usando nth-child */
+.museu-de-memorias-locais .imagens-principais img:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(3) { grid-column: span 1; grid-row: span 2; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(7) { grid-column: span 1; grid-row: span 2; }
+.museu-de-memorias-locais .imagens-principais img:nth-child(8) { grid-column: span 1; grid-row: span 1; }
+
+/* Botão maior e centralizado */
+#abrirFormulario {
+  padding: 16px 40px;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  background-color: #162257;
+  color: #fff;
+  cursor: pointer;
+  align-self: center;
+  min-width: 350px;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .frame-container-principal h1 {
+    width: 80%;
+    font-size: 2rem;
+  }
+  #abrirFormulario {
+    min-width: 220px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .museu-de-memorias-locais .imagens-principais {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-auto-rows: 120px;
+  }
+  .frame-container-principal h1 {
+    width: 90%;
+    font-size: 1.8rem;
+  }
+  #abrirFormulario {
+    min-width: 200px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .museu-de-memorias-locais .imagens-principais {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: 100px;
+  }
+  .frame-container-principal h1 {
+    width: 95%;
+    font-size: 1.5rem;
+  }
+  #abrirFormulario {
+    width: 80%;
+    min-width: unset;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/* SEGUNDA SESSÃO */
+.sessao-argumento-curatorial {
+  width: 100%;
+  background-color: #060d2c;
+  color: #fff;
+  padding: 60px 10%;
+  box-sizing: border-box;
+}
+
+.conteudo-argumento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.argumento-texto {
+  flex: 1;
+  width: 60vw;
+}
+
+.argumento-texto b{
+  font-size: 24px;
+}
+
+.argumento-texto p {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.argumento-imagem {
+  flex: 1;
+  width: 200px;
+}
+
+.argumento-imagem img {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* TERCEIRA SESSÃO: Acervo */
+.acervo-parent {
+  width: 100%;
+  padding: 40px 10%;
+  box-sizing: border-box;
+}
+
+.acervo {
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.acervo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.acervo-item img {
+  width: 30%;
+  aspect-ratio: 1 / 1; /* garante quadrado */
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+
+/* Tooltip lateral */
+.tooltip-lateral {
+  position: absolute;
+  display: none;
+  background-color: rgba(22, 34, 87, 0.95);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  width: 250px;
+  max-width: 90%;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.tooltip-lateral h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.tooltip-lateral p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.tooltip-lateral .close-tooltip {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Responsividade: ajusta largura do tooltip em telas menores */
+@media (max-width: 768px) {
+  .tooltip-lateral {
+    width: 200px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tooltip-lateral {
+    width: 90%;
+    left: 5%;
+    top: auto !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.anexe-sua-memria {
+  	width: 100%;
+  	position: relative;
+  	background-color: #fff;
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	padding: 34px 31px;
+  	box-sizing: border-box;
+  	gap: 33px;
+  	text-align: left;
+  	font-size: 16px;
+  	color: #1e1e1e;
+  	font-family: 'League Spartan';
+}
+.group-icon {
+  	width: 107.7px;
+  	position: relative;
+  	height: 58px;
+}
+.frame-parent {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 16px;
+}
+.frame-group {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+  	gap: 33px;
+}
+.frame-container {
+  	width: 194px;
+  	display: flex;
+  	align-items: flex-start;
+  	justify-content: space-between;
+  	gap: 0px;
+}
+.frame-div {
+  	display: flex;
+  	align-items: center;
+  	gap: 8px;
+}
+.frame-child {
+  	width: 16px;
+  	position: relative;
+  	border-radius: 50px;
+  	background-color: #162257;
+  	height: 16px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+}
+.passo-1 {
+  	position: relative;
+}
+.anexe-sua-memria-frame-parent {
+  	width: 90px;
+  	display: flex;
+  	align-items: center;
+  	gap: 8px;
+}
+.frame-item {
+  	width: 16px;
+  	position: relative;
+  	border-radius: 50px;
+  	background-color: #e0e0e0;
+  	height: 16px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+}
+.frame-parent2 {
+  	width: 366px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 24px;
+  	font-size: 20px;
+  	color: #060d2c;
+}
+.informaes-de-contato-parent {
+  	width: 330px;
+  	height: 77px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 7px;
+}
+.informaes-de-contato {
+  	align-self: stretch;
+  	position: relative;
+}
+.apesar-da-publicao {
+  	align-self: stretch;
+  	flex: 1;
+  	position: relative;
+  	font-size: 14px;
+}
+.frame-parent3 {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 16px;
+  	font-size: 14px;
+  	color: #5a5a5a;
+}
+.email-parent {
+  	align-self: stretch;
+  	height: 55px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 5px;
+}
+.informe-o-seu-email-wrapper {
+  	align-self: stretch;
+  	flex: 1;
+  	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  	border-radius: 16px;
+  	background-color: #fff;
+  	border: 1px solid #d6ceb6;
+  	display: flex;
+  	align-items: flex-start;
+  	padding: 12px 16px;
+}
+.informe-o-seu {
+  	flex: 1;
+  	position: relative;
+}
+.telefone-parent {
+  	align-self: stretch;
+  	height: 55px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 5px;
+}
+.cpf-parent {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 5px;
+}
+.informe-o-seu-cpf-wrapper {
+  	align-self: stretch;
+  	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  	border-radius: 16px;
+  	background-color: #fff;
+  	border: 1px solid #d6ceb6;
+  	box-sizing: border-box;
+  	height: 37px;
+  	display: flex;
+  	align-items: flex-start;
+  	padding: 12px 16px;
+}
+.prosseguir-com-o-envio-da-mem-wrapper {
+  	width: 362px;
+  	border-radius: 16px;
+  	background-color: #162257;
+  	height: 37px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 12px 16px;
+  	box-sizing: border-box;
+  	text-align: center;
+  	font-size: 14px;
+  	color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+.anexe-sua-memria {
+  	width: 100%;
+  	position: relative;
+  	background-color: #fff;
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	padding: 34px 31px;
+  	box-sizing: border-box;
+  	gap: 33px;
+  	text-align: left;
+  	font-size: 16px;
+  	color: #1e1e1e;
+  	font-family: 'League Spartan';
+}
+.group-icon {
+  	width: 107.7px;
+  	position: relative;
+  	height: 58px;
+}
+.frame-parent {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 33px;
+}
+.frame-group {
+  	width: 194px;
+  	display: flex;
+  	align-items: flex-start;
+  	justify-content: space-between;
+  	gap: 0px;
+}
+.frame-container {
+  	display: flex;
+  	align-items: center;
+  	gap: 8px;
+}
+.frame-child {
+  	width: 16px;
+  	position: relative;
+  	border-radius: 50px;
+  	background-color: #e8e8e8;
+  	height: 16px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+}
+.passo-1 {
+  	position: relative;
+}
+.frame-div {
+  	width: 90px;
+  	display: flex;
+  	align-items: center;
+  	gap: 8px;
+}
+.frame-item {
+  	width: 16px;
+  	position: relative;
+  	border-radius: 50px;
+  	background-color: #162257;
+  	height: 16px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+}
+.frame-wrapper {
+  	width: 366px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	font-size: 20px;
+  	color: #060d2c;
+}
+.deixe-uma-memria-parent {
+  	width: 330px;
+  	height: 77px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 7px;
+}
+.deixe-uma-memria {
+  	align-self: stretch;
+  	position: relative;
+}
+.deixe-um-momento {
+  	align-self: stretch;
+  	flex: 1;
+  	position: relative;
+  	font-size: 14px;
+}
+.anexe-sua-memria-frame-parent {
+  	width: 362px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 16px;
+  	font-size: 14px;
+  	color: #5a5a5a;
+}
+.ttulo-para-a-memria-parent {
+  	align-self: stretch;
+  	height: 55px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 5px;
+}
+.escreva-um-ttulo-para-a-sua-m-wrapper {
+  	align-self: stretch;
+  	flex: 1;
+  	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  	border-radius: 16px;
+  	background-color: #fff;
+  	border: 1px solid #d6ceb6;
+  	display: flex;
+  	align-items: flex-start;
+  	padding: 12px 16px;
+}
+.escreva-um-ttulo {
+  	flex: 1;
+  	position: relative;
+}
+.ano-em-que {
+  	flex: 1;
+  	position: relative;
+  	white-space: pre-wrap;
+}
+.anexe-a-sua-imagem-parent {
+  	align-self: stretch;
+  	height: 62px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 5px;
+}
+.paperclip-wrapper {
+  	align-self: stretch;
+  	flex: 1;
+  	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  	border-radius: 16px;
+  	background-color: #fff;
+  	border: 1px solid #d6ceb6;
+  	display: flex;
+  	align-items: flex-start;
+  	justify-content: flex-end;
+  	padding: 12px 16px;
+}
+.paperclip-icon {
+  	width: 20px;
+  	position: relative;
+  	height: 20px;
+}
+.anexe-sua-memria-frame-wrapper {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+}
+.descrio-parent {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 5px;
+}
+.fale-um-pouco-sobre-a-sua-mem-wrapper {
+  	align-self: stretch;
+  	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  	border-radius: 16px;
+  	background-color: #fff;
+  	border: 1px solid #d6ceb6;
+  	box-sizing: border-box;
+  	height: 81px;
+  	display: flex;
+  	align-items: flex-start;
+  	padding: 12px 16px;
+}
+.envie-sua-memria-wrapper {
+  	align-self: stretch;
+  	border-radius: 16px;
+  	background-color: #162257;
+  	height: 37px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 12px 16px;
+  	box-sizing: border-box;
+  	text-align: center;
+  	color: #fff;
+}
+
+
+
+
+    /* Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    /* Popup */
+    .popup {
+      background: #fff;
+      padding: 34px 31px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    /* Botão fechar */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Inputs */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      font-size: 14px;
+      color: #060d2c;
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid #d6ceb6;
+      padding: 12px 16px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    button {
+      border-radius: 16px;
+      background-color: #162257;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      font-size: 14px;
+    }
+
+
+    .step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #060d2c;
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* cinza inativo */
+  flex-shrink: 0;
+}
+
+.circle.active {
+  background-color: #162257; /* azul ativo */
+  transition: background-color 0.3s;
+}
+
+    </style>
+  	
+  	
+  	
+</head>
+
+<body>
+  <!-- MENU SUPERIOR FIXO -->
+  <div id="menunavtop">
+    <a href="paginicial.html">
+      <img class="group-icon" alt="" src="assets/icones/Group.svg">
+    </a>
+  </div>
+
+  <!-- PRIMEIRA SESSÃO: Frame Group -->
+  <section id="frame-group" class="museu-de-memorias-locais">
+    <div class="frame-container-principal">
+      <h1>MUSEU DE MEMÓRIAS LOCAIS</h1>
+      <div class="imagens-principais">
+        <img src="assets/fotografia/22.jpg" alt="">
+        <img src="assets/fotografia/10.jpg" alt="">
+        <img src="assets/fotografia/03.jpg" alt="">
+        <img src="assets/fotografia/004.jpg" alt="">
+        <img src="assets/fotografia/06.png" alt="">
+        <img src="assets/fotografia/prates.png" alt="">
+        <img src="assets/fotografia/rio branco5.jpg" alt="">
+        <img src="assets/fotografia/IMG_2113.png" alt="">
+      </div>
+      <button id="abrirFormulario">Deixe sua memória</button>
+    </div>
+  </section>
+
+  <!-- SEGUNDA SESSÃO: Argumento Curatorial -->
+  <section class="sessao-argumento-curatorial">
+    <h2 class="acervo">Memórias de Santa Maria</h2>
+    <p>Exibição Memórias Patrimoniais. O acervo foi anexado neste site de forma anônima por moradores de Santa Maria.</p>
+    <div class="conteudo-argumento">
+      <div class="argumento-imagem">
+        <img src="assets/fotografia/03.jpg" alt="Memórias de Santa Maria">
+      </div>
+      <div class="argumento-texto">
+        <b class="titulo-argumento">Argumento Curatorial</b>
+        <p>Exibição Memórias Patrimoniais. O acervo foi anexado neste site de forma anônima por moradores de Santa Maria...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERCEIRA SESSÃO: Acervo -->
+  <section class="acervo-parent">
+    <h2 class="acervo">Acervo</h2>
+    <div class="acervo-grid" id="acervo-grid">
+      <div class="acervo-item">
+        <img src="assets/fotografia/16.png" 
+             alt="Memória"
+             data-titulo="Título da Memória"
+             data-ano="2025"
+             data-descricao="Descrição da memória anexada pelos moradores.">
+      </div>
+      <!-- Novos itens adicionados dinamicamente via JS -->
+    </div>
+  </section>
+
+  <!-- TOOLTIP LATERAL -->
+  <div class="tooltip-lateral" id="tooltip-lateral">
+    <span class="close-tooltip">&times;</span>
+    <h3 id="tooltip-titulo"></h3>
+    <p id="tooltip-ano"></p>
+    <p id="tooltip-descricao"></p>
+  </div>
+
+  <!-- OVERLAYS -->
+  <div class="overlay" id="overlay-contato">
+    <div class="popup">
+      <span class="close-btn" data-close="overlay-contato">&times;</span>
+      <h2>Informações de contato</h2>
+      <p>Apesar da publicação ser anônima, solicitamos seus dados para contato para mantermos uma curadoria cuidadosa.</p>
+      <div class="step-indicator">
+        <div class="step"><div class="circle active"></div><span>Passo 1</span></div>
+        <div class="step"><div class="circle"></div><span>Passo 2</span></div>
+      </div>
+      <form id="form-contato">
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>Telefone</label>
+        <input type="text" name="telefone" required>
+        <label>CPF</label>
+        <input type="text" name="cpf" required>
+        <button type="submit">Prosseguir com o envio da memória</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-memoria">
+    <div class="popup">
+      <span class="close-btn" data-close="overlay-memoria">&times;</span>
+      <h2>Deixe uma memória</h2>
+      <p>Deixe um momento especial guardado no Museu da Memória de Santa Maria!</p>
+      <div class="step-indicator">
+        <div class="step"><div class="circle"></div><span>Passo 1</span></div>
+        <div class="step"><div class="circle active"></div><span>Passo 2</span></div>
+      </div>
+      <form id="form-memoria">
+        <label>Título para a memória</label>
+        <input type="text" name="titulo" required>
+        <label>Ano</label>
+        <input type="number" name="ano" required>
+        <label>Anexe sua imagem</label>
+        <input type="file" name="imagem" accept="image/*" required>
+        <label>Descrição</label>
+        <textarea name="descricao" rows="4" required></textarea>
+        <button type="submit">Enviar memória</button>
+        <button type="button" id="voltar-contato">Voltar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+  // ===== Variáveis globais =====
+  let dadosContato = {};
+  const acervoGrid = document.getElementById("acervo-grid");
+
+  // ===== Tooltip =====
+  const tooltip = document.getElementById('tooltip-lateral');
+  const tooltipTitulo = document.getElementById('tooltip-titulo');
+  const tooltipAno = document.getElementById('tooltip-ano');
+  const tooltipDescricao = document.getElementById('tooltip-descricao');
+  const closeTooltip = tooltip.querySelector('.close-tooltip');
+
+  function atualizarTooltip() {
+    const imgs = document.querySelectorAll('.acervo-item img');
+    imgs.forEach(img => {
+      img.addEventListener('click', () => {
+        tooltipTitulo.textContent = img.dataset.titulo;
+        tooltipAno.textContent = "Ano: " + img.dataset.ano;
+        tooltipDescricao.textContent = img.dataset.descricao;
+
+        const rect = img.getBoundingClientRect();
+        const scrollY = window.scrollY || window.pageYOffset;
+        const scrollX = window.scrollX || window.pageXOffset;
+
+        const tooltipWidth = tooltip.offsetWidth;
+        let left = rect.right + 10 + scrollX;
+        let top = rect.top + scrollY;
+
+        if (left + tooltipWidth > window.innerWidth) {
+          left = rect.left - tooltipWidth - 10 + scrollX;
+        }
+
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+        tooltip.style.display = 'block';
+      });
+    });
+  }
+  atualizarTooltip();
+  closeTooltip.addEventListener('click', () => tooltip.style.display = 'none');
+  document.addEventListener('click', e => {
+    if (!tooltip.contains(e.target) && !e.target.closest('.acervo-item img')) {
+      tooltip.style.display = 'none';
+    }
+  });
+
+  // ===== Overlay e formulários =====
+  document.getElementById("abrirFormulario").addEventListener("click", () => {
+    document.getElementById("overlay-contato").style.display = "flex";
+  });
+
+  document.querySelectorAll(".close-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const target = e.target.dataset.close;
+      document.getElementById(target).style.display = "none";
+    });
+  });
+
+  document.querySelectorAll(".overlay").forEach(overlay => {
+    overlay.addEventListener("click", e => {
+      if (e.target.classList.contains("overlay")) overlay.style.display = "none";
+    });
+  });
+
+  document.getElementById("form-contato").addEventListener("submit", e => {
+    e.preventDefault();
+    dadosContato = Object.fromEntries(new FormData(e.target).entries());
+    document.getElementById("overlay-contato").style.display = "none";
+    document.getElementById("overlay-memoria").style.display = "flex";
+  });
+
+  document.getElementById("voltar-contato").addEventListener("click", () => {
+    document.getElementById("overlay-memoria").style.display = "none";
+    document.getElementById("overlay-contato").style.display = "flex";
+  });
+
+  document.getElementById("form-memoria").addEventListener("submit", async e => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const dadosMemoria = Object.fromEntries(formData.entries());
+
+    // Convert image to Base64
+    const file = formData.get("imagem");
+    const reader = new FileReader();
+    reader.onload = async function() {
+      dadosMemoria.imagem = reader.result;
+      const dadosCompletos = { ...dadosContato, ...dadosMemoria };
+
+      // Envio para Apps Script
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyICOoRsdgwe6_FIlMX3qg4cMecz09ZnQCey4Kzi-7i4nUr1i94yjjk7_nZa30_d0q57A/exec", {
+          method: "POST",
+          body: JSON.stringify(dadosCompletos),
+          headers: { "Content-Type": "application/json" }
+        });
+        const result = await response.json();
+        if(result.status === "sucesso"){
+          alert("Memória registrada!");
+          document.getElementById("overlay-memoria").style.display = "none";
+
+          // Adiciona ao acervo dinamicamente
+          const div = document.createElement("div");
+          div.className = "acervo-item";
+          div.innerHTML = `<img src="${dadosMemoria.imagem}" 
+                                 data-titulo="${dadosMemoria.titulo}" 
+                                 data-ano="${dadosMemoria.ano}" 
+                                 data-descricao="${dadosMemoria.descricao}" 
+                                 alt="${dadosMemoria.titulo}">`;
+          acervoGrid.appendChild(div);
+          atualizarTooltip();
+        } else {
+          alert("Erro: " + result.message);
+        }
+      } catch(err) {
+        alert("Erro de conexão: " + err.message);
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  </script>
+</body>
+
+</html>
