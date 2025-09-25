@@ -1,0 +1,784 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <title>ARqDéco</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+    <link rel="icon" href="../../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      body{
+        background-color: #ffffff;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      #botaovoltar{
+      padding: 10px 20px;
+      background-color: rgba(0,0,0,0);
+      border: 2px solid #F2F2F2;
+      color: #fff;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      }
+
+      #botaovoltar:hover{
+      background-color: #162257;
+      border: 2px solid #162257;
+      transition: 300ms ease-in-out;
+      }
+         @media screen and (min-width: 100px) and (max-width: 600px) {
+       <style>
+
+body{
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos mobile */
+@media screen and (min-width: 100px) and (max-width: 600px) {
+  /* CMS PRÉDIOS */
+  #botoesRAVA {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding: 0 10%;
+    box-sizing: border-box;
+  }
+
+  #botoesRAVA .btnRAVA {
+    display: inline-block;
+    background: #F2F2F2;
+    color: #212121;
+    padding: 12px 24px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  #botoesRAVA .btnRAVA:hover {
+    background: #162257;
+    color: #fff;
+  }
+
+  .nomedopredio {
+    font-weight: 800;
+    font-size: 60%;
+  }
+
+  .crditos-e-curadoria {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+  }
+
+  .arqdco-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .texto-texto-texto {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 10px;
+    color: #ffffff;
+  }
+
+  .frame-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 35vh 10%;
+    box-sizing: border-box;
+  }
+
+  .frame-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('../../assets/fotografia/003-escura.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    font-size: 64px;
+    box-sizing: border-box;
+  }
+
+  .prediocms {
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    text-align: left;
+    font-size: 0.9em;
+    color: #fff;
+    font-family: 'League Spartan';
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  #titulosessao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    color: #FFF9E9;
+    font-size: 30px;
+    font-family: 'League Spartan';
+    font-weight: 700;
+    width: 100%;
+    padding: 0 2%;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    box-sizing: border-box;
+  }
+
+  #dadoshistoricos {
+    display: flex;
+    flex-direction: column;
+    background-color: #162257;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 24px;
+    color: #FFF9E9;
+    font-size: 24px;
+    font-family: 'League Spartan';
+    font-weight: 700;
+    width: 100%;
+    padding: 0 auto 40px 2%;
+    box-sizing: border-box;
+  }
+
+  #imagem-container {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 17px; 
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 2%;
+    box-sizing: border-box;
+  }
+
+  .imagem-click {
+    width: 80vw; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 16px;
+  }
+
+  #descricaohistoria {
+    width: 100%;
+    max-width: 80%;
+    padding: 30px auto 120px 2%;
+    text-align: left; 
+    line-height: 18px;
+    color: #FFF9E9; 
+    font-size: 16px; 
+    font-family: 'League Spartan'; 
+    font-weight: 400;
+    box-sizing: border-box;
+    margin-top: 24px;
+    margin-bottom: 80px;
+  }
+
+  .conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 10%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+}
+
+      }
+      @media screen and (min-width: 600px) and (max-width: 1024px) {
+        /* CMS PRÉDIOS */
+      #botoesRAVA {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      #botoesRAVA .btnRAVA {
+        display: inline-block;
+        background: #F2F2F2;
+        color: #212121;
+        padding: 12px 24px;
+        border-radius: 16px;
+        text-decoration: none; /* remove sublinhado */
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+      }
+
+      /* Hover unificado */
+      #botoesRAVA .btnRAVA:hover {
+        background: #162257;
+        color: #fff;
+      }
+
+              .nomedopredio {
+                  align-self: stretch;
+                  position: relative;
+                  font-weight: 800;
+                  font-size: 100%;
+              }
+              .crditos-e-curadoria {
+                  align-self: stretch;
+                  position: relative;
+                  font-size: 20px;
+                  line-height: 26px;
+                  font-weight: 800;
+              }
+              .arqdco-parent {
+                  align-self: stretch;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: center;
+              }
+              .texto-texto-texto {
+                  max-width: 60vw;
+                  font-size: 18px;
+                  line-height: 20px;
+                  margin-top: 10px;
+                  color: #ffffff;
+              }
+              .frame-group {
+                  width: 100vw;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  gap: 8px;
+                  padding: 35vh 12%;
+              }
+              .frame-wrapper {
+                  align-self: stretch;
+                  position: relative;
+                  height: 100vh;
+                  overflow: hidden;
+                  flex-shrink: 0;
+                  background-image: url('../../assets/fotografia/003-escura.png');
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  background-position: top;
+                  font-size: 64px;
+              }
+
+              .prediocms {
+                width: 100%;
+                min-height: 100vh; /* garante altura mínima */
+                text-align: left;
+                font-size: 0.9em;
+                color: #fff;
+                font-family: 'League Spartan';
+                
+                display: flex;
+                flex-direction: column;
+                }
+
+            #titulosessao{
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;  /* já alinha à esquerda */
+              justify-content: flex-start; /* garante alinhamento vertical do topo */
+              text-align: left; /* força o texto dentro dos filhos a alinhar à esquerda */
+              color: #FFF9E9;
+              font-size: 30px;
+              font-family: 'League Spartan';
+              font-weight: 700;
+              margin-left: 10%;
+              margin-bottom: 20px;
+              margin-top: 10px;
+            }
+
+            #dadoshistoricos {
+              display: flex;
+              flex-direction: column;
+              background-color: #162257;
+              align-items: flex-start;  /* já alinha à esquerda */
+              justify-content: flex-start; /* garante alinhamento vertical do topo */
+              text-align: left; /* força o texto dentro dos filhos a alinhar à esquerda */
+              gap: 24px;
+              color: #FFF9E9;
+              font-size: 30px;
+              font-family: 'League Spartan';
+              font-weight: 700;
+        
+      }
+
+              #imagem-container {
+                display: flex; 
+                justify-content: flex-start; 
+                align-items: flex-start; 
+                gap: 17px; 
+                flex-wrap: nowrap;
+                margin-left: 10%;
+                }
+
+              .imagem-click {
+                width: 150px; 
+                height: 200px; 
+                object-fit: cover; 
+                border-radius: 16px;
+                }
+              #descricaohistoria{
+                width: 60vw; 
+                padding-top: 30px;
+                padding-bottom: 80px; 
+                text-align: left; 
+                line-height: 20px;
+                color: #FFF9E9; 
+                font-size: 18px; 
+                font-family: 'League Spartan'; 
+                font-weight: 400;
+                margin-left: 10%;
+                }
+              .conteudo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 40px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+                z-index: 1;
+                text-align: center;
+              }
+
+      }
+
+      @media screen and (min-width: 1024px) {
+        /* CMS PRÉDIOS */
+      #botoesRAVA {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      #botoesRAVA .btnRAVA {
+        display: inline-block;
+        background: #F2F2F2;
+        color: #212121;
+        padding: 18px 34px;
+        border-radius: 16px;
+        text-decoration: none; /* remove sublinhado */
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+      }
+
+      /* Hover unificado */
+      #botoesRAVA .btnRAVA:hover {
+        background: #162257;
+        color: #fff;
+      }
+
+              .nomedopredio {
+                  align-self: stretch;
+                  position: relative;
+                  font-weight: 800;
+                  font-size: 200%;
+              }
+              .crditos-e-curadoria {
+                  align-self: stretch;
+                  position: relative;
+                  font-size: 24px;
+                  line-height: 26px;
+                  font-weight: 800;
+              }
+              .arqdco-parent {
+                  align-self: stretch;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: center;
+              }
+              .texto-texto-texto {
+                  max-width: 40vw;
+                  font-size: 24px;
+                  line-height: 26px;
+                  margin-top: 10px;
+                  color: #ffffff;
+              }
+              .frame-group {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  gap: 8px;
+                  padding: 35vh 12%;
+              }
+              .frame-wrapper {
+                  align-self: stretch;
+                  position: relative;
+                  height: 100vh;
+                  overflow: hidden;
+                  flex-shrink: 0;
+                  background-image: url('../../assets/fotografia/003-escura.png');
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  background-position: top;
+                  font-size: 64px;
+              }
+
+              .prediocms {
+                width: 100%;
+                min-height: 100vh; /* garante altura mínima */
+                text-align: left;
+                font-size: 0.9em;
+                color: #fff;
+                font-family: 'League Spartan';
+                
+                display: flex;
+                flex-direction: column;
+                }
+
+            #titulosessao{
+              display: flex;
+              flex-direction: column;
+              background-color: #162257;
+              align-items: flex-start;  /* já alinha à esquerda */
+              justify-content: flex-start; /* garante alinhamento vertical do topo */
+              text-align: left; /* força o texto dentro dos filhos a alinhar à esquerda */
+              gap: 24px;
+              color: #FFF9E9;
+              font-size: 30px;
+              font-family: 'League Spartan';
+              font-weight: 700;
+              margin-left: 10%;
+              margin-bottom: 30px;
+              margin-top: 60px;
+            }
+
+            #dadoshistoricos {
+              display: flex;
+              flex-direction: column;
+              background-color: #162257;
+              align-items: flex-start;  /* já alinha à esquerda */
+              justify-content: flex-start; /* garante alinhamento vertical do topo */
+              text-align: left; /* força o texto dentro dos filhos a alinhar à esquerda */
+              gap: 24px;
+              color: #FFF9E9;
+              font-size: 30px;
+              font-family: 'League Spartan';
+              font-weight: 700;
+        
+      }
+
+              #imagem-container {
+                display: flex; 
+                justify-content: flex-start; 
+                align-items: flex-start; 
+                gap: 17px; 
+                flex-wrap: nowrap;
+                margin-left: 10%;
+                }
+
+              .imagem-click {
+                width: 30vw; 
+                height: 50vh; 
+                object-fit: cover; 
+                border-radius: 16px;
+                }
+              #descricaohistoria{
+                width: 60vw; 
+                padding-top: 30px;
+                padding-bottom: 80px; 
+                text-align: left; 
+                line-height: 24px;
+                color: #FFF9E9; 
+                font-size: 20px; 
+                font-family: 'League Spartan'; 
+                font-weight: 400;
+                margin-left: 10%;
+                }
+              .conteudo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 40px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+                z-index: 1;
+                text-align: center;
+              }
+
+      }
+
+
+    </style>
+    
+  </head>
+  <!-- Lightbox2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+  <body>
+   <!-- MENU SUPERIOR FIXO -->
+<div id="menunavtop">
+  <a href="../../paginicial.html">
+    <img class="group-icon" alt="" src="../../assets/icones/Group.svg">
+  </a>
+</div>
+
+<div class="prediocms">
+  <div class="frame-wrapper">
+    <div class="frame-group">
+      <div class="arqdco-parent">
+        <!-- Botão de voltar -->
+  <div style="margin: 20px 0;">
+    <button onclick="history.back()" id="botaovoltar">
+    Voltar
+    </button>
+  </div>
+        <div class="nomedopredio">Edifício Cauduro</div>
+        <div class="crditos-e-curadoria">Av. Rio Branco, 893 - Centro, Santa Maria</div>
+      </div>
+      <div class="texto-texto-texto">
+         O Edifício Cauduro, mais conhecido como “antigo Hotel Jantzen”, está localizado na Avenida Rio Branco, centro histórico da cidade de Santa Maria, no Rio Grande do Sul. A edificação, Art Déco, de uso misto, comercial e hospedagem, construído entre 1939 e 1941, representa um momento de auge do crescimento econômico e urbano de uma cidade no interior do estado.
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+
+<div id="botoesRAVA">
+  <a href="cauduroRA.html" class="btnRAVA">Realidade Aumentada</a>
+  <a href="cauduroVAteste.html" class="btnRAVA">Virtualidade Aumentada</a>
+</div>
+
+
+  <div id="a-frame">
+  <a-scene
+    embedded
+    style="width: 100%; height: 400px; position: relative; z-index: 1; margin-top: 40px; background-color: #ffffff;"
+    stats="false"
+    vr-mode-ui="false">
+
+    <!--Assets e imagens-->
+    <a-assets>
+      <a-asset-item id="cauduro3d" src="..\..\assets\3d\jantzen.glb"></a-asset-item>
+    </a-assets>  
+
+    <!--Cena e interface-->
+    <a-camera position="0 0 0">
+      <a-gltf-model id="predio" src="#cauduro3d" position="0 -2 -4" scale="0.4 0.4 0.4" rotation="0 45 0"></a-gltf-model>
+    </a-camera>
+  </a-scene>
+
+  <script>
+    const predio = document.getElementById("predio");
+
+    let isDragging = false;
+    let previousMouseX = 0;
+    let rotationY = 45; // valor inicial
+    let rotationX = 0; // valor inicial
+
+    // Início do clique/arraste
+    document.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      previousMouseX = e.clientX;
+    });
+
+    // Fim do clique/arraste
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+    // Movimento do mouse
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      const deltaX = e.clientX - previousMouseX;
+      previousMouseX = e.clientX;
+
+      rotationY += deltaX * 0.5; // ajuste de sensibilidade
+      predio.setAttribute("rotation", `${rotationX} ${rotationY} 0`);
+    });
+
+    // Suporte para toque
+    document.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      previousMouseX = e.touches[0].clientX;
+    });
+
+    document.addEventListener("touchend", () => {
+      isDragging = false;
+    });
+
+    document.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+
+      const currentX = e.touches[0].clientX;
+      const deltaX = currentX - previousMouseX;
+      previousMouseX = currentX;
+
+      rotationY += deltaX * 0.5;
+      predio.setAttribute("rotation", `${rotationX} ${rotationY} 0`);
+    });
+  </script>
+</div>
+
+
+<!-- SEÇÃO DAS IMAGENS -->
+<div id="dadoshistoricos" class="conteudo">
+  <div>
+    <div id="titulosessao">
+      Dados históricos
+    </div>
+    <div id="imagem-container">
+      <img class="imagem-click" src="../../assets/fotografia/003.jpg" />
+      <img class="imagem-click" src="../../assets/fotografia/004.jpg" />
+      <img class="imagem-click" src="../../assets/fotografia/_DSC0804.jpg" />
+    </div>
+    <div id="descricaohistoria">
+      Quem fundou o prédio:<br />
+      O que era o prédio ao longo do tempo:<br />
+      Referências:
+    </div>
+  </div>
+</div>
+
+
+<!-- POPUP CARROSSEL -->
+<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 9999;">
+  <span id="closeBtn" style="position: absolute; top: 20px; right: 30px; font-size: 32px; color: white; cursor: pointer;">&times;</span>
+  <span id="prevBtn" style="position: absolute; left: 20px; font-size: 48px; color: white; cursor: pointer;">&#10094;</span>
+  <img id="popupImg" style="max-width: 90vw; max-height: 90vh; border-radius: 12px;" />
+  <span id="nextBtn" style="position: absolute; right: 20px; font-size: 48px; color: white; cursor: pointer;">&#10095;</span>
+</div>
+
+<script>
+  const images = Array.from(document.querySelectorAll('.imagem-click'));
+  const popup = document.getElementById('popup');
+  const popupImg = document.getElementById('popupImg');
+  const closeBtn = document.getElementById('closeBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    popupImg.src = images[index].src;
+    currentIndex = index;
+    popup.style.display = 'flex';
+  }
+
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => showImage(i));
+  });
+
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    popupImg.src = images[currentIndex].src;
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    popupImg.src = images[currentIndex].src;
+  });
+
+  // Também permite fechar ao clicar fora da imagem
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.style.display = 'none';
+  });
+
+  // Setas do teclado (opcional)
+  document.addEventListener('keydown', (e) => {
+    if (popup.style.display === 'flex') {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'Escape') closeBtn.click();
+    }
+  });
+</script>
+
+
+  <!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
+<div id="menuToggleBottom">
+  <button id="toggleBtnBottom">☰</button>
+</div>
+
+<!-- OVERLAY ESCURO DO MENU INFERIOR -->
+<div id="menuOverlayBottom"></div>
+
+<!-- MENU INFERIOR (ESCONDIDO INICIALMENTE) -->
+<div id="menunavfooter">
+  <a href="../../paginicial.html">
+    <img src="../../assets/icones/home.svg" alt="Início">
+    <span>Início</span>
+  </a>
+  <a href="../../sobre.html">
+    <img src="../../assets/icones/hexagon.svg" alt="Sobre">
+    <span>Sobre</span>
+  </a>
+  <a href="../../map.html">
+    <img src="../../assets/icones/map.svg" alt="Mapa">
+    <span>Mapa</span>
+  </a>
+  <a href="../../creditos.html">
+    <img src="../../assets/icones/pen-tool.svg" alt="Creditos">
+    <span>Curadoria</span>
+  </a>
+</div>
+
+<script>
+const toggleBtnBottom = document.getElementById("toggleBtnBottom");
+const footerMenu = document.getElementById("menunavfooter");
+const overlayBottom = document.getElementById("menuOverlayBottom");
+
+toggleBtnBottom.addEventListener("click", () => {
+  footerMenu.classList.toggle("active");
+  overlayBottom.classList.toggle("active");
+});
+
+// Fecha ao clicar no overlay
+overlayBottom.addEventListener("click", () => {
+  footerMenu.classList.remove("active");
+  overlayBottom.classList.remove("active");
+});
+</script>
+
+  </body>
+</html>
+
