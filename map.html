@@ -6,6 +6,7 @@
 <script src="js/js.js"></script>
 <title>Mapa Avenida Rio Branco - ARqDéco</title>
 <link rel="icon" href="../assets/icones/favicon_Prancheta 1.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=replay" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   body {
@@ -13,6 +14,43 @@
     font-family: "League Spartan", sans-serif;
     background-color: #f4f3ef;
   }
+
+#botaoaudio {
+ background:#565656;
+ color:#f4f3ef;
+ padding:10px 20px;
+ border:none;
+ border-radius:16px;
+ cursor:pointer;
+}
+
+#botaoaudio:hover {
+ background:#060D2C;
+ transition: 150ms ease-in;
+}
+
+/* Estilo para o novo botão de reiniciar */
+.restart-btn {
+    background-color: #fff;/* Mesma cor do botão de play */
+    border: 2px solid #545454;
+    width: 44px;  /* Largura fixa */
+    height: 44px; /* Altura fixa */
+    border-radius: 16px; /* Deixa o botão redondo */
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Impede que o botão encolha */
+    transition: background-color 0.2s ease;
+}
+
+.restart-btn:hover {
+    background-color: #f4f3ef; /* Cor um pouco mais clara ao passar o mouse */
+}
+
+/* Estilo para o ícone SVG dentro do botão */
+.restart-btn svg {
+    stroke: #545454; /* Cor da linha do ícone */
+}
 
 /* container fixo no canto */
 #viewToggle {
@@ -1033,6 +1071,48 @@ font-family: league spartan;
 
 
 </style>
+<style>
+  /* Estilo para o ícone de localização do usuário */
+.user-location-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #007bff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%); /* Centraliza o ícone no ponto exato */
+    z-index: 1000; /* Garante que fique acima dos outros elementos */
+    pointer-events: none; /* Impede que o ícone bloqueie cliques no mapa */
+}
+
+/* Animação de pulso para chamar atenção */
+.user-location-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #007bff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -1162,7 +1242,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Construído em concreto armado com quatro pavimentos, é uma edificação que ainda hoje se impõe na paisagem de Santa Maria, apesar da degradação e da ocupação parcial. O prédio se estende entre as duas ruas, tem sua fachada principal voltada para a Avenida Rio Branco, e é composto por seis andares, dos quais o térreo comporta salas comerciais e, os demais, quartos amplos. Cada andar possuía seis banheiros coletivos. Possuía também dois elevadores, o que era um luxo para a época, e um restaurante no quinto andar, que foi cenário de diversos encontros políticos. O prédio, construído dentro dos princípios modernos, mostra aspectos formais do Art Déco; revestimento em mica, dando aparência acinzentada, aspecto aerodinâmico, detalhes geométricos em relevo na fachada, janelas de madeira, fachada com reentrâncias e saliências, construção arredondada na esquina, relevos verticais, Platibanda escalonada e com frisos geométricos. Na memória da cidade, também ficou à presença comercial da Casa Eny, uma loja tradicional que ocupou o térreo por muitos anos.</p>
     <p CLASS="endereco">Av. Rio Branco, 893 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/CAUDURO/cauduro.html">Saiba Mais</a></button>
-    </div>
+    <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+    <button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
   </div>
 </div>
 
@@ -1178,7 +1264,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Com seus oito andares, três apartamentos por andar, além de um piso inteiro dedicado ao comércio (a Eny Calçados funcionou no andar térreo desde a inauguração do prédio até 1998), o Mauá ganhou forma na esquina da Avenida Rio Branco com a Rua Silva Jardim, e tornou-se a quarta construção da cidade a contar com elevador, uma grande modernidade da época.  </p>
     <p CLASS="endereco">Av. Rio Branco, 1864 - Centro, Santa Maria.</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/MAUA/maua.html">Saiba Mais</a></button>
- </div>
+<button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
 </div>
 </div>
 
@@ -1194,7 +1286,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>O edifício foi construído, em 1943, pelo engenheiro João Servegmini e pertence a Francisco Isaía. Com três pavimentos e subsolo, é um exemplo de Art Déco pelo seu sistema construtivo e pela aparência formal não só de sua fachada, como da formatação e confluência de suas divisórias. São notáveis, no prédio, a predominância de cheios sobre vazios, os volumes e ornamentos geometrizados e simplificados, o aspecto aerodinâmico da fachada, as estruturas em concreto armado e o revestimento em pó-de-pedra denominado mica.</p>
     <p CLASS="endereco">Av. Rio Branco, 548 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/FRANCISMARI/francismari.html">Saiba Mais</a></button>
- </div>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
 </div>
 </div>
 
@@ -1210,6 +1308,12 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Nesta edificação, um elemento inédito surge na ornamentação que envolve as laterais das janelas em mica, o buquê floral. Nenhum dos outros exemplares possui este detalhe, nem mesmo mais estilizado. A quadra onde a construção está inserida possui um conjunto de outros edifícios semelhantes em ornamentação Art Déco com o Carmen Bicca, reforçando seu valor como parte de um conjunto histórico.</p>
     <p CLASS="endereco">Av. Rio Branco, 404 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/BICCA/bicca.html">Saiba Mais</a></button>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
   </div>
 </div>
 </div>
@@ -1226,6 +1330,12 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Construído na década de 1950, o edifício Emérita possui diversos elementos característicos de Art Déco, na sua fachada percebe-se a sacada curva na esquina decorada com elementos geométricos zigue-zague e letreiro em alto relevo, indicando o seu nome. Também, na diferença entre as platibandas que compõe o coroamento, na esquina, nota-se a horizontalidade, e nas demais, a verticalidade, que conferem um aspecto ascensional. Uma composição simétrica é encontrada em um volume semi-embutido na lateral do edifício, na qual ocorre uma demarcação da escadaria do acesso.</p>
     <p CLASS="endereco">Av. Rio Branco, 390 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/EMERITA/emerita.html">Saiba Mais</a></button>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
   </div>
 </div>
 </div>
@@ -1242,6 +1352,12 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Esta edificação de quatro pavimentos, cuja fachada principal se volta de forma simétrica para o logradouro principal, tem seu acesso principal recuado e protegido por uma marquise. Esse elemento horizontal divide a composição em base, corpo e coroamento, com a presença de frisos em baixo e alto relevo. Esta característica do estilo, conjuntamente com os cheios e vazios, com as aberturas da circulação vertical, com as sacadas em curva localizadas na esquina e os frisos e ornamentações lineares, denotam um aspecto aerodinâmico à edificação.</p>
     <p CLASS="endereco">Av. Rio Branco, 378 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/IBIRAPUITA/ibirapuita.html">Saiba Mais</a></button>
+  <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
   </div>
 </div>
 </div>
@@ -1258,7 +1374,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>O edifício Santa Maria, com a composição tripartida (base – corpo – coroamento), se destaca devido ao escalonamento que acentua a simetria percebida na esquina. Balcões arredondados e em balanço possuem aplicação de elementos geométricos vazados. O edifício também dispõe de frisos horizontais que destacam a volumetria curva da esquina. Novamente o acesso ocorre pela antiga avenida Progresso.</p>
     <p CLASS="endereco">Av. Rio Branco, 354 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/SANTAMARIA/santamaria.html">Saiba Mais</a></button>
- </div>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
 </div>
 </div>
 
@@ -1274,7 +1396,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Localizado na Avenida Rio Branco e construído antes da década de sessenta, o Edifício Eduardo de Moraes apresenta em sua fachada os elementos da arquitetura Art Déco: platibanda em forma aerodinâmica, geometrismo, linhas verticais, construção com estrutura em concreto armado, sacadas, janelas de madeira, escadaria com vitrais e letreiro na fachada com letras características do estilo. Possui construção tripartida em base, corpo e coroamento escalonado, revestimento de granitina e estrutura de concreto armado. É uma construção que está preservada e mantém semelhança com outras que lhe são próximas, formando uma unidade que contribui para a identidade da Avenida Rio Branco. (FOLETTO, 2013, p.163)</p>
     <p CLASS="endereco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/EDUARDOMORAES/eduardomoraes.html">Saiba Mais</a></button>
- </div>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
 </div>
 </div>
 
@@ -1290,6 +1418,12 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>A edificação de quatro pavimentos de propriedade de Raimundo Cauduro também foi construído na década de 1960. São identificados diversos elementos característicos do Art Déco Marajoara na edificação, além da simetria central bilateral, que é marcada por dois acessos, acabamento curvo das sacadas, estrutura tripartida entre base, corpo e coroamento, platibanda escalonada com aplicação de traçado geométrico e elementos zigue-zague. Dentro do nosso percurso, este é o único exemplar que apresenta a influência Marajoara, referência com poucos exemplares na cidade, podendo assim expressar no recorte o universo local.</p>
     <p CLASS="endereco">Av. Rio Branco, 318 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/RAIMUNDOCAUDURO/raimundocauduro.html">Saiba Mais</a></button>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
   </div>
 </div>
 </div>
@@ -1306,6 +1440,12 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Informações e foto do Edifício Correio do Povo.</p>
     <p CLASS="endereco">Av. Rio Branco, 166 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/CORREIO/correio.html">Saiba Mais</a></button>
+  <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
   </div>
 </div>
 </div>
@@ -1325,7 +1465,13 @@ O projeto do conjunto e sua construção dataram do final da década de 1930 e i
 Texto de Francisco Queruz</p>
     <p CLASS="endereco">Av. Rio Branco, 167 - Centro, Santa Maria</p>
     <button style="background:#162257;color:#fff;padding:10px 20px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/DARLINGPRATES/darlingprates.html">Saiba Mais</a></button>
-</div>  
+<button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>  
 </div>
 </div>
 
@@ -1341,9 +1487,133 @@ Texto de Francisco Queruz</p>
     <p>O edifício Mabi também situa-se no extremo norte da Avenida Rio Branco, nas proximidades da estação férrea. Construído em 1957, é composto por três pavimentos, sendo o térreo comercial e os outros dois residenciais. As paredes externas são revestidas com mica, e as esquadrias na fachada principal da parte comercial são mistas, de madeira e metálicas. As esquadrias originais de madeira foram mantidas nos demais pavimentos, sem bandeira e com verga reta em formato linear. O edifício possui diversos elementos característicos do Art Déco, tal como balcões, marquises, planos sobrepostos, volumes ritmados, valorização dos acessos, pilares, frisos verticais e a tipologia Broadway sinalizando o seu nome na fachada. Além desses, percebe-se a platibanda escalonada com aplicação de frisos horizontais, sacadas arredondas em balanço, que remetem ao aero dinamismo e simetria bilateral.</p>
     <p CLASS="endereco">Av. Rio Branco, 134 - Centro, Santa Maria</p>
     <button style="font-family: league spartan;  background:#162257;color:#fff;padding:12px 24px;border:none;border-radius:16px;cursor:pointer;"><a href="paginascms/MABI/mabi.html">Saiba Mais</a></button>
- </div>
+ <button class="audio-btn" data-audio="assets/audio/cauduro.mp3" id="botaoaudio"> ▶ Ouvir Narrativa  </button>
+<button class="restart-btn" title="Reiniciar Áudio">
+        <span class="material-symbols-outlined">
+            replay
+        </span>
+    </button>
+  </div>
 </div>
 </div>
+
+
+<!-- script para controlar o audio -->
+<script>
+// Captura todos os pins que têm data-popup
+const pins = document.querySelectorAll('.pin[data-popup]');
+const popups = document.querySelectorAll('.popup-overlay');
+
+pins.forEach(pin => {
+  pin.addEventListener('click', () => {
+    // Antes de abrir um novo popup, pare qualquer áudio que possa estar tocando.
+    if (typeof stopAndResetAudio === 'function') {
+        stopAndResetAudio();
+    }
+    
+    const popupId = pin.getAttribute('data-popup');
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.classList.add('active');
+    }
+  });
+});
+
+popups.forEach(popup => {
+  const btnFechar = popup.querySelector('.fecharPopup');
+  
+  // Fecha ao clicar no botão "X"
+  btnFechar.addEventListener('click', () => {
+    popup.classList.remove('active');
+    if (typeof stopAndResetAudio === 'function') {
+        stopAndResetAudio();
+    }
+  });
+
+  // Fecha ao clicar fora do conteúdo (no overlay)
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      popup.classList.remove('active');
+      if (typeof stopAndResetAudio === 'function') {
+        stopAndResetAudio();
+      }
+    }
+  });
+});
+</script>
+
+
+<script>
+let currentAudio = null;
+let currentButton = null;
+
+// Função para parar e resetar completamente o áudio atual
+function stopAndResetAudio() {
+    if (currentAudio) {
+        currentAudio.pause(); // Pausa a reprodução
+        currentAudio.currentTime = 0; // Volta para o início
+        if (currentButton) {
+            currentButton.textContent = '▶ Ouvir Narrativa'; // Reseta o botão
+        }
+        // Limpa as variáveis de estado
+        currentAudio = null;
+        currentButton = null;
+    }
+}
+
+// Lógica para os botões de Play/Pause
+document.querySelectorAll('.audio-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const audioSrc = button.getAttribute('data-audio');
+
+    if (currentAudio && currentAudio !== button.audio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      if (currentButton) {
+        currentButton.textContent = '▶ Ouvir Narrativa';
+      }
+    }
+
+    if (!button.audio) {
+      button.audio = new Audio(audioSrc);
+      button.audio.onended = () => {
+        button.textContent = '▶ Ouvir Narrativa';
+        currentAudio = null; 
+        currentButton = null;
+      };
+    }
+
+    currentAudio = button.audio;
+    currentButton = button;
+
+    if (currentAudio.paused) {
+      currentAudio.play();
+      button.textContent = '⏸ Pausar Narrativa';
+    } else {
+      currentAudio.pause();
+      button.textContent = '▶ Ouvir Narrativa';
+    }
+  });
+});
+
+// Lógica para o botão de reiniciar
+document.querySelectorAll('.restart-btn').forEach(restartButton => {
+    restartButton.addEventListener('click', () => {
+        const audioBtn = restartButton.previousElementSibling;
+        if (audioBtn && audioBtn.audio) {
+            currentAudio = audioBtn.audio;
+            currentButton = audioBtn;
+            currentAudio.currentTime = 0;
+            currentAudio.play();
+            currentButton.textContent = '⏸ Pausar Narrativa';
+        }
+    });
+});
+</script>
+
+</body>
+
+
 
 <!-- script para controlar zoom -->
 <style>
@@ -1577,6 +1847,129 @@ window.addEventListener("load", centralizarMapa);
   // inicializa
   updateTransform();
 })();
+</script>
+
+
+<!-- GEOLOCALIZAÇÃO -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // =================================================================================
+    // ! IMPORTANTE: EDITE ESTES VALORES !
+    // Você precisa preenchê-los com as coordenadas corretas da sua área de mapa.
+    // Veja as instruções abaixo do código sobre como obter esses valores.
+    // =================================================================================
+
+    // 1. Defina a "caixa" (bounding box) da área do seu mapa.
+    // O usuário só aparecerá no mapa se estiver dentro dessas coordenadas.
+    const mapBounds = {
+        minLat: -29.687519, // Latitude mínima (Sul)
+        maxLat: -29.677693, // Latitude máxima (Norte)
+        minLon: -53.813770, // Longitude mínima (Oeste)
+        maxLon: -53.805356  // Longitude máxima (Leste)
+    };
+
+    // 2. Defina DOIS pontos de referência para o mapeamento.
+    // Pegue dois pontos bem distantes no seu mapa para maior precisão.
+    // Ex: O início e o fim da Av. Rio Branco no seu SVG.
+
+    // Ponto de Referência 1 (Ex: Mabi), top: 53%; left: 15.3%;
+    const refPoint1 = {
+        geo: { lat: -29.678706, lon: -53.809289 }, // Coordenadas geográficas REAIS
+        pixel: { top: '53%', left: '15.3%' }      // Posição no seu CSS (ex: .gare)
+    };
+
+    // Ponto de Referência 2 (Ex: Cauduro) top: 47%; left: 76.2%;
+    const refPoint2 = {
+        geo: { lat: -29.685776, lon: -53.807536 }, // Coordenadas geográficas REAIS
+        pixel: { top: '47%', left: '76.2%' }     // Posição no seu CSS (ex: .pracamarinho)
+    };
+
+    // =================================================================================
+    // FIM DA ÁREA DE EDIÇÃO
+    // =================================================================================
+
+
+    // Função que converte as coordenadas geográficas para pixels (top/left em %)
+    function mapGeoToPixel(userLat, userLon) {
+        // Remove o '%' e converte para número
+        const p1_top = parseFloat(refPoint1.pixel.top);
+        const p1_left = parseFloat(refPoint1.pixel.left);
+        const p2_top = parseFloat(refPoint2.pixel.top);
+        const p2_left = parseFloat(refPoint2.pixel.left);
+
+        // Calcula a "distância" total em coordenadas e em pixels
+        const geoLatSpan = refPoint2.geo.lat - refPoint1.geo.lat;
+        const geoLonSpan = refPoint2.geo.lon - refPoint1.geo.lon;
+        const pixelTopSpan = p2_top - p1_top;
+        const pixelLeftSpan = p2_left - p1_left;
+
+        // Calcula a proporção da posição do usuário dentro do intervalo geográfico
+        const latFraction = (userLat - refPoint1.geo.lat) / geoLatSpan;
+        const lonFraction = (userLon - refPoint1.geo.lon) / geoLonSpan;
+
+        // Aplica essa proporção ao intervalo de pixels para encontrar a posição final
+        const userTop = p1_top + (latFraction * pixelTopSpan);
+        const userLeft = p1_left + (lonFraction * pixelLeftSpan);
+
+        return { top: `${userTop}%`, left: `${userLeft}%` };
+    }
+
+
+    // Função principal que executa a geolocalização
+    function showUserLocation() {
+        if (!navigator.geolocation) {
+            console.log("Geolocalização não é suportada por este navegador.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLat = position.coords.latitude;
+                const userLon = position.coords.longitude;
+
+                console.log(`Sua posição: Lat ${userLat}, Lon ${userLon}`);
+
+                // Verifica se a localização do usuário está dentro da área do mapa
+                if (
+                    userLat >= mapBounds.minLat && userLat <= mapBounds.maxLat &&
+                    userLon >= mapBounds.minLon && userLon <= mapBounds.maxLon
+                ) {
+                    console.log("Usuário está dentro da área do mapa!");
+
+                    // Converte as coordenadas geográficas para a posição na tela
+                    const userPixelPosition = mapGeoToPixel(userLat, userLon);
+
+                    // Cria o ícone do usuário
+                    const userIcon = document.createElement('div');
+                    userIcon.className = 'user-location-icon';
+                    userIcon.style.top = userPixelPosition.top;
+                    userIcon.style.left = userPixelPosition.left;
+
+                    // Adiciona o ícone ao mapa
+                    const mapaDiv = document.getElementById('mapa');
+                    if (mapaDiv) {
+                        mapaDiv.appendChild(userIcon);
+                    }
+                } else {
+                    console.log("Usuário está fora da área do mapa.");
+                }
+            },
+            (error) => {
+                console.error(`Erro ao obter a localização: ${error.message}`);
+                // Você pode adicionar uma mensagem para o usuário aqui, se desejar.
+            },
+            {
+                // Opções para maior precisão
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            }
+        );
+    }
+
+    // Inicia o processo
+    showUserLocation();
+});
 </script>
 
 
