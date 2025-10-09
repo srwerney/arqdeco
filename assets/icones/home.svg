@@ -1,4 +1,1 @@
-<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.5 9L12.5 2L21.5 9V20C21.5 20.5304 21.2893 21.0391 20.9142 21.4142C20.5391 21.7893 20.0304 22 19.5 22H5.5C4.96957 22 4.46086 21.7893 4.08579 21.4142C3.71071 21.0391 3.5 20.5304 3.5 20V9Z" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M9.5 22V12H15.5V22" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg id="Draw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#f4f3ef;}</style></defs><path class="cls-1" d="M15.94,22H8L2.78,15,12,1.27,22.3,15ZM9,20h6.06l4.64-5.11L12.05,4.73,5.22,15Z"/><polygon class="cls-1" points="9.32 21.57 7.68 20.43 12 14.26 16.32 20.43 14.68 21.57 12 17.74 9.32 21.57"/><path class="cls-1" d="M12,16.57,9.41,12,12,8.1,14.59,12ZM10.59,12,12,14.53,13.41,12,12,9.9Z"/><path class="cls-1" d="M10.55,22H2.24l1.12-2.61-1.23-.63,2.53-2.3.68.74L3.87,18.56ZM3.76,21H6.45l-2.2-1.15Z"/><path class="cls-1" d="M22.26,22H14l6.68-3.47-1.47-1.33.67-.74,2.54,2.3-1.23.63Zm-4.21-1h2.69l-.49-1.15Z"/></svg>

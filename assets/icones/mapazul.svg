@@ -1,5 +1,1 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 6V22L8 18L16 22L23 18V2L16 6L8 2L1 6Z" stroke="#162257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8 2V18" stroke="#162257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 6V22" stroke="#162257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg id="Draw" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#060d2c;}</style></defs><path class="cls-1" d="M12.62,19.3,2,16.87l2.37-3.24L3,12.4,7,10.12l.49.87L4.7,12.57ZM3.75,16.23,8.84,17.4,5.17,14.28Z"/><path class="cls-1" d="M12.16,19.3l7.92-6.73L17.26,11l.49-.87,4.07,2.28-1.45,1.23,2.36,3.24Zm7.45-5L15.94,17.4,21,16.23Z"/><path class="cls-1" d="M12,22.36l-.91-1.94-.56-1.25a31.37,31.37,0,0,0-2.36-4.61A37.81,37.81,0,0,0,3.3,8.71l-.49-.48.27-.63a9.75,9.75,0,0,1,17.84,0l.27.63-.49.48a37.81,37.81,0,0,0-4.87,5.85,31.37,31.37,0,0,0-2.36,4.61l-.56,1.25ZM5.21,7.8a40.18,40.18,0,0,1,4.62,5.64A28.42,28.42,0,0,1,12,17.55a28.42,28.42,0,0,1,2.17-4.11A40.18,40.18,0,0,1,18.79,7.8a7.75,7.75,0,0,0-13.58,0Z"/><path class="cls-1" d="M12,10.54A2.54,2.54,0,1,1,14.54,8,2.54,2.54,0,0,1,12,10.54Zm0-4.08A1.54,1.54,0,1,0,13.54,8,1.54,1.54,0,0,0,12,6.46Z"/></svg>
