@@ -57,10 +57,226 @@
 </div>
 
 
+
+
+
+
+
+
+
+<!-- BOTÕES RA e VA -->
 <div id="botoesRAVA">
-  <a href="cauduroRA.html" class="btnRAVA">Realidade Aumentada</a>
-  <a href="cauduroVAteste.html" class="btnRAVA">Virtualidade Aumentada</a>
+  <a href="cauduroRA.html" class="btnRAVA" id="btnRA">Realidade Aumentada</a>
+  <a href="cauduroVAteste.html" class="btnRAVA" id="btnVA">Virtualidade Aumentada</a>
 </div>
+
+<!-- ================= POPUP DE REALIDADE AUMENTADA ================= -->
+<div id="overlayRA" style="display: none;"></div>
+<div id="popupRA" class="slack-parent" style="display: none;">
+  <img class="slack-icon" alt="" src="../../assets/icones/realidadeaumentada.svg">
+  <div class="ateno-para-acessar">
+    Atenção, para acessar os recursos de <b>Realidade Aumentada</b> é necessário estar próximo do edifício.
+    Este será identificado pela câmera do celular e informações serão adicionadas em sua fachada.
+  </div>
+  <div class="instance-parent">
+    <div class="saiba-mais-wrapper" id="continuarRA">
+      <div class="saiba-mais">Continuar</div>
+    </div>
+    <div class="saiba-mais-container" id="fecharRA">
+      <div class="saiba-mais">Tentar mais tarde</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= POPUP DE VIRTUALIDADE AUMENTADA ================= -->
+<div id="overlayVA" style="display: none;"></div>
+<div id="popupVA" class="maximize-parent" style="display: none;">
+  <img class="maximize-icon" alt="" src="../../assets/icones/virtualidadeaumentada.svg"/>
+  <div class="ateno-para-acessar">
+    Atenção, para acessar os recursos de <b>Virtualidade Aumentada</b> é necessário apontar sua mão para a câmera do dispositivo, pois ela será reconhecida como o alvo da aplicação.
+  </div>
+  <div class="instance-parent">
+    <div class="saiba-mais-wrapper" id="continuarVA">
+      <div class="saiba-mais">Continuar</div>
+    </div>
+    <div class="saiba-mais-container" id="fecharVA">
+      <div class="saiba-mais">Tentar mais tarde</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ESTILOS POPUPS ================= -->
+<style>
+  /* Overlay escuro genérico */
+  #overlayRA, #overlayVA {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Popup base */
+  .slack-parent, .maximize-parent {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    background-color: #fff;
+    width: 90%;
+    max-width: 420px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 33px 24px;
+    box-sizing: border-box;
+    gap: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-family: 'League Spartan';
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    z-index: 9999;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translate(-50%, 20%); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+  }
+
+  .ateno-para-acessar {
+    width: 90%;
+    max-width: 360px;
+    line-height: 1.4;
+  }
+
+  .instance-parent {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .saiba-mais-wrapper, .saiba-mais-container {
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .saiba-mais-wrapper {
+    background-color: #162257;
+    color: #fff;
+  }
+
+  .saiba-mais-wrapper:hover {
+    background-color: #101a45;
+  }
+
+  .saiba-mais-container {
+    background-color: #f2f2f2;
+    color: #484848;
+  }
+
+  .saiba-mais-container:hover {
+    background-color: #e2e2e2;
+  }
+  .maximize-icon {
+width: 64px;
+position: relative;
+max-height: 100%;
+}
+
+.slack-icon{
+  width: 64px;
+position: relative;
+max-height: 100%;
+}
+  
+</style>
+
+<!-- ================= SCRIPTS POPUPS ================= -->
+<script>
+  // -------- POPUP RA --------
+  const btnRA = document.getElementById('btnRA');
+  const popupRA = document.getElementById('popupRA');
+  const overlayRA = document.getElementById('overlayRA');
+  const continuarRA = document.getElementById('continuarRA');
+  const fecharRA = document.getElementById('fecharRA');
+
+  btnRA.addEventListener('click', (event) => {
+    event.preventDefault();
+    popupRA.style.display = 'flex';
+    overlayRA.style.display = 'flex';
+  });
+
+  function fecharPopupRA() {
+    popupRA.style.display = 'none';
+    overlayRA.style.display = 'none';
+  }
+
+  continuarRA.addEventListener('click', () => {
+    window.location.href = 'cauduroRA.html';
+  });
+
+  fecharRA.addEventListener('click', fecharPopupRA);
+  overlayRA.addEventListener('click', fecharPopupRA);
+
+  // -------- POPUP VA --------
+  const btnVA = document.getElementById('btnVA');
+  const popupVA = document.getElementById('popupVA');
+  const overlayVA = document.getElementById('overlayVA');
+  const continuarVA = document.getElementById('continuarVA');
+  const fecharVA = document.getElementById('fecharVA');
+
+  btnVA.addEventListener('click', (event) => {
+    event.preventDefault();
+    popupVA.style.display = 'flex';
+    overlayVA.style.display = 'flex';
+  });
+
+  function fecharPopupVA() {
+    popupVA.style.display = 'none';
+    overlayVA.style.display = 'none';
+  }
+
+  continuarVA.addEventListener('click', () => {
+    window.location.href = 'cauduroVAteste.html';
+  });
+
+  fecharVA.addEventListener('click', fecharPopupVA);
+  overlayVA.addEventListener('click', fecharPopupVA);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <div id="a-frame">
@@ -229,7 +445,7 @@
 
   <!-- BOTÃO SANDUÍCHE DO MENU INFERIOR -->
 <div id="menuToggleBottom">
-  <button id="toggleBtnBottom">☰</button>
+  <button id="toggleBtnBottom"><img src="../../assets/icones/menu.svg" style="width: 30px;"></button>
 </div>
 
 <!-- OVERLAY ESCURO DO MENU INFERIOR -->
