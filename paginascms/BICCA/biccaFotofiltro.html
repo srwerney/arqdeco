@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <title>Debug BodyPix - Troca de Fundo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+  <style>
+    body { margin:0; display:flex; align-items:center; justify-content:center; height:100vh; background:#111; color:#eee; font-family:Arial; }
+    #ui { position:fixed; top:12px; left:12px; background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:8px; font-size:13px; }
+    canvas { border-radius:8px; }
+  </style>
+</head>
+<body>
+  <div id="ui">Status: <span id="status">inicializando...</span></div>
+
+<script>
+/*
+  Versão robusta de debug para detectar por que a segmentação não aparece.
+  - Executar em servidor (http(s)), não em file://
+  - Abra console para logs.
+*/
+
+let bodySegmentation;
+let video;
+let segmentation = null;
+let fundoImg;
+const W = 640, H = 480;
+let modelLoaded = false;
+let attemptingMethod = null;
+const statusEl = () => document.getElementById('status');
+
+function preload() {
+  fundoImg = loadImage('https://picsum.photos/640/480?blur=3');
+}
+
+function setup() {
+  createCanvas(W, H);
+  background(20);
+
+  // captura vídeo
+  video = createCapture(VIDEO, () => console.log("callback createCapture: webcam solicitada"));
+  video.size(W, H);
+  video.hide();
+
+  // inicializa o modelo (nomes podem variar entre versões)
+  // tentamos as duas convenções comuns: "BodyPix" e "bodyPix"
+  statusEl().textContent = 'carregando modelo...';
+  try {
+    bodySegmentation = ml5.bodySegmentation ? ml5.bodySegmentation("BodyPix") : null;
+    if (!bodySegmentation) {
+      // fallback: algumas builds usam ml5.bodyPix
+      if (ml5.bodyPix) {
+        console.log("Usando ml5.bodyPix (fallback)");
+        bodySegmentation = ml5.bodyPix(); // possível fallback
+      }
+    }
+  } catch (e) {
+    console.error("Erro ao criar bodySegmentation:", e);
+  }
+
+  // Se criação falhou, tenta criar via construtor alternativo
+  if (!bodySegmentation) {
+    try {
+      bodySegmentation = ml5.bodySegmentation("BodyPix");
+    } catch (e) {
+      console.error("Tentativa alternativa falhou:", e);
+    }
+  }
+
+  if (!bodySegmentation) {
+    statusEl().textContent = 'ERRO: ml5 body segmentation não disponível';
+    console.error("ml5 body segmentation não foi inicializado. Verifique a versão do ml5.");
+    return;
+  }
+
+  // Quando o modelo estiver pronto (algumas versões não expõem callback direto)
+  // Usamos um pequeno timeout para aguardar "pronto" e então iniciamos a detecção.
+  console.log("Modelo criado (aguardando prontidão). bodySegmentation:", bodySegmentation);
+  modelLoaded = true;
+  statusEl().textContent = 'modelo carregado - aguardando vídeo pronto';
+  waitForVideoThenStart();
+}
+
+// espera a webcam estar pronta antes de chamar detect/segment
+function waitForVideoThenStart() {
+  let tries = 0;
+  const t = setInterval(() => {
+    tries++;
+    const ready = video?.elt && (video.elt.readyState >= 2 || video.width > 0);
+    if (ready) {
+      clearInterval(t);
+      console.log("Vídeo pronto. width, height:", video.width, video.height);
+      statusEl().textContent = 'vídeo pronto - iniciando detecção';
+      startDetection();
+    } else if (tries > 50) {
+      clearInterval(t);
+      statusEl().textContent = 'timeout esperando vídeo (verifique permissões)';
+      console.warn("Timeout: vídeo não ficou pronto. Verifique se deu permissão à webcam e se página está em https/http.");
+    }
+  }, 200);
+}
+
+function startDetection() {
+  // tentaremos usar os métodos mais comuns, com fallback:
+  // 1) bodySegmentation.detect(video, callback)
+  // 2) bodySegmentation.segment(video, callback)
+  // 3) bodySegmentation.detectStart(video, callback) - se existir
+
+  // método que será usado (definido na primeira tentativa bem sucedida)
+  attemptingMethod = null;
+
+  const tryDetect = () => {
+    if (!bodySegmentation) return console.error("Sem bodySegmentation");
+    // prefer detect se existir
+    if (typeof bodySegmentation.detect === 'function') {
+      attemptingMethod = 'detect';
+      console.log("Tentando bodySegmentation.detect(video, callback)");
+      try {
+        bodySegmentation.detect(video, gotResults); // algumas versões aceitam p5.Element
+        return;
+      } catch (e) { console.warn("detect falhou:", e); }
+    }
+    if (typeof bodySegmentation.segment === 'function') {
+      attemptingMethod = 'segment';
+      console.log("Tentando bodySegmentation.segment(video, callback)");
+      try {
+        bodySegmentation.segment(video, gotResults);
+        return;
+      } catch (e) { console.warn("segment falhou:", e); }
+    }
+    if (typeof bodySegmentation.detectStart === 'function') {
+      attemptingMethod = 'detectStart';
+      console.log("Tentando bodySegmentation.detectStart(video, callback)");
+      try {
+        bodySegmentation.detectStart(video, gotResults);
+        return;
+      } catch (e) { console.warn("detectStart falhou:", e); }
+    }
+
+    console.error("Nenhum método de detecção disponível no bodySegmentation. Objeto:", bodySegmentation);
+    statusEl().textContent = 'ERRO: método de detecção não encontrado';
+  };
+
+  tryDetect();
+}
+
+function gotResults(errOrResult, maybeResult) {
+  // lidar tanto com callback (err, res) quanto com (res) dependendo da versão
+  let err = null;
+  let result = null;
+  if (maybeResult === undefined) {
+    // assinatura (result)
+    result = errOrResult;
+  } else {
+    err = errOrResult;
+    result = maybeResult;
+  }
+
+  if (err) {
+    console.error("Erro na detecção:", err);
+    statusEl().textContent = 'erro na detecção (veja console)';
+    // tentar reiniciar depois de um curto delay
+    setTimeout(() => startDetection(), 500);
+    return;
+  }
+
+  if (!result) {
+    console.warn("Callback retornou sem resultado (result é null/undefined). Tentando reiniciar...");
+    setTimeout(() => startDetection(), 400);
+    return;
+  }
+
+  // registra info útil
+  console.log("gotResults — keys:", Object.keys(result), "tipo mask:", typeof result.mask, "len data:", result.data?.length);
+  segmentation = result;
+  statusEl().textContent = 'segmentação recebida';
+
+  // reencadear detecção conforme método usado:
+  if (attemptingMethod === 'detect' || attemptingMethod === 'segment') {
+    // chamar novamente
+    setTimeout(() => {
+      try {
+        if (typeof bodySegmentation.detect === 'function') bodySegmentation.detect(video, gotResults);
+        else if (typeof bodySegmentation.segment === 'function') bodySegmentation.segment(video, gotResults);
+      } catch (e) {
+        console.warn("Erro reexecutando detect/segment:", e);
+      }
+    }, 0);
+  } else if (attemptingMethod === 'detectStart') {
+    // detectStart normalmente já continua sozinho
+    console.log("detectStart em uso (streaming contínuo).");
+  } else {
+    // fallback: tente novamente
+    setTimeout(() => startDetection(), 200);
+  }
+}
+
+function draw() {
+  background(0);
+
+  // se não tem segmentação, mostra vídeo com mensagem
+  if (!segmentation) {
+    image(video, 0, 0, width, height);
+    fill(255);
+    textAlign(CENTER);
+    textSize(14);
+    text("Carregando segmentação... verifique console (F12)", width/2, height - 20);
+    return;
+  }
+
+  // se chegou aqui, há um objeto segmentation — vamos inspecionar e desenhar a máscara para debug
+  // desenha fundo
+  image(fundoImg, 0, 0, width, height);
+
+  // 1) se result.mask estiver disponível (imagem), mostra como máscara
+  if (segmentation.mask) {
+    // a máscara pode já ser um p5.Image ou HTMLImageElement - desenha para conferir
+    try {
+      push();
+      tint(255, 255); // sem alteração
+      image(segmentation.mask, 0, 0, width, height);
+      pop();
+      // agora usar a máscara para compor pessoa sobre o fundo: copia apenas onde máscara indica pessoa
+      // se a máscara for RGBA, assumimos branco = pessoa
+      // Cria uma imagem temporária para compor (apenas para debug)
+      // Para efeito prático, vamos multiplicar vídeo * (mask alpha)
+      // Mas, para simplicidade, também desenhamos o vídeo por cima e exibimos a borda da máscara
+      blendMode(BLEND);
+      // desenha vídeo por cima (ideal: aplicar máscara real, mas aqui o objetivo é debug)
+      image(video, 0, 0, width, height);
+      noFill();
+      stroke(255, 0, 0);
+      // aviso: para ver a máscara exata use console logs
+    } catch (e) {
+      console.warn("Erro desenhando segmentation.mask:", e);
+      image(video, 0, 0, width, height);
+    }
+    return;
+  }
+
+  // 2) se segmentation.data existir (array de IDs por pixel) — cria máscara a partir dele
+  if (segmentation.data && segmentation.data.length === W * H) {
+    // cria imagem de máscara rápida (preenchida de fundo)
+    const segArr = segmentation.data; // Int8Array ou array
+    loadPixels();
+    video.loadPixels();
+    // já temos o fundo desenhado nos pixels -> vamos sobrepor pixels da pessoa
+    for (let y = 0; y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const idx = y * W + x;
+        const pix = idx * 4;
+        const partId = segArr[idx];
+
+        if (partId >= 0 && partId <= 23) {
+          // copia do vídeo (pessoa)
+          pixels[pix]     = video.pixels[pix];
+          pixels[pix + 1] = video.pixels[pix + 1];
+          pixels[pix + 2] = video.pixels[pix + 2];
+          pixels[pix + 3] = 255;
+        } else {
+          // mantém o fundo (já presente)
+        }
+      }
+    }
+    updatePixels();
+    return;
+  }
+
+  // 3) nenhum dos dois: desenha vídeo e mostra objeto segmentation para inspeção
+  image(video, 0, 0, width, height);
+  fill(255,0,0);
+  textSize(12);
+  textAlign(LEFT);
+  text("segmentação recebida, mas sem 'mask' nem 'data' — veja console para keys", 10, 20);
+  console.log("Segmentation object:", segmentation);
+}
+
+</script>
+</body>
+</html>
